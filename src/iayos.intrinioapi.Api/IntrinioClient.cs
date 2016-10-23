@@ -10,21 +10,21 @@ namespace iayos.intrinioapi.Api
 	/// Uses the ServiceStack IJsonServiceClient approach, and so errors will be bundled into WebServiceException s.
 	/// </summary>
 	public class IntrinioClient
-    {
+	{
 
-	    private readonly string _apiBaseUrl = "https://api.intrinio.com";
+		private readonly string _apiBaseUrl = "https://api.intrinio.com";
 
-	    private readonly string _username;
+		private readonly string _username;
 
-	    private readonly string _password;
+		private readonly string _password;
 
-	    private readonly IJsonServiceClient _jsonClient;
+		private readonly IJsonServiceClient _jsonClient;
 
-	    public IntrinioClient(string username, string password)
-	    {
-		    _username = username;
-		    _password = password;
-			_jsonClient = new JsonServiceClient(_apiBaseUrl) {AlwaysSendBasicAuthHeader = true, UserName = _username, Password = _password };
+		public IntrinioClient(string username, string password)
+		{
+			_username = username;
+			_password = password;
+			_jsonClient = new JsonServiceClient(_apiBaseUrl) { AlwaysSendBasicAuthHeader = true, UserName = _username, Password = _password };
 		}
 
 
@@ -49,7 +49,7 @@ namespace iayos.intrinioapi.Api
 		///	  webEx.GetFieldErrors()  = (individual errors for each field if any)</exception>
 		/// <returns></returns>
 		private TResponse BaseUrlGet<TRequest, TResponse>(TRequest request)
-			where TRequest : Request 
+			where TRequest : Request
 			where TResponse : new()
 		{
 			return _jsonClient.Get<TResponse>(request);
@@ -85,35 +85,74 @@ namespace iayos.intrinioapi.Api
 
 		#region Master Data Feed
 
-		public GetCompaniesResponse GetCompanyMaster(GetCompanies request)
+		/// <summary>
+		/// http://docs.intrinio.com/#company-master
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetMasterCompaniesListResponse GetMasterCompaniesList(GetMasterCompaniesList request)
 		{
-			return BaseUrlGet<GetCompanies, GetCompaniesResponse>(request);
+			return BaseUrlGet<GetMasterCompaniesList, GetMasterCompaniesListResponse>(request);
 		}
 
 
-		public GetSecuritiesResponse GetSecuritiesMaster(GetSecurities request)
+		/// <summary>
+		/// http://docs.intrinio.com/#security-master
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetSecuritiesResponse GetMasterSecuritiesList(GetMasterSecuritiesList request)
 		{
-			return BaseUrlGet<GetSecurities, GetSecuritiesResponse>(request);
+			return BaseUrlGet<GetMasterSecuritiesList, GetSecuritiesResponse>(request);
 		}
 
 
-		public GetIndicesResponse GetIndicesMaster(GetIndices request)
+		/// <summary>
+		/// http://docs.intrinio.com/#index-master
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetIndicesResponse GetMasterIndicesList(GetMasterIndicesList request)
 		{
-			return BaseUrlGet<GetIndices, GetIndicesResponse>(request);
+			return BaseUrlGet<GetMasterIndicesList, GetIndicesResponse>(request);
 		}
 
 
-	    public GetOwnersResponse GetOwnersMaster(GetOwners request)
-	    {
-		    return BaseUrlGet<GetOwners, GetOwnersResponse>(request);
-	    }
+		/// <summary>
+		/// http://docs.intrinio.com/#owner-master
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetOwnersResponse GetMasterOwnersList(GetMasterOwnersList request)
+		{
+			return BaseUrlGet<GetMasterOwnersList, GetOwnersResponse>(request);
+		}
 
 		#endregion
 
 
 		#region U.S. Public Company Data Feed
 
+		/// <summary>
+		/// http://docs.intrinio.com/#companies
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public SearchCompaniesResponse SearchCompanies(SearchCompanies request)
+		{
+			return BaseUrlGet<SearchCompanies, SearchCompaniesResponse>(request);
+		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#securities
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public SearchSecuritiesResponse SearchSecurities(SearchSecurities request)
+		{
+			return BaseUrlGet<SearchSecurities, SearchSecuritiesResponse>(request);
+		}
 
 		#endregion
 

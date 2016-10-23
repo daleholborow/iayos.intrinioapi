@@ -1,41 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using iayos.intrinioapi.ServiceModel.Dtos;
+using iayos.intrinioapi.ServiceModel.Enums;
 using ServiceStack;
 
 namespace iayos.intrinioapi.ServiceModel.Messages
 {
 
 
-	[Route("/companies", HttpMethods.Get)]
-	public class GetCompanies : Request, IReturn<GetCompaniesResponse>
-	{
-		/// <summary>
-		/// identifier (optional, returns full list of companies with compacted response values, if no identifier 
-		/// specified) - the stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
-		/// </summary>
-		public string identifier { get; set; }
-
-		/// <summary>
-		/// cik (optional, returns full list of companies with compacted response values, if no identifier specified) - the 
-		/// Central Index Key issued by the SEC, which is the unique identifier all company filings are issued under: CENTRAL INDEX KEY
-		/// </summary>
-		public string cik { get; set; }
-
-		/// <summary>
-		/// query (optional, returns full list of companies with compacted response values, if no query specified) - a string 
-		/// query search of company name or ticker symbol with the returned results being the relevant companies in compacted list format.
-		/// </summary>
-		public string query { get; set; }
-	}
-
-	public class GetCompaniesResponse : Response<List<CompanyMasterDto>>
-	{
-	}
-
-
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecurities : Request, IReturn<GetSecuritiesResponse>
+	public class GetMasterSecuritiesList : Request, IReturn<GetSecuritiesResponse>
 	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
@@ -88,50 +63,54 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 	}
 
 
-	public enum IndexType
+	/// <summary>
+	/// Massively detailed dataset when searching for particular securities
+	/// </summary>
+	public class SearchSecurities : Request, IReturn<SearchSecuritiesResponse>
 	{
-		full,       // returns full list by default
-		stock_market,
-		economic,
-		sic
-	}
-
-
-	[Route("/indices", HttpMethods.Get)]
-	public class GetIndices : Request, IReturn<GetIndicesResponse>
-	{
-		/// <summary>
-		/// (optional, returns full list of indices with compacted response values if no symbol or 
-		/// identifier specified) - the Intrinio symbol associated with the index: STOCK MARKET INDICES
-		/// </summary>
-		public string identifier { get; set;  }
 
 		/// <summary>
-		/// (optional, returns list of indices with compacted response values, if no query specified) - a 
-		/// string query search of index name or symbol with the returned results being the relevant securities in compacted list format.
+		/// A comma-separated list of conditions.Each condition consists three elements separated by tildes (~):
+		///  - A data tag INTRINIO DATA POINT TAGS
+		///  - An operator
+		///    Equal to: “eq”
+		///    Greater than: “gt”
+		///    Greater than or equal to: “gte”
+		///    Less than: “lt”
+		///    Less than or equal to: “lte”
+		///    Contains text: “contains”
+		///  - A value
 		/// </summary>
-		public string query { get; set; }
-
+		public string conditions => (SearchConditions.Count == 0) 
+			? string.Empty 
+			: string.Join(",", SearchConditions.Select(sc => $"{sc.Tag}~{sc.Operator}~{sc.Value}"));
 
 		/// <summary>
-		/// (optional, returns full list of indices otherwise) - the type of indices specified: stock_market
+		/// A data tag by which to order the results INTRINIO DATA POINT TAGS
 		/// </summary>
-		public IndexType type { get; set; } = IndexType.full;
+		public DataPointTag order_column { get; set; }
+
+		/// <summary>
+		/// The direction in which to order the results(“asc” for Ascending or “desc” for descending)
+		/// </summary>
+		public Direction order_direction { get; set; }
+
+		public List<SecuritiesSearchCondition> SearchConditions { get; set; } = new List<SecuritiesSearchCondition>();
+
 	}
 
-	public class GetIndicesResponse : Response<List<IndiceMasterDto>>
+	public class SearchSecuritiesResponse : Response<List<SecurityMasterDto>>
 	{
+		
 	}
 
 
-	[Route("/owners", HttpMethods.Get)]
-	public class GetOwners : Request, IReturn<GetOwnersResponse>
+	public class SecuritiesSearchCondition
 	{
-	}
+		public DataPointTag Tag { get; set; }
 
-	public class GetOwnersResponse : Response<List<OwnerMasterDto>>
-	{
-	}
+		public SearchOperator Operator { get; set; } = SearchOperator.eq;
 
-	
+		public object Value { get; set; }
+	}
 }

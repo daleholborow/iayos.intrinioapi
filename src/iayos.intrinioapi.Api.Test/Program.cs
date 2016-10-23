@@ -33,16 +33,16 @@ namespace iayos.intrinioapi.Api.Test
 			try
 			{
 				// Currently working
-				//var getCompaniesResponse = _client.GetCompanyMaster(new GetCompanies { });
+				//var getCompaniesResponse = _client.GetMasterCompaniesList(new GetMasterCompaniesList { });
 
 				// Currently failing because empty parameter values cause internal server error
-				//var getSecuritiesResponse = _client.GetSecuritiesMaster(new GetSecurities { });
+				//var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetMasterSecuritiesList { });
 
 				// Currently working
-				//var getIndicesResponse = _client.GetIndicesMaster(new GetIndices { });
+				//var getIndicesResponse = _client.GetMasterIndicesList(new GetMasterIndicesList { });
 
 				// Currently failing with error about insufficient permissions
-				//var getOwnerResponse = _client.GetOwnersMaster(new GetOwners { });
+				//var getOwnerResponse = _client.GetMasterOwnersList(new GetMasterOwnersList { });
 			}
 			catch (WebServiceException webEx)
 			{

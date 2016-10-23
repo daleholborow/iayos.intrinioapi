@@ -48,8 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\MasterDataFeedDtos.cs" />
-    <Compile Include="Messages\MasterDataFeedMessages.cs" />
+    <Compile Include="Dtos\CompanyDtos.cs" />
+    <Compile Include="Dtos\IndexDtos.cs" />
+    <Compile Include="Enums\DataPointTag.cs" />
+    <Compile Include="Enums\SecurityFinancialStatus.cs" />
+    <Compile Include="Enums\EntityStatus.cs" />
+    <Compile Include="Dtos\OwnerDtos.cs" />
+    <Compile Include="Dtos\SecurityDtos.cs" />
+    <Compile Include="Enums\IndexType.cs" />
+    <Compile Include="Enums\Direction.cs" />
+    <Compile Include="Messages\IndexMessages.cs" />
+    <Compile Include="Messages\CompanyMessages.cs" />
+    <Compile Include="Enums\SearchOperator.cs" />
+    <Compile Include="Messages\SecurityMessages.cs" />
+    <Compile Include="Messages\OwnerMessages.cs" />
     <Compile Include="ResponseMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
