@@ -173,6 +173,19 @@ namespace iayos.intrinioapi.Api
 		}
 
 
+		/// <summary>
+		/// Returns that historical data for for a selected identifier (ticker symbol or index symbol) 
+		/// for a selected tag. The complete list of tags available through this function are available 
+		/// here. Income statement, cash flow statement, and ratios are returned as trailing twelve months 
+		/// values by default, but can be changed with the type parameter. All other historical data points 
+		/// are returned as their value on a certain day based on filings reported as of that date.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public SearchHistoricalDataResponse SearchHistoricalData(SearchHistoricalData request)
+		{
+			return BaseUrlGet<SearchHistoricalData, SearchHistoricalDataResponse>(request);
+		}
 
 		#endregion
 

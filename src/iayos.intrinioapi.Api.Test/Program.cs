@@ -77,7 +77,7 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
-		public void TestSearchDataPoints()
+		public void CanSearchDataPoints()
 		{
 			var datapointRequest = new SearchDataPoints { };
 			datapointRequest.Identifers.Add("AAPL");
@@ -85,6 +85,16 @@ namespace iayos.intrinioapi.Api.Test
 			datapointRequest.Tags.Add(DataPointTag.acquisitions);
 			var datapointResponse = _client.SearchDataPoints(datapointRequest);
 		}
+
+
+		[Fact]
+		public void CanSearchHistoricalData()
+		{
+			var historicalDataRequest = new SearchHistoricalData {};
+			var response = _client.SearchHistoricalData(historicalDataRequest);
+		}
+
+
 
 		[Fact]
 		public void DoSomeStuff()
@@ -118,6 +128,4 @@ namespace iayos.intrinioapi.Api.Test
 		}
 
 	}
-
-	
 }

@@ -59,9 +59,13 @@
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Dtos\DataPointDto.cs" />
     <Compile Include="Messages\DataPointMessages.cs" />
+    <Compile Include="Dtos\HistoricalDataDto.cs" />
+    <Compile Include="Enums\HistoricalDataType.cs" />
+    <Compile Include="Enums\DataFrequency.cs" />
     <Compile Include="Messages\IndexMessages.cs" />
     <Compile Include="Messages\CompanyMessages.cs" />
     <Compile Include="Enums\SearchOperator.cs" />
+    <Compile Include="Messages\HistoricalDataMessages.cs" />
     <Compile Include="Messages\SecurityMessages.cs" />
     <Compile Include="Messages\OwnerMessages.cs" />
     <Compile Include="ResponseMessage.cs" />
