@@ -1,4 +1,6 @@
-﻿using iayos.intrinioapi.ServiceModel.Messages;
+﻿using System.Collections.Generic;
+using iayos.intrinioapi.ServiceModel.Enums;
+using iayos.intrinioapi.ServiceModel.Messages;
 using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
@@ -43,12 +45,23 @@ namespace iayos.intrinioapi.Api.Test
 
 				// Currently failing with error about insufficient permissions
 				//var getOwnerResponse = _client.GetMasterOwnersList(new GetMasterOwnersList { });
+
+				/*var searchSecuritiesRequest = new SearchSecurities
+				{
+					page_size = 1,
+					SearchConditions = new List<SecuritiesSearchCondition>
+					{
+						new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
+					}
+				};
+				var companyDetails = _client.SearchSecurities(searchSecuritiesRequest);*/
 			}
 			catch (WebServiceException webEx)
 			{
 
 				// TODO Inspect the webEx to see what went wrong:
 
+				var errorMessage = webEx.ErrorMessage;
 
 				/*
 				 * Example error response:

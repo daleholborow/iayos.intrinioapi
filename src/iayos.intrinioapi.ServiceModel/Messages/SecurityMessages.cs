@@ -66,6 +66,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 	/// <summary>
 	/// Massively detailed dataset when searching for particular securities
 	/// </summary>
+	[Route("/securities/search", HttpMethods.Get)]
 	public class SearchSecurities : Request, IReturn<SearchSecuritiesResponse>
 	{
 
@@ -88,12 +89,12 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// <summary>
 		/// A data tag by which to order the results INTRINIO DATA POINT TAGS
 		/// </summary>
-		public DataPointTag order_column { get; set; }
+		public DataPointTag? order_column { get; set; }
 
 		/// <summary>
 		/// The direction in which to order the results(“asc” for Ascending or “desc” for descending)
 		/// </summary>
-		public Direction order_direction { get; set; }
+		public Direction? order_direction { get; set; }
 
 		public List<SecuritiesSearchCondition> SearchConditions { get; set; } = new List<SecuritiesSearchCondition>();
 
