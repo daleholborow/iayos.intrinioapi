@@ -1,4 +1,7 @@
-﻿using Xunit;
+﻿using iayos.intrinioapi.ServiceModel.Messages;
+using ServiceStack;
+using ServiceStack.Configuration;
+using Xunit;
 
 namespace iayos.intrinioapi.Api.Test
 {
@@ -10,14 +13,14 @@ namespace iayos.intrinioapi.Api.Test
 	}
 
 
-	public class Class1
+	public class IntrinioApiTests
 	{
-		private IntrinioClient _client;
+		private readonly IntrinioClient _client;
 
-		public Class1()
+		public IntrinioApiTests()
 		{
-			var username = "";
-			var password = "";
+			var username = ConfigUtils.GetAppSetting("intrinio:username");
+			var password = ConfigUtils.GetAppSetting("intrinio:password"); ;
 
 			_client = new IntrinioClient(username, password);
 		}
@@ -26,8 +29,27 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void DoSomeStuff()
 		{
-			//_client.
 
+			try
+			{
+				var response = _client.GetCompanyMaster(new GetCompanies { });
+			}
+			catch (WebServiceException webEx)
+			{
+				/*
+				  webEx.StatusCode        = 400
+				  webEx.StatusDescription = ArgumentNullException
+				  webEx.ErrorCode         = ArgumentNullException
+				  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
+				  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
+				  webEx.ResponseDto       = (your populated Response DTO)
+				  webEx.ResponseStatus    = (your populated Response Status DTO)
+				  webEx.GetFieldErrors()  = (individual errors for each field if any)
+				*/
+				var test = 5;
+			}
+
+			
 		}
 
 	}

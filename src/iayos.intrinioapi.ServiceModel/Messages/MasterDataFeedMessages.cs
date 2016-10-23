@@ -1,4 +1,5 @@
-﻿using iayos.intrinioapi.ServiceModel.Dtos;
+﻿using System.Collections.Generic;
+using iayos.intrinioapi.ServiceModel.Dtos;
 using ServiceStack;
 
 namespace iayos.intrinioapi.ServiceModel.Messages
@@ -11,7 +12,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		
 	}
 
-	public class GetCompaniesResponse : Response<CompanyMasterDto>
+	public class GetCompaniesResponse : Response<List<CompanyMasterDto>>
 	{
 	}
 
@@ -22,7 +23,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		
 	}
 
-	public class GetSecuritiesResponse : Response<SecurityMasterDto>
+	public class GetSecuritiesResponse : Response<List<SecurityMasterDto>>
 	{
 	}
 
@@ -42,7 +43,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		public IndexType type { get; set; } = IndexType.full;
 	}
 
-	public class GetIndicesResponse : Response<IndiceMasterDto>
+	public class GetIndicesResponse : Response<List<IndiceMasterDto>>
 	{
 	}
 
@@ -52,7 +53,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 	{
 	}
 
-	public class GetOwnersResponse : Response<OwnerMasterDto>
+	public class GetOwnersResponse : Response<List<OwnerMasterDto>>
 	{
 	}
 
