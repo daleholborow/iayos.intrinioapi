@@ -32,11 +32,26 @@ namespace iayos.intrinioapi.Api.Test
 
 			try
 			{
-				var response = _client.GetCompanyMaster(new GetCompanies { });
+				// Currently working
+				//var getCompaniesResponse = _client.GetCompanyMaster(new GetCompanies { });
+
+				// Currently failing because empty parameter values cause internal server error
+				//var getSecuritiesResponse = _client.GetSecuritiesMaster(new GetSecurities { });
+
+				// Currently working
+				//var getIndicesResponse = _client.GetIndicesMaster(new GetIndices { });
+
+				// Currently failing with error about insufficient permissions
+				//var getOwnerResponse = _client.GetOwnersMaster(new GetOwners { });
 			}
 			catch (WebServiceException webEx)
 			{
+
+				// TODO Inspect the webEx to see what went wrong:
+
+
 				/*
+				 * Example error response:
 				  webEx.StatusCode        = 400
 				  webEx.StatusDescription = ArgumentNullException
 				  webEx.ErrorCode         = ArgumentNullException
@@ -46,7 +61,6 @@ namespace iayos.intrinioapi.Api.Test
 				  webEx.ResponseStatus    = (your populated Response Status DTO)
 				  webEx.GetFieldErrors()  = (individual errors for each field if any)
 				*/
-				var test = 5;
 			}
 
 			

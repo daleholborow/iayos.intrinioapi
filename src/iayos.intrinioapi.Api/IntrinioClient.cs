@@ -111,6 +111,12 @@ namespace iayos.intrinioapi.Api
 		#endregion
 
 
+		#region U.S. Public Company Data Feed
+
+
+
+		#endregion
+
 	}
 
 }
