@@ -19,6 +19,7 @@ namespace iayos.intrinioapi.Api.Test
 	{
 		private readonly IntrinioClient _client;
 
+
 		public IntrinioApiTests()
 		{
 			var username = ConfigUtils.GetAppSetting("intrinio:username");
@@ -29,32 +30,69 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
+		public void CanQueryMasterDataListForCompanies()
+		{
+			// Currently working
+			var getCompaniesResponse = _client.GetMasterCompaniesList(new GetMasterCompaniesList { });
+		}
+
+
+		[Fact]
+		public void CanQueryMasterDataListForSecurities()
+		{
+			// Currently failing because empty parameter values cause internal server error
+			var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetMasterSecuritiesList { });
+		}
+
+
+		[Fact]
+		public void CanQueryMasterDataListForIndices()
+		{
+			// Currently working
+			var getIndicesResponse = _client.GetMasterIndicesList(new GetMasterIndicesList { });
+		}
+
+
+		[Fact]
+		public void CanQueryMasterDataListForOwners()
+		{
+			// Currently failing with error about insufficient permissions
+			var getOwnerResponse = _client.GetMasterOwnersList(new GetMasterOwnersList { });
+		}
+
+
+		[Fact]
+		public void CanSearchSecuritiesWithConditions()
+		{
+			var searchSecuritiesRequest = new SearchSecurities
+			{
+				page_size = 1,
+				SearchConditions = new List<SecuritiesSearchCondition>
+				{
+					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
+				}
+			};
+			var companyDetails = _client.SearchSecurities(searchSecuritiesRequest);
+		}
+
+
+		[Fact]
+		public void TestSearchDataPoints()
+		{
+			var datapointRequest = new SearchDataPoints { };
+			datapointRequest.Identifers.Add("AAPL");
+			datapointRequest.Tags.Add(DataPointTag.accruedexpenses);
+			datapointRequest.Tags.Add(DataPointTag.acquisitions);
+			var datapointResponse = _client.SearchDataPoints(datapointRequest);
+		}
+
+		[Fact]
 		public void DoSomeStuff()
 		{
 
 			try
 			{
-				// Currently working
-				//var getCompaniesResponse = _client.GetMasterCompaniesList(new GetMasterCompaniesList { });
-
-				// Currently failing because empty parameter values cause internal server error
-				//var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetMasterSecuritiesList { });
-
-				// Currently working
-				//var getIndicesResponse = _client.GetMasterIndicesList(new GetMasterIndicesList { });
-
-				// Currently failing with error about insufficient permissions
-				//var getOwnerResponse = _client.GetMasterOwnersList(new GetMasterOwnersList { });
-
-				/*var searchSecuritiesRequest = new SearchSecurities
-				{
-					page_size = 1,
-					SearchConditions = new List<SecuritiesSearchCondition>
-					{
-						new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
-					}
-				};
-				var companyDetails = _client.SearchSecurities(searchSecuritiesRequest);*/
+				
 			}
 			catch (WebServiceException webEx)
 			{
@@ -80,4 +118,6 @@ namespace iayos.intrinioapi.Api.Test
 		}
 
 	}
+
+	
 }

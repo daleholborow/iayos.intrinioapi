@@ -57,6 +57,8 @@
     <Compile Include="Dtos\SecurityDtos.cs" />
     <Compile Include="Enums\IndexType.cs" />
     <Compile Include="Enums\Direction.cs" />
+    <Compile Include="Dtos\DataPointDto.cs" />
+    <Compile Include="Messages\DataPointMessages.cs" />
     <Compile Include="Messages\IndexMessages.cs" />
     <Compile Include="Messages\CompanyMessages.cs" />
     <Compile Include="Enums\SearchOperator.cs" />

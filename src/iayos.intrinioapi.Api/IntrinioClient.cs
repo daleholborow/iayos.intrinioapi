@@ -146,6 +146,8 @@ namespace iayos.intrinioapi.Api
 
 		/// <summary>
 		/// http://docs.intrinio.com/#securities
+		/// Returns security list and information all securities that match the given conditions. The API 
+		/// call credits required for each call is equal to the number of conditions specified.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
@@ -153,6 +155,24 @@ namespace iayos.intrinioapi.Api
 		{
 			return BaseUrlGet<SearchSecurities, SearchSecuritiesResponse>(request);
 		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#data-point
+		/// Returns that most recent data point for a selected identifier (ticker symbol, stock market 
+		/// index symbol, CIK ID, etc.) for a selected tag. The complete list of tags available through 
+		/// this function are available here. Income statement, cash flow statement, and ratios are 
+		/// returned as trailing twelve months values. All other data points are returned as their most 
+		/// recent value, either as of the last release financial statement or the most recent reported value.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public SearchDataPointsResponse SearchDataPoints(SearchDataPoints request)
+		{
+			return BaseUrlGet<SearchDataPoints, SearchDataPointsResponse>(request);
+		}
+
+
 
 		#endregion
 
