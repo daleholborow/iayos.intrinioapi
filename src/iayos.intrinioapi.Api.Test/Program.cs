@@ -9,15 +9,18 @@ namespace iayos.intrinioapi.Api.Test
 {
 	class Program
 	{
+		private static IntrinioApiTests tests;
+
 		static void Main(string[] args)
 		{
+			tests = new IntrinioApiTests();
 		}
 	}
 
 
 	public class IntrinioApiTests
 	{
-		private readonly IntrinioClient _client;
+		public IntrinioClient ApiClient { get; }
 
 
 		public IntrinioApiTests()
@@ -25,7 +28,7 @@ namespace iayos.intrinioapi.Api.Test
 			var username = ConfigUtils.GetAppSetting("intrinio:username");
 			var password = ConfigUtils.GetAppSetting("intrinio:password"); ;
 
-			_client = new IntrinioClient(username, password);
+			ApiClient = new IntrinioClient(username, password);
 		}
 
 
@@ -33,7 +36,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForCompanies()
 		{
 			// Currently working
-			var getCompaniesResponse = _client.GetMasterCompaniesList(new GetCompaniesMasterList { });
+			var getCompaniesResponse = ApiClient.GetMasterCompaniesList(new GetCompaniesMasterList { });
 		}
 
 
@@ -41,7 +44,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForSecurities()
 		{
 			// Currently failing because empty parameter values cause internal server error
-			var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetSecuritiesMasterList { });
+			var getSecuritiesResponse = ApiClient.GetMasterSecuritiesList(new GetSecuritiesMasterList { });
 		}
 
 
@@ -49,7 +52,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForIndices()
 		{
 			// Currently working
-			var getIndicesResponse = _client.GetMasterIndicesList(new GetIndicesMasterList { });
+			var getIndicesResponse = ApiClient.GetMasterIndicesList(new GetIndicesMasterList { });
 		}
 
 
@@ -57,7 +60,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForOwners()
 		{
 			// Currently failing with error about insufficient permissions
-			var getOwnerResponse = _client.GetMasterOwnersList(new GetOwnersMasterList { });
+			var getOwnerResponse = ApiClient.GetMasterOwnersList(new GetOwnersMasterList { });
 		}
 
 
@@ -68,7 +71,7 @@ namespace iayos.intrinioapi.Api.Test
 			{
 
 			};
-			var response = _client.GetCompanyDetails(request);
+			var response = ApiClient.GetCompanyDetails(request);
 		}
 
 
@@ -79,7 +82,7 @@ namespace iayos.intrinioapi.Api.Test
 			{
 
 			};
-			var response = _client.GetSecurityDetails(request);
+			var response = ApiClient.GetSecurityDetails(request);
 		}
 
 		[Fact]
@@ -89,7 +92,7 @@ namespace iayos.intrinioapi.Api.Test
 			{
 
 			};
-			var response = _client.GetIndexDetails(request);
+			var response = ApiClient.GetIndexDetails(request);
 		}
 
 
@@ -101,10 +104,10 @@ namespace iayos.intrinioapi.Api.Test
 				page_size = 1,
 				Conditions_IaYoS = new List<SecuritiesSearchCondition>
 				{
-					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
+					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.open_price, Value = 0.01}
 				}
 			};
-			var companyDetails = _client.SearchSecurities(request);
+			var companyDetails = ApiClient.SearchSecurities(request);
 		}
 
 
@@ -115,7 +118,7 @@ namespace iayos.intrinioapi.Api.Test
 			request.Identifers.Add("AAPL");
 			request.Tags.Add(DataPointTag.accruedexpenses);
 			request.Tags.Add(DataPointTag.acquisitions);
-			var datapointResponse = _client.SearchDataPoints(request);
+			var datapointResponse = ApiClient.SearchDataPoints(request);
 		}
 
 
@@ -123,7 +126,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanSearchHistoricalData()
 		{
 			var request = new SearchHistoricalData { };
-			var response = _client.SearchHistoricalData(request);
+			var response = ApiClient.SearchHistoricalData(request);
 		}
 
 
@@ -131,7 +134,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanGetPrices()
 		{
 			var request = new GetPrices { identifier = "AAPL" };
-			var response = _client.GetPrices(request);
+			var response = ApiClient.GetPrices(request);
 		}
 
 
@@ -139,7 +142,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanGetCompanySecFilings()
 		{
 			var request = new GetCompanySecFilings { identifier = "AAPL" };
-			var response = _client.GetCompanySecFilings(request);
+			var response = ApiClient.GetCompanySecFilings(request);
 		}
 
 
@@ -147,7 +150,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanGetCompanyNews()
 		{
 			//var request = new GetCom { identifier = "AAPL" };
-			var response = _client.GetCompanyNews(new object());
+			var response = ApiClient.GetCompanyNews(new object());
 		}
 
 
@@ -155,7 +158,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanGetStandardizedFundamentals()
 		{
 			var request = new GetStandardizedFundamentals { identifier = "AAPL" };
-			var response = _client.GetStandardizedFundamentals(request);
+			var response = ApiClient.GetStandardizedFundamentals(request);
 		}
 
 
@@ -163,7 +166,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanGetStandardizedTags()
 		{
 			var request = new GetStandardizedTags { identifier = "AAPL" };
-			var response = _client.GetStandardizedTags(request);
+			var response = ApiClient.GetStandardizedTags(request);
 		}
 
 
@@ -171,7 +174,31 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanGetStandardizedFinancials()
 		{
 			var request = new GetStandardizedFinancials { identifier = "AAPL" };
-			var response = _client.GetStandardizedFinancials(request);
+			var response = ApiClient.GetStandardizedFinancials(request);
+		}
+
+
+		[Fact]
+		public void CanGetAsReportedFundamentals()
+		{
+			var request = new GetAsReportedFundamentals { identifier = "AAPL" };
+			var response = ApiClient.GetAsReportedFundamentals(request);
+		}
+
+
+		[Fact]
+		public void CanGetAsReportedTags()
+		{
+			var request = new GetAsReportedXbrlTags { identifier = "AAPL" };
+			var response = ApiClient.GetAsReportedXbrlTags(request);
+		}
+
+
+		[Fact]
+		public void CanGetAsReportedFinancials()
+		{
+			var request = new GetAsReportedFinancials { identifier = "AAPL" };
+			var response = ApiClient.GetAsReportedFinancials(request);
 		}
 
 
