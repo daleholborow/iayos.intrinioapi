@@ -41,5 +41,24 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 
 	public class GetCompanyDetailsResponse : Response<CompanyDetailDto>
 	{
+		
 	}
+
+
+	[Route("/news", HttpMethods.Get)]
+	public class GetCompanyNews : Request, IReturn<GetCompanyNewsResponse>
+	{
+		/// <summary>
+		/// ithe stock market ticker symbol associated with the company’s common stock. If the company is foreign, use the stock 
+		/// exchange code, followed by a colon, then the ticker. You may request up to 10 tickers at once by separating them with a coma: TICKER SYMBOL
+		/// </summary>
+		public string identifier { get; set; }
+	}
+
+	public class GetCompanyNewsResponse : Response<List<CompanyNewsDto>>
+	{
+		
+	}
+
+	
 }

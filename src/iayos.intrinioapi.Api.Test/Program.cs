@@ -149,8 +149,8 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetCompanyNews()
 		{
-			//var request = new GetCom { identifier = "AAPL" };
-			var response = ApiClient.GetCompanyNews(new object());
+			var request = new GetCompanyNews { identifier = "AAPL" };
+			var response = ApiClient.GetCompanyNews(request);
 		}
 
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using iayos.intrinioapi.ServiceModel.Enums;
 
 namespace iayos.intrinioapi.ServiceModel.Dtos
@@ -190,5 +191,30 @@ namespace iayos.intrinioapi.ServiceModel.Dtos
 		public string industry_group { get; set; }
 	}
 
+
+	public class CompanyNewsDto
+	{
+		/// <summary>
+		/// the title of the article
+		/// </summary>
+		public string title { get; set; }
+
+		/// <summary>
+		/// the date the article was published
+		/// </summary>
+		public DateTime publication_date { get; set; }
+
+
+		/// <summary>
+		/// the hyperlink to the article
+		/// </summary>
+		public string url { get; set; }
+
+
+		/// <summary>
+		/// a brief summary of the article
+		/// </summary>
+		public string summary { get; set; }
+	}
 
 }

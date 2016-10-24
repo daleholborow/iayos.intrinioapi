@@ -258,9 +258,9 @@ namespace iayos.intrinioapi.Api
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public object GetCompanyNews(object request)
+		public GetCompanyNewsResponse GetCompanyNews(GetCompanyNews request)
 		{
-			throw new NotImplementedException("I don't care about company news and won't be implementing this... feel free to submit a pull request!!");
+			return BaseUrlGet<GetCompanyNews, GetCompanyNewsResponse>(request);
 		}
 
 
