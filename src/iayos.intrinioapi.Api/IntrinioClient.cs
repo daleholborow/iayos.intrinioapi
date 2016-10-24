@@ -1,4 +1,5 @@
-﻿using iayos.intrinioapi.ServiceModel;
+﻿using System;
+using iayos.intrinioapi.ServiceModel;
 using iayos.intrinioapi.ServiceModel.Messages;
 using ServiceStack;
 
@@ -24,7 +25,7 @@ namespace iayos.intrinioapi.Api
 		{
 			_username = username;
 			_password = password;
-			_jsonClient = new JsonServiceClient(_apiBaseUrl) { AlwaysSendBasicAuthHeader = true, UserName = _username, Password = _password };
+			_jsonClient = new JsonServiceClient(_apiBaseUrl) {AlwaysSendBasicAuthHeader = true, UserName = _username, Password = _password};
 		}
 
 
@@ -52,7 +53,17 @@ namespace iayos.intrinioapi.Api
 			where TRequest : Request
 			where TResponse : new()
 		{
-			return _jsonClient.Get<TResponse>(request);
+			try
+			{
+				return _jsonClient.Get<TResponse>(request);
+			}
+			catch (Exception e)
+			{
+				// What was the request that was sent, so we can report this issue to Intrinio? Maybe use logging?
+				var requestUrl = request.ToGetUrl();
+				throw;
+			}
+			
 		}
 
 
@@ -90,9 +101,9 @@ namespace iayos.intrinioapi.Api
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetMasterCompaniesListResponse GetMasterCompaniesList(GetMasterCompaniesList request)
+		public GetCompaniesMasterListResponse GetMasterCompaniesList(GetCompaniesMasterList request)
 		{
-			return BaseUrlGet<GetMasterCompaniesList, GetMasterCompaniesListResponse>(request);
+			return BaseUrlGet<GetCompaniesMasterList, GetCompaniesMasterListResponse>(request);
 		}
 
 
@@ -101,9 +112,9 @@ namespace iayos.intrinioapi.Api
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetSecuritiesResponse GetMasterSecuritiesList(GetMasterSecuritiesList request)
+		public GetSecuritiesMasterListResponse GetMasterSecuritiesList(GetSecuritiesMasterList request)
 		{
-			return BaseUrlGet<GetMasterSecuritiesList, GetSecuritiesResponse>(request);
+			return BaseUrlGet<GetSecuritiesMasterList, GetSecuritiesMasterListResponse>(request);
 		}
 
 
@@ -112,9 +123,9 @@ namespace iayos.intrinioapi.Api
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetIndicesResponse GetMasterIndicesList(GetMasterIndicesList request)
+		public GetIndicesMasterListResponse GetMasterIndicesList(GetIndicesMasterList request)
 		{
-			return BaseUrlGet<GetMasterIndicesList, GetIndicesResponse>(request);
+			return BaseUrlGet<GetIndicesMasterList, GetIndicesMasterListResponse>(request);
 		}
 
 
@@ -123,9 +134,9 @@ namespace iayos.intrinioapi.Api
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetOwnersResponse GetMasterOwnersList(GetMasterOwnersList request)
+		public GetOwnersMasterListResponse GetMasterOwnersList(GetOwnersMasterList request)
 		{
-			return BaseUrlGet<GetMasterOwnersList, GetOwnersResponse>(request);
+			return BaseUrlGet<GetOwnersMasterList, GetOwnersMasterListResponse>(request);
 		}
 
 		#endregion
@@ -135,19 +146,43 @@ namespace iayos.intrinioapi.Api
 
 		/// <summary>
 		/// http://docs.intrinio.com/#companies
+		/// Returns company list and information for all companies covered by Intrinio.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public SearchCompaniesResponse SearchCompanies(SearchCompanies request)
+		public GetCompanyDetailsResponse GetCompanyDetails(GetCompanyDetails request)
 		{
-			return BaseUrlGet<SearchCompanies, SearchCompaniesResponse>(request);
+			return BaseUrlGet<GetCompanyDetails, GetCompanyDetailsResponse>(request);
 		}
 
 
 		/// <summary>
 		/// http://docs.intrinio.com/#securities
-		/// Returns security list and information all securities that match the given conditions. The API 
-		/// call credits required for each call is equal to the number of conditions specified.
+		///Returns security list and information for all securities covered by Intrinio.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetSecurityDetailsResponse GetSecurityDetails(GetSecurityDetails request)
+		{
+			return BaseUrlGet<GetSecurityDetails, GetSecurityDetailsResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#indices47
+		/// Returns indices list and information for all indices covered by Intrinio.
+		/// </summary>
+		/// <param name="request"></param>
+		public GetIndexDetailsResponse GetIndexDetails(GetIndexDetails request)
+		{
+			return BaseUrlGet<GetIndexDetails, GetIndexDetailsResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#securities-search-screener
+		/// Returns security list and information all securities that match the given conditions. The API call 
+		/// credits required for each call is equal to the number of conditions specified.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
@@ -173,6 +208,20 @@ namespace iayos.intrinioapi.Api
 		}
 
 
+		/// <summary>
+		/// http://docs.intrinio.com/#historical-data
+		/// Returns that historical data for for a selected identifier (ticker symbol or index symbol) 
+		/// for a selected tag. The complete list of tags available through this function are available 
+		/// here. Income statement, cash flow statement, and ratios are returned as trailing twelve months 
+		/// values by default, but can be changed with the type parameter. All other historical data points 
+		/// are returned as their value on a certain day based on filings reported as of that date.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public SearchHistoricalDataResponse SearchHistoricalData(SearchHistoricalData request)
+		{
+			return BaseUrlGet<SearchHistoricalData, SearchHistoricalDataResponse>(request);
+		}
 
 		#endregion
 

@@ -10,7 +10,18 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetMasterSecuritiesList : Request, IReturn<GetSecuritiesResponse>
+	public class GetSecuritiesMasterList : Request, IReturn<GetSecuritiesMasterListResponse>
+	{
+	}
+
+	public class GetSecuritiesMasterListResponse : Response<List<SecurityDetailDto>>
+	{
+	}
+
+
+
+	[Route("/securities", HttpMethods.Get)]
+	public class GetSecurityDetails : Request, IReturn<GetSecurityDetailsResponse>
 	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
@@ -28,38 +39,18 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// (optional) - a date value that returns the list of securities that have had adjusted stock prices 
 		/// due to a corporate event after this date: YYYY-MM-DD
 		/// </summary>
-		public string last_crsp_adj_date => iayosLastCrspAdjDate != null ? iayosLastCrspAdjDate.GetValueOrDefault().ToString("YYYY-MM-DD") : string.Empty;
+		/// <seealso cref="LastCrspAdjDate_IaYoS"/>
+		public string last_crsp_adj_date => LastCrspAdjDate_IaYoS != null ? LastCrspAdjDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
 
 		/// <summary>
 		/// Conveniently set last_crsp_adj_date using actual date object
 		/// </summary>
-		public DateTime? iayosLastCrspAdjDate { get; set; }
+		/// <seealso cref="last_crsp_adj_date"/>
+		public DateTime? LastCrspAdjDate_IaYoS { get; set; }
 	}
 
-	public class GetSecuritiesResponse : Response<List<SecurityMasterDto>>
+	public class GetSecurityDetailsResponse : Response<List<SecurityDetailDto>>
 	{
-		/// <summary>
-		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
-		/// stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
-		/// </summary>
-		public string identifier { get; set; }
-
-		/// <summary>
-		/// (optional, returns list of securities with compacted response values, if no query specified) - a string 
-		/// query search of security name or ticker symbol with the returned results being the relevant securities in compacted list format.
-		/// </summary>
-		public string query { get; set; }
-
-		/// <summary>
-		/// (optional) - a date value that returns the list of securities that have had adjusted stock prices due to a corporate event after this date: YYYY-MM-DD
-		/// </summary>
-		public string last_crsp_adj_date => iayosLastCrspAdjDate != null ? iayosLastCrspAdjDate.GetValueOrDefault().ToString("YYYY-MM-DD") : string.Empty;
-
-
-		/// <summary>
-		/// Conveniently set last_crsp_adj_date using actual date object
-		/// </summary>
-		public DateTime? iayosLastCrspAdjDate { get; set; }
 	}
 
 
@@ -82,9 +73,10 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		///    Contains text: “contains”
 		///  - A value
 		/// </summary>
-		public string conditions => (SearchConditions.Count == 0) 
-			? string.Empty 
-			: string.Join(",", SearchConditions.Select(sc => $"{sc.Tag}~{sc.Operator}~{sc.Value}"));
+		/// <seealso cref="Conditions_IaYoS"/>
+		public string conditions => (Conditions_IaYoS.Count == 0)
+			? null
+			: string.Join(",", Conditions_IaYoS.Select(sc => $"{sc.Tag}~{sc.Operator}~{sc.Value}"));
 
 		/// <summary>
 		/// A data tag by which to order the results INTRINIO DATA POINT TAGS
@@ -96,13 +88,12 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// </summary>
 		public Direction? order_direction { get; set; }
 
-		public List<SecuritiesSearchCondition> SearchConditions { get; set; } = new List<SecuritiesSearchCondition>();
+		public List<SecuritiesSearchCondition> Conditions_IaYoS { get; set; } = new List<SecuritiesSearchCondition>();
 
 	}
 
-	public class SearchSecuritiesResponse : Response<List<SecurityMasterDto>>
+	public class SearchSecuritiesResponse : Response<List<SecurityScreenerDetailDto>>
 	{
-		
 	}
 
 

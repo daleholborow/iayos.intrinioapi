@@ -132,7 +132,7 @@ namespace iayos.intrinioapi.ServiceModel.Dtos
 		public string entity_legal_form { get; set; }
 
 
-		public List<SecurityMasterDto> securities { get; set; }
+		public List<SecurityDetailDto> securities { get; set; }
 
 		/// <summary>
 		///  the financial statement template used by Intrinio to standardize the as reported data

@@ -8,13 +8,27 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 
 
 	[Route("/indices", HttpMethods.Get)]
-	public class GetMasterIndicesList : Request, IReturn<GetIndicesResponse>
+	public class GetIndicesMasterList : Request, IReturn<GetIndicesMasterListResponse>
+	{
+		/// <summary>
+		/// (optional, returns full list of indices otherwise) - the type of indices specified: stock_market
+		/// </summary>
+		public IndexType type { get; set; } = IndexType.full;
+	}
+
+	public class GetIndicesMasterListResponse : Response<List<IndexMasterDto>>
+	{
+	}
+
+
+	[Route("/indices", HttpMethods.Get)]
+	public class GetIndexDetails : Request, IReturn<GetIndexDetailsResponse>
 	{
 		/// <summary>
 		/// (optional, returns full list of indices with compacted response values if no symbol or 
 		/// identifier specified) - the Intrinio symbol associated with the index: STOCK MARKET INDICES
 		/// </summary>
-		public string identifier { get; set;  }
+		public string identifier { get; set; }
 
 		/// <summary>
 		/// (optional, returns list of indices with compacted response values, if no query specified) - a 
@@ -29,10 +43,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		public IndexType type { get; set; } = IndexType.full;
 	}
 
-	public class GetIndicesResponse : Response<List<IndexMasterDto>>
+	public class GetIndexDetailsResponse : Response<List<IndexDetailDto>>
 	{
 	}
-
-
-	
 }

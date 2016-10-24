@@ -7,18 +7,18 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 
 
 	[Route("/companies", HttpMethods.Get)]
-	public class GetMasterCompaniesList : Request, IReturn<GetMasterCompaniesListResponse>
+	public class GetCompaniesMasterList : Request, IReturn<GetCompaniesMasterListResponse>
 	{
 		
 	}
 
-	public class GetMasterCompaniesListResponse : Response<List<CompanyMasterDto>>
+	public class GetCompaniesMasterListResponse : Response<List<CompanyMasterDto>>
 	{
 	}
 
 
 	[Route("/companies", HttpMethods.Get)]
-	public class SearchCompanies : Request, IReturn<SearchCompaniesResponse>
+	public class GetCompanyDetails : Request, IReturn<GetCompanyDetailsResponse>
 	{
 		/// <summary>
 		/// identifier (optional, returns full list of companies with compacted response values, if no identifier 
@@ -39,7 +39,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		public string query { get; set; }
 	}
 
-	public class SearchCompaniesResponse : Response<CompanyDetailDto>
+	public class GetCompanyDetailsResponse : Response<CompanyDetailDto>
 	{
 	}
 }

@@ -6,11 +6,11 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 {
 
 	[Route("/owners", HttpMethods.Get)]
-	public class GetMasterOwnersList : Request, IReturn<GetOwnersResponse>
+	public class GetOwnersMasterList : Request, IReturn<GetOwnersMasterListResponse>
 	{
 	}
 
-	public class GetOwnersResponse : Response<List<OwnerMasterDto>>
+	public class GetOwnersMasterListResponse : Response<List<OwnerMasterDto>>
 	{
 	}
 

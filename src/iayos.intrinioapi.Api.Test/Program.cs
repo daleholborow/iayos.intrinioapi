@@ -33,7 +33,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForCompanies()
 		{
 			// Currently working
-			var getCompaniesResponse = _client.GetMasterCompaniesList(new GetMasterCompaniesList { });
+			var getCompaniesResponse = _client.GetMasterCompaniesList(new GetCompaniesMasterList { });
 		}
 
 
@@ -41,7 +41,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForSecurities()
 		{
 			// Currently failing because empty parameter values cause internal server error
-			var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetMasterSecuritiesList { });
+			var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetSecuritiesMasterList { });
 		}
 
 
@@ -49,7 +49,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForIndices()
 		{
 			// Currently working
-			var getIndicesResponse = _client.GetMasterIndicesList(new GetMasterIndicesList { });
+			var getIndicesResponse = _client.GetMasterIndicesList(new GetIndicesMasterList { });
 		}
 
 
@@ -57,7 +57,39 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForOwners()
 		{
 			// Currently failing with error about insufficient permissions
-			var getOwnerResponse = _client.GetMasterOwnersList(new GetMasterOwnersList { });
+			var getOwnerResponse = _client.GetMasterOwnersList(new GetOwnersMasterList { });
+		}
+
+
+		[Fact]
+		public void CanGetCompanyDetails()
+		{
+			var request = new GetCompanyDetails
+			{
+
+			};
+			var response = _client.GetCompanyDetails(request);
+		}
+
+
+		[Fact]
+		public void CanGetSecurityDetails()
+		{
+			var request = new GetSecurityDetails
+			{
+
+			};
+			var response = _client.GetSecurityDetails(request);
+		}
+
+		[Fact]
+		public void CanGetIndexDetails()
+		{
+			var request = new GetIndexDetails
+			{
+
+			};
+			var response = _client.GetIndexDetails(request);
 		}
 
 
@@ -67,7 +99,7 @@ namespace iayos.intrinioapi.Api.Test
 			var searchSecuritiesRequest = new SearchSecurities
 			{
 				page_size = 1,
-				SearchConditions = new List<SecuritiesSearchCondition>
+				Conditions_IaYoS = new List<SecuritiesSearchCondition>
 				{
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
 				}
@@ -77,7 +109,7 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
-		public void TestSearchDataPoints()
+		public void CanSearchDataPoints()
 		{
 			var datapointRequest = new SearchDataPoints { };
 			datapointRequest.Identifers.Add("AAPL");
@@ -86,38 +118,39 @@ namespace iayos.intrinioapi.Api.Test
 			var datapointResponse = _client.SearchDataPoints(datapointRequest);
 		}
 
+
 		[Fact]
-		public void DoSomeStuff()
+		public void CanSearchHistoricalData()
 		{
-
-			try
-			{
-				
-			}
-			catch (WebServiceException webEx)
-			{
-
-				// TODO Inspect the webEx to see what went wrong:
-
-				var errorMessage = webEx.ErrorMessage;
-
-				/*
-				 * Example error response:
-				  webEx.StatusCode        = 400
-				  webEx.StatusDescription = ArgumentNullException
-				  webEx.ErrorCode         = ArgumentNullException
-				  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
-				  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
-				  webEx.ResponseDto       = (your populated Response DTO)
-				  webEx.ResponseStatus    = (your populated Response Status DTO)
-				  webEx.GetFieldErrors()  = (individual errors for each field if any)
-				*/
-			}
-
-			
+			var historicalDataRequest = new SearchHistoricalData {};
+			var response = _client.SearchHistoricalData(historicalDataRequest);
 		}
 
-	}
 
-	
+
+		//[Fact]
+		//public void DoSomeStuff()
+		//{
+		//	try
+		//	{
+		//	}
+		//	catch (WebServiceException webEx)
+		//	{
+		//		// TODO Inspect the webEx to see what went wrong:
+		//		var errorMessage = webEx.ErrorMessage;
+		//		/*
+		//		 * Example error response:
+		//		  webEx.StatusCode        = 400
+		//		  webEx.StatusDescription = ArgumentNullException
+		//		  webEx.ErrorCode         = ArgumentNullException
+		//		  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
+		//		  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
+		//		  webEx.ResponseDto       = (your populated Response DTO)
+		//		  webEx.ResponseStatus    = (your populated Response Status DTO)
+		//		  webEx.GetFieldErrors()  = (individual errors for each field if any)
+		//		*/
+		//	}
+		//}
+
+	}
 }

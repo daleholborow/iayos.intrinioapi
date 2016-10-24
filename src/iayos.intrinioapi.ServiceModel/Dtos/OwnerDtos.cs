@@ -1,5 +1,9 @@
 ﻿namespace iayos.intrinioapi.ServiceModel.Dtos
 {
+
+	/// <summary>
+	/// http://docs.intrinio.com/#owner-master
+	/// </summary>
 	public class OwnerMasterDto
 	{
 
