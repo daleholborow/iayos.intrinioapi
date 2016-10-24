@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>iayos.core.finance</id>
+    <version>0.2.0.0</version>
+	<author>Dale Holborow - in-a-year-or-so</author>
+    <authors>Dale Holborow</authors>
+    <owners>Dale Holborow</owners>
+    <projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
+	<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>
+		A strongly typed package to wrap the Intrinio FinTech data api (www.intrinio.com). 
+		Author not affiliated with intrinio in any way, not does this come with any warranty. Contributions welcome.
+	</description>
+    <releaseNotes>
+		All features in Master Data, US Financial Data and some of the Ownership implemented
+	</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+	<summary>
+		Intrinio Fintech financial data wrapper, implemented using ServiceStack request-response message style, by inayearorso.io
+	</summary>
+    <tags>iayos finance in-a-year-or-so intrinio fintech fundamentals data api</tags>
+	<title>iayos.intrinioapi</title>
+    <dependencies>
+      <!-- <dependency id="SampleDependency" version="1.0" /> -->
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="iayos.intrinioapi.Api\bin\Debug\iayos.intrinioapi.Api.dll" target="lib\iayos.intrinioapi.Api.dll" />
+  </files>
+</package>
