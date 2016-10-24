@@ -375,6 +375,17 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<GetInsiderTransactions, GetInsiderTransactionsResponse>(request);
 		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-ownership-by-company
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetInsiderOwnershipResponse GetInsiderOwnership(GetInsiderOwnership request)
+		{
+			return BaseUrlGet<GetInsiderOwnership, GetInsiderOwnershipResponse>(request);
+		}
+
 		#endregion
 
 	}

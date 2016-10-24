@@ -61,4 +61,25 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 	}
 
 	public class GetInsiderTransactionsResponse : Response<List<TransactionDto>> {}
+
+
+	/// <summary>
+	/// </summary>
+	[Route("/companies/insider_ownership", HttpMethods.Get)]
+	public class GetInsiderOwnership: Request, IReturn<GetInsiderOwnershipResponse>
+	{
+		/// <summary>
+		/// ( (optional, must have company cik otherwise) - the stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
+		/// </summary>
+		public string identifier { get; set; }
+
+		/// <summary>
+		/// (optional, must have a ticker symbol otherwise) - the Central Index Key issued by the SEC, which is the unique identifier all company filings are issued under: CENTRAL INDEX KEY
+		/// </summary>
+		public string cik { get; set; }
+
+	}
+
+	public class GetInsiderOwnershipResponse : Response<List<InsiderOwnerDto>> { }
+
 }
