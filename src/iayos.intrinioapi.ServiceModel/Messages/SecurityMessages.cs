@@ -39,12 +39,14 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// (optional) - a date value that returns the list of securities that have had adjusted stock prices 
 		/// due to a corporate event after this date: YYYY-MM-DD
 		/// </summary>
-		public string last_crsp_adj_date => iayosLastCrspAdjDate != null ? iayosLastCrspAdjDate.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		/// <seealso cref="LastCrspAdjDate_IaYoS"/>
+		public string last_crsp_adj_date => LastCrspAdjDate_IaYoS != null ? LastCrspAdjDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
 
 		/// <summary>
 		/// Conveniently set last_crsp_adj_date using actual date object
 		/// </summary>
-		public DateTime? iayosLastCrspAdjDate { get; set; }
+		/// <seealso cref="last_crsp_adj_date"/>
+		public DateTime? LastCrspAdjDate_IaYoS { get; set; }
 	}
 
 	public class GetSecurityDetailsResponse : Response<List<SecurityDetailDto>>
@@ -71,9 +73,10 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		///    Contains text: “contains”
 		///  - A value
 		/// </summary>
-		public string conditions => (SearchConditions.Count == 0)
+		/// <seealso cref="Conditions_IaYoS"/>
+		public string conditions => (Conditions_IaYoS.Count == 0)
 			? null
-			: string.Join(",", SearchConditions.Select(sc => $"{sc.Tag}~{sc.Operator}~{sc.Value}"));
+			: string.Join(",", Conditions_IaYoS.Select(sc => $"{sc.Tag}~{sc.Operator}~{sc.Value}"));
 
 		/// <summary>
 		/// A data tag by which to order the results INTRINIO DATA POINT TAGS
@@ -85,7 +88,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// </summary>
 		public Direction? order_direction { get; set; }
 
-		public List<SecuritiesSearchCondition> SearchConditions { get; set; } = new List<SecuritiesSearchCondition>();
+		public List<SecuritiesSearchCondition> Conditions_IaYoS { get; set; } = new List<SecuritiesSearchCondition>();
 
 	}
 

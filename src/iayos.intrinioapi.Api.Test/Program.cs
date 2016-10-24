@@ -99,7 +99,7 @@ namespace iayos.intrinioapi.Api.Test
 			var searchSecuritiesRequest = new SearchSecurities
 			{
 				page_size = 1,
-				SearchConditions = new List<SecuritiesSearchCondition>
+				Conditions_IaYoS = new List<SecuritiesSearchCondition>
 				{
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
 				}

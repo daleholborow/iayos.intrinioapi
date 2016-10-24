@@ -209,6 +209,7 @@ namespace iayos.intrinioapi.Api
 
 
 		/// <summary>
+		/// http://docs.intrinio.com/#historical-data
 		/// Returns that historical data for for a selected identifier (ticker symbol or index symbol) 
 		/// for a selected tag. The complete list of tags available through this function are available 
 		/// here. Income statement, cash flow statement, and ratios are returned as trailing twelve months 

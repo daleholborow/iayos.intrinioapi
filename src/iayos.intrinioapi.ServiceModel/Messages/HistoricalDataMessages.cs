@@ -17,12 +17,19 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// tickers at once by separating them by a coma (each ticker and item combination requested will count
 		///  as 1 query of the API): TICKER SYMBOL | INDEX SYMBOL
 		/// </summary>
-		public string identifier { get; set; }
+		/// <seealso cref="Identifier_IaYoS" />
+		public string identifier => string.Join(",", Identifier_IaYoS);
+
+		/// <summary>
+		/// Use this collection to populate the identifers
+		/// </summary>
+		/// <seealso cref="identifier"/>
+		public List<string> Identifier_IaYoS { get; set; } = new ArrayOfString();
 
 		/// <summary>
 		/// the specified standardized tag requested. INTRINIO TAGS
 		/// </summary>
-		public DataPointTag item { get; set; }
+		public DataPointTag item { get; set; } = DataPointTag.IaYoS_Warning_Unset;
 
 		/// <summary>
 		/// (required, only in Excel add-in function) - an integer 0 or greater for calling a single historical data point 
@@ -35,32 +42,34 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// (optional) - the first date in which historical stock prices are delivered - historical daily prices go back 
 		/// to 1996 for most companies, but some go back further to the 1970s or to the date of the IPO: YYYY-MM-DD
 		/// </summary>
-		/// <seealso cref="iayosStartDate"/>
-		public string start_date => iayosStartDate != null ? iayosStartDate.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		/// <seealso cref="StartDate_IaYoS"/>
+		public string start_date => StartDate_IaYoS != null ? StartDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
 
 		/// <summary>
 		/// Conveniently set start_date using actual date object
 		/// </summary>
-		public DateTime? iayosStartDate { get; set; }
+		/// <seealso cref="start_date"/>
+		public DateTime? StartDate_IaYoS { get; set; }
 
 
 		/// <summary>
 		/// (optional, default=today) - the last date in which historical stock prices are delivered - end of day prices 
 		/// are available around 5 p.m. EST and 15 minute delayed prices are updated every minute throughout the trading day: YYYY-MM-DD
 		/// </summary>
-		/// <seealso cref="iayosEndDate"/>
-		public string end_date => iayosEndDate != null ? iayosEndDate.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		/// <seealso cref="EndDate_IaYoS"/>
+		public string end_date => EndDate_IaYoS != null ? EndDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
 
 		/// <summary>
 		/// Conveniently set end_date using actual date object
 		/// </summary>
-		public DateTime? iayosEndDate { get; set; }
+		/// <seealso cref="end_date"/>
+		public DateTime? EndDate_IaYoS { get; set; }
 
 		/// <summary>
 		/// (optional, returns daily historical price data otherwise) - the frequency of the historical prices & valuation 
 		/// data: daily | weekly | monthly | quarterly | yearly
 		/// </summary>
-		public DataFrequency? frequency { get; set; } = DataFrequency.daily;
+		public DataFrequency frequency { get; set; } = DataFrequency.daily;
 
 		/// <summary>
 		/// (optional, returns trailing twelve months (TTM) for the income statement, cash flow statement and calculations, and 
