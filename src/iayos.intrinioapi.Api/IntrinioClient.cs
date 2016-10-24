@@ -53,17 +53,17 @@ namespace iayos.intrinioapi.Api
 			where TRequest : Request
 			where TResponse : new()
 		{
-			try
-			{
-				return _jsonClient.Get<TResponse>(request);
-			}
-			catch (Exception e)
-			{
-				// What was the request that was sent, so we can report this issue to Intrinio? Maybe use logging?
-				var requestUrl = request.ToGetUrl();
-				throw;
-			}
-			
+			return _jsonClient.Get<TResponse>(request);
+			//try
+			//{
+			//	return _jsonClient.Get<TResponse>(request);
+			//}
+			//catch (Exception e)
+			//{
+			//	// What was the request that was sent, so we can report this issue to Intrinio? Maybe use logging?
+			//	var requestUrl = request.ToGetUrl();
+			//	throw;
+			//}
 		}
 
 
@@ -307,7 +307,10 @@ namespace iayos.intrinioapi.Api
 
 
 		/// <summary>
-		/// 
+		/// http://docs.intrinio.com/#as-reported-fundamentals
+		/// Returns a list of available as reported fundamentals (fiscal year, fiscal period, start date, and end date) for a 
+		/// given ticker and statement. Also, you may add a date and type parameter to specify the fundamentals you wish to be
+		/// returned in the response.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
@@ -318,17 +321,20 @@ namespace iayos.intrinioapi.Api
 
 
 		/// <summary>
-		/// 
+		/// http://docs.intrinio.com/#as-reported-xbrl-tags-and-labels
+		/// Returns the As Reported XBRL tags and labels for a given ticker, statement, and date or fiscal year/fiscal quarter.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetAsReportedTagsResponse GetAsReportedTags(GetAsReportedTags request)
+		public GetAsReportedXbrlTagsResponse GetAsReportedXbrlTags(GetAsReportedXbrlTags request)
 		{
-			return BaseUrlGet<GetAsReportedTags, GetAsReportedTagsResponse>(request);
+			return BaseUrlGet<GetAsReportedXbrlTags, GetAsReportedXbrlTagsResponse>(request);
 		}
 
 
 		/// <summary>
+		/// http://docs.intrinio.com/#as-reported-financials
+		/// Returns the As Reported Financials directly from the financial statements of the XBRL filings from the company.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>

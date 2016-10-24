@@ -41,7 +41,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 
 
 	[Route("/tags/reported", HttpMethods.Get)]
-	public class GetAsReportedTags : Request, IReturn<GetAsReportedTagsResponse>
+	public class GetAsReportedXbrlTags : Request, IReturn<GetAsReportedXbrlTagsResponse>
 	{
 		/// <summary>
 		///the financial statement requested: income_statement | balance_sheet | cash_flow_statement
@@ -97,7 +97,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		*/
 	}
 
-	public class GetAsReportedTagsResponse : Response<List<AsReportedTagDto>>
+	public class GetAsReportedXbrlTagsResponse : Response<List<AsReportedTagDto>>
 {
 }
 }
