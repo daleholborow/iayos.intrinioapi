@@ -67,6 +67,8 @@
     <Compile Include="Enums\HistoricalDataType.cs" />
     <Compile Include="Enums\DataFrequency.cs" />
     <Compile Include="Enums\FinancialStatement.cs" />
+    <Compile Include="Messages\FinancialsMessages.cs" />
+    <Compile Include="Enums\FiscalPeriod.cs" />
     <Compile Include="Messages\FundamentalsMessages.cs" />
     <Compile Include="Messages\IndexMessages.cs" />
     <Compile Include="Messages\CompanyMessages.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="Messages\PriceMessages.cs" />
     <Compile Include="Messages\SecurityMessages.cs" />
     <Compile Include="Messages\OwnerMessages.cs" />
-    <Compile Include="Messages\FundamentalsDtos.cs" />
+    <Compile Include="Dtos\FundamentalsDtos.cs" />
     <Compile Include="Messages\TagMessages.cs" />
     <Compile Include="Enums\TagTemplate.cs" />
     <Compile Include="ResponseMessage.cs" />

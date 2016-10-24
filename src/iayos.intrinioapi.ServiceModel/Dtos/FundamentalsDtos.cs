@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iayos.intrinioapi.ServiceModel.Messages
+namespace iayos.intrinioapi.ServiceModel.Dtos
 {
 
 	/// <summary>

@@ -167,6 +167,14 @@ namespace iayos.intrinioapi.Api.Test
 		}
 
 
+		[Fact]
+		public void CanGetStandardizedFinancials()
+		{
+			var request = new GetStandardizedFinancials { identifier = "AAPL" };
+			var response = _client.GetStandardizedFinancials(request);
+		}
+
+
 		//[Fact]
 		//public void DoSomeStuff()
 		//{
