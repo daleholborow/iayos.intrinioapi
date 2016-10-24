@@ -62,9 +62,41 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
+		public void CanGetCompanyDetails()
+		{
+			var request = new GetCompanyDetails
+			{
+
+			};
+			var response = _client.GetCompanyDetails(request);
+		}
+
+
+		[Fact]
+		public void CanGetSecurityDetails()
+		{
+			var request = new GetSecurityDetails
+			{
+
+			};
+			var response = _client.GetSecurityDetails(request);
+		}
+
+		[Fact]
+		public void CanGetIndexDetails()
+		{
+			var request = new GetIndexDetails
+			{
+
+			};
+			var response = _client.GetIndexDetails(request);
+		}
+
+
+		[Fact]
 		public void CanSearchSecuritiesWithConditions()
 		{
-			var searchSecuritiesRequest = new GetSecurityDetails
+			var searchSecuritiesRequest = new SearchSecurities
 			{
 				page_size = 1,
 				SearchConditions = new List<SecuritiesSearchCondition>
@@ -72,7 +104,7 @@ namespace iayos.intrinioapi.Api.Test
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
 				}
 			};
-			var companyDetails = _client.GetSecurityDetails(searchSecuritiesRequest);
+			var companyDetails = _client.SearchSecurities(searchSecuritiesRequest);
 		}
 
 
@@ -96,36 +128,29 @@ namespace iayos.intrinioapi.Api.Test
 
 
 
-		[Fact]
-		public void DoSomeStuff()
-		{
-
-			try
-			{
-				
-			}
-			catch (WebServiceException webEx)
-			{
-
-				// TODO Inspect the webEx to see what went wrong:
-
-				var errorMessage = webEx.ErrorMessage;
-
-				/*
-				 * Example error response:
-				  webEx.StatusCode        = 400
-				  webEx.StatusDescription = ArgumentNullException
-				  webEx.ErrorCode         = ArgumentNullException
-				  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
-				  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
-				  webEx.ResponseDto       = (your populated Response DTO)
-				  webEx.ResponseStatus    = (your populated Response Status DTO)
-				  webEx.GetFieldErrors()  = (individual errors for each field if any)
-				*/
-			}
-
-			
-		}
+		//[Fact]
+		//public void DoSomeStuff()
+		//{
+		//	try
+		//	{
+		//	}
+		//	catch (WebServiceException webEx)
+		//	{
+		//		// TODO Inspect the webEx to see what went wrong:
+		//		var errorMessage = webEx.ErrorMessage;
+		//		/*
+		//		 * Example error response:
+		//		  webEx.StatusCode        = 400
+		//		  webEx.StatusDescription = ArgumentNullException
+		//		  webEx.ErrorCode         = ArgumentNullException
+		//		  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
+		//		  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
+		//		  webEx.ResponseDto       = (your populated Response DTO)
+		//		  webEx.ResponseStatus    = (your populated Response Status DTO)
+		//		  webEx.GetFieldErrors()  = (individual errors for each field if any)
+		//		*/
+		//	}
+		//}
 
 	}
 }
