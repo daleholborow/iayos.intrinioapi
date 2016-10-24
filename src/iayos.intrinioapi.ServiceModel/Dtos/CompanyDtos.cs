@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using iayos.intrinioapi.ServiceModel.Enums;
 
 namespace iayos.intrinioapi.ServiceModel.Dtos
 {

@@ -2,6 +2,10 @@
 {
 	public enum SearchOperator
 	{
+		/// <summary>
+		/// Default: Did you forget to specify which Search Operator to use? I bet you did...
+		/// </summary>
+		IaYoS_Warning_Unset,
 
 		/// <summary>
 		/// Equals

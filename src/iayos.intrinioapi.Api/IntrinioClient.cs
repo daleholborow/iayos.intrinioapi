@@ -251,8 +251,32 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<GetCompanySecFilings, GetCompanySecFilingsResponse>(request);
 		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#company-news
+		/// Returns the most recent news stories for a company.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public object GetCompanyNews(object request)
+		{
+			throw new NotImplementedException("I don't care about company news and won't be implementing this... feel free to submit a pull request!!");
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#standardized-fundamentals
+		/// Returns a list of available standardized fundamentals (fiscal year and fiscal period) for a given ticker and statement.
+		/// Also, you may add a date and type parameter to specify the fundamentals you wish to be returned in the response.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetStandardizedFundamentalsResponse GetStandardizedFundamentals(GetStandardizedFundamentals request)
+		{
+			return BaseUrlGet<GetStandardizedFundamentals, GetStandardizedFundamentalsResponse>(request);
+		}
+
 		#endregion
 
 	}
-
 }

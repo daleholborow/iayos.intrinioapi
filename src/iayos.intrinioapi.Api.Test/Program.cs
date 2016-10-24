@@ -138,9 +138,25 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetCompanySecFilings()
 		{
-			throw new NotImplementedException();
+			var request = new GetCompanySecFilings { identifier = "AAPL" };
+			var response = _client.GetCompanySecFilings(request);
 		}
 
+
+		[Fact]
+		public void CanGetCompanyNews()
+		{
+			//var request = new GetCom { identifier = "AAPL" };
+			var response = _client.GetCompanyNews(new object());
+		}
+
+
+		[Fact]
+		public void CanGetStandardizedFundamentals()
+		{
+			var request = new GetStandardizedFundamentals { identifier = "AAPL" };
+			var response = _client.GetStandardizedFundamentals(request);
+		}
 
 
 		//[Fact]

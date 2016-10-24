@@ -4,6 +4,8 @@ using ServiceStack;
 
 namespace iayos.intrinioapi.ServiceModel.Messages
 {
+
+	[Route("/companies/filings", HttpMethods.Get)]
 	public class GetCompanySecFilings : Request, IReturn<GetCompanySecFilingsResponse>
 	{
 		/// <summary>
