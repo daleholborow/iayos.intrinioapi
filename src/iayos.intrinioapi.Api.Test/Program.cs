@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using iayos.intrinioapi.ServiceModel.Enums;
 using iayos.intrinioapi.ServiceModel.Messages;
-using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
 
@@ -122,9 +121,18 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanSearchHistoricalData()
 		{
-			var historicalDataRequest = new SearchHistoricalData {};
+			var historicalDataRequest = new SearchHistoricalData { };
 			var response = _client.SearchHistoricalData(historicalDataRequest);
 		}
+
+
+		[Fact]
+		public void CanGetPrices()
+		{
+			var request = new GetPrices { identifier = "AAPL" };
+			var response = _client.GetPrices(request);
+		}
+
 
 
 
