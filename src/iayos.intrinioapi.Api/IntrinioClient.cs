@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using iayos.intrinioapi.ServiceModel;
+using iayos.intrinioapi.ServiceModel.Dtos;
 using iayos.intrinioapi.ServiceModel.Messages;
 using ServiceStack;
 
@@ -343,12 +345,50 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<GetAsReportedFinancials, GetAsReportedFinancialsResponse>(request);
 		}
 
+		#endregion
 
 
+		#region Insider Transactions & Ownership Data
+
+		/// <summary>
+		/// http://docs.intrinio.com/#owners121
+		/// Returns owners list and information for all insider and institutional owners of securities covered by Intrinio. Includes detailed 
+		/// info for a single owner and the ability to query by name.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetInsiderOwnersResponse GetInsiderOwners(GetInsiderOwners request)
+		{
+			return BaseUrlGet<GetInsiderOwners, GetInsiderOwnersResponse>(request);
+		}
 
 
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-transactions-by-company
+		/// Returns a list of all insider transactions in a company. Criteria for being an insider include being a director, officer, 
+		/// or 10%+ owner in the company. Transactions are detailed for both non-derivative and derivative transactions by the insider.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetInsiderTransactionsResponse GetInsiderTransactions(GetInsiderTransactions request)
+		{
+			return BaseUrlGet<GetInsiderTransactions, GetInsiderTransactionsResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-ownership-by-company
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetInsiderOwnershipResponse GetInsiderOwnership(GetInsiderOwnership request)
+		{
+			return BaseUrlGet<GetInsiderOwnership, GetInsiderOwnershipResponse>(request);
+		}
 
 		#endregion
 
 	}
+
+	
 }
