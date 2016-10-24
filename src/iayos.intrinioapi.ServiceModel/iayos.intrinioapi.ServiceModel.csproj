@@ -51,6 +51,7 @@
     <Compile Include="Dtos\CompanyDtos.cs" />
     <Compile Include="Dtos\IndexDtos.cs" />
     <Compile Include="Dtos\PriceDtos.cs" />
+    <Compile Include="Dtos\TagDtos.cs" />
     <Compile Include="Enums\DataPointTag.cs" />
     <Compile Include="Enums\SecurityFinancialStatus.cs" />
     <Compile Include="Enums\EntityStatus.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="Messages\SecurityMessages.cs" />
     <Compile Include="Messages\OwnerMessages.cs" />
     <Compile Include="Messages\FundamentalsDtos.cs" />
+    <Compile Include="Messages\TagMessages.cs" />
+    <Compile Include="Enums\TagTemplate.cs" />
     <Compile Include="ResponseMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

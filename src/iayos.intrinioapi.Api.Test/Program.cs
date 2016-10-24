@@ -96,7 +96,7 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanSearchSecuritiesWithConditions()
 		{
-			var searchSecuritiesRequest = new SearchSecurities
+			var request = new SearchSecurities
 			{
 				page_size = 1,
 				Conditions_IaYoS = new List<SecuritiesSearchCondition>
@@ -104,26 +104,26 @@ namespace iayos.intrinioapi.Api.Test
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
 				}
 			};
-			var companyDetails = _client.SearchSecurities(searchSecuritiesRequest);
+			var companyDetails = _client.SearchSecurities(request);
 		}
 
 
 		[Fact]
 		public void CanSearchDataPoints()
 		{
-			var datapointRequest = new SearchDataPoints { };
-			datapointRequest.Identifers.Add("AAPL");
-			datapointRequest.Tags.Add(DataPointTag.accruedexpenses);
-			datapointRequest.Tags.Add(DataPointTag.acquisitions);
-			var datapointResponse = _client.SearchDataPoints(datapointRequest);
+			var request = new SearchDataPoints { };
+			request.Identifers.Add("AAPL");
+			request.Tags.Add(DataPointTag.accruedexpenses);
+			request.Tags.Add(DataPointTag.acquisitions);
+			var datapointResponse = _client.SearchDataPoints(request);
 		}
 
 
 		[Fact]
 		public void CanSearchHistoricalData()
 		{
-			var historicalDataRequest = new SearchHistoricalData { };
-			var response = _client.SearchHistoricalData(historicalDataRequest);
+			var request = new SearchHistoricalData { };
+			var response = _client.SearchHistoricalData(request);
 		}
 
 
@@ -156,6 +156,14 @@ namespace iayos.intrinioapi.Api.Test
 		{
 			var request = new GetStandardizedFundamentals { identifier = "AAPL" };
 			var response = _client.GetStandardizedFundamentals(request);
+		}
+
+
+		[Fact]
+		public void CanGetStandardizedTags()
+		{
+			var request = new GetStandardizedTags { identifier = "AAPL" };
+			var response = _client.GetStandardizedTags(request);
 		}
 
 
