@@ -223,6 +223,22 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<SearchHistoricalData, SearchHistoricalDataResponse>(request);
 		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#prices
+		/// Returns professional-grade historical stock prices for a security or stock market index. New EOD prices 
+		/// are available at 5p.m. EST and intraday prices are updated every minute during the trading day from 
+		/// IEX. Historical prices are available back to 1996 or the IPO data in most cases, with some companies 
+		/// with data back to the 1970s. Stock market index historical price data is available back to the 1950s at
+		/// the earliest. Data from Quandl, QuoteMedia and the Federal Reserve Economic Data.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetPricesResponse GetPrices(GetPrices request)
+		{
+			return BaseUrlGet<GetPrices, GetPricesResponse>(request);
+		}
+
 		#endregion
 
 	}

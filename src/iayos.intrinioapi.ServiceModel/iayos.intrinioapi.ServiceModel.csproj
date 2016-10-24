@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Dtos\CompanyDtos.cs" />
     <Compile Include="Dtos\IndexDtos.cs" />
+    <Compile Include="Dtos\PriceDtos.cs" />
     <Compile Include="Enums\DataPointTag.cs" />
     <Compile Include="Enums\SecurityFinancialStatus.cs" />
     <Compile Include="Enums\EntityStatus.cs" />
@@ -57,15 +58,16 @@
     <Compile Include="Dtos\SecurityDtos.cs" />
     <Compile Include="Enums\IndexType.cs" />
     <Compile Include="Enums\Direction.cs" />
-    <Compile Include="Dtos\DataPointDto.cs" />
+    <Compile Include="Dtos\DataPointDtos.cs" />
     <Compile Include="Messages\DataPointMessages.cs" />
-    <Compile Include="Dtos\HistoricalDataDto.cs" />
+    <Compile Include="Dtos\HistoricalDataDtos.cs" />
     <Compile Include="Enums\HistoricalDataType.cs" />
     <Compile Include="Enums\DataFrequency.cs" />
     <Compile Include="Messages\IndexMessages.cs" />
     <Compile Include="Messages\CompanyMessages.cs" />
     <Compile Include="Enums\SearchOperator.cs" />
     <Compile Include="Messages\HistoricalDataMessages.cs" />
+    <Compile Include="Messages\PriceMessages.cs" />
     <Compile Include="Messages\SecurityMessages.cs" />
     <Compile Include="Messages\OwnerMessages.cs" />
     <Compile Include="ResponseMessage.cs" />
