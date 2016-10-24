@@ -112,9 +112,7 @@ namespace iayos.intrinioapi.Api.Test
 				}
 			};
 			var companyDetails = ApiClient.SearchSecurities(request);
-
-			var requestUrlToTest = request.ToGetUrl();
-
+			//var requestUrlToTest = request.ToGetUrl();
 		}
 
 
@@ -126,9 +124,6 @@ namespace iayos.intrinioapi.Api.Test
 			//request.Tags.Add(DataPointTag.price_time);
 			//request.Tags.Add(DataPointTag.price_date);
 			request.Tags.Add(DataPointTag.pricetoearnings);
-
-			
-
 			var datapointResponse = ApiClient.SearchDataPoints(request);
 		}
 
