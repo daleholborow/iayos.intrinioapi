@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using iayos.intrinioapi.ServiceModel.Dtos;
 using iayos.intrinioapi.ServiceModel.Enums;
 using ServiceStack;
@@ -88,6 +89,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// </summary>
 		public Direction? order_direction { get; set; }
 
+		[IgnoreDataMember]
 		public List<SecuritiesSearchCondition> Conditions_IaYoS { get; set; } = new List<SecuritiesSearchCondition>();
 
 	}
