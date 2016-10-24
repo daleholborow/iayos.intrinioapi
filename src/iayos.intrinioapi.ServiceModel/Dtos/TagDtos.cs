@@ -2,7 +2,11 @@
 
 namespace iayos.intrinioapi.ServiceModel.Dtos
 {
-	public class TagDto
+
+	/// <summary>
+	/// http://docs.intrinio.com/#return-values90
+	/// </summary>
+	public class StandardizedTagDto
 	{
 		/// <summary>
 		/// the readable name of the tag

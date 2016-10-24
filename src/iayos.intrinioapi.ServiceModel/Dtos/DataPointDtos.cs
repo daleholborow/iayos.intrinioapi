@@ -1,4 +1,7 @@
-﻿namespace iayos.intrinioapi.ServiceModel.Dtos
+﻿using System.Data;
+using iayos.intrinioapi.ServiceModel.Enums;
+
+namespace iayos.intrinioapi.ServiceModel.Dtos
 {
 	public class DataPointDto
 	{
@@ -16,5 +19,23 @@
 		/// the value of the Intrinio tag of the financial data point
 		/// </summary>
 		public object value { get; set; } 
+	}
+
+
+	/// <summary>
+	/// http://docs.intrinio.com/#return-values96
+	/// </summary>
+	public class FinancialDataPointDto
+	{
+		/// <summary>
+		/// the Intrinio standardized tag of the financial data point
+		/// </summary>
+		public DataPointTag tag { get; set; }
+
+
+		/// <summary>
+		///  the value of the Intrinio tag of the financial data point
+		/// </summary>
+		public object value { get; set; }
 	}
 }

@@ -288,6 +288,31 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<GetStandardizedTags, GetStandardizedTagsResponse>(request);
 		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#standardized-financials
+		/// Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the 
+		/// highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials 
+		/// are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals.
+		/// For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a 
+		/// single company across multiple time periods.This is not possible using the as reported financial statements because of 
+		/// the inherent complexity of reporting standards.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetStandardizedFinancialsResponse GetStandardizedFinancials(GetStandardizedFinancials request)
+		{
+			return BaseUrlGet<GetStandardizedFinancials, GetStandardizedFinancialsResponse>(request);
+		}
+
+
+
+
+
+
+
+
+
 		#endregion
 
 	}

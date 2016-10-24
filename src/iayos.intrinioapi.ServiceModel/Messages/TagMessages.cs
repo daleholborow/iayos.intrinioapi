@@ -34,7 +34,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 
 	}
 
-	public class GetStandardizedTagsResponse : Response<List<TagDto>>
+	public class GetStandardizedTagsResponse : Response<List<StandardizedTagDto>>
 	{
 	}
 }

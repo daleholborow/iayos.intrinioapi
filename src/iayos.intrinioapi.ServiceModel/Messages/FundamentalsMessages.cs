@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using iayos.intrinioapi.ServiceModel.Dtos;
 using iayos.intrinioapi.ServiceModel.Enums;
 using ServiceStack;
 
