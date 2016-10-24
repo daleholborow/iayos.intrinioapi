@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using iayos.intrinioapi.ServiceModel.Enums;
 using iayos.intrinioapi.ServiceModel.Messages;
 using ServiceStack.Configuration;
@@ -133,6 +134,12 @@ namespace iayos.intrinioapi.Api.Test
 			var response = _client.GetPrices(request);
 		}
 
+
+		[Fact]
+		public void CanGetCompanySecFilings()
+		{
+			throw new NotImplementedException();
+		}
 
 
 

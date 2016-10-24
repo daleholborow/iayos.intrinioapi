@@ -59,6 +59,8 @@
     <Compile Include="Enums\IndexType.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Dtos\DataPointDtos.cs" />
+    <Compile Include="Dtos\CompanySecFilingDtos.cs" />
+    <Compile Include="Messages\CompanySecFilingMessages.cs" />
     <Compile Include="Messages\DataPointMessages.cs" />
     <Compile Include="Dtos\HistoricalDataDtos.cs" />
     <Compile Include="Enums\HistoricalDataType.cs" />

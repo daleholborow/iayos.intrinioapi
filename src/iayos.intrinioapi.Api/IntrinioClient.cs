@@ -239,6 +239,18 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<GetPrices, GetPricesResponse>(request);
 		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#company-sec-filings
+		/// Returns the complete list of SEC filings for a company.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetCompanySecFilingsResponse GetCompanySecFilings(GetCompanySecFilings request)
+		{
+			return BaseUrlGet<GetCompanySecFilings, GetCompanySecFilingsResponse>(request);
+		}
+
 		#endregion
 
 	}
