@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using iayos.intrinioapi.ServiceModel.Enums;
 using iayos.intrinioapi.ServiceModel.Messages;
+using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
 
@@ -16,6 +17,8 @@ namespace iayos.intrinioapi.Api.Test
 			tests = new IntrinioApiTests();
 		}
 	}
+
+
 
 
 	public class IntrinioApiTests
@@ -101,13 +104,15 @@ namespace iayos.intrinioapi.Api.Test
 		{
 			var request = new SearchSecurities
 			{
-				page_size = 1,
+				page_size = 10,
 				Conditions_IaYoS = new List<SecuritiesSearchCondition>
 				{
-					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.open_price, Value = 0.01}
+					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.open_price, Value = 10.5},
+					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.pricetoearnings, Value = 10}
 				}
 			};
 			var companyDetails = ApiClient.SearchSecurities(request);
+			//var requestUrlToTest = request.ToGetUrl();
 		}
 
 
@@ -115,9 +120,10 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanSearchDataPoints()
 		{
 			var request = new SearchDataPoints { };
-			request.Identifers.Add("AAPL");
-			request.Tags.Add(DataPointTag.accruedexpenses);
-			request.Tags.Add(DataPointTag.acquisitions);
+			//request.Identifers.Add("AAC");
+			//request.Tags.Add(DataPointTag.price_time);
+			//request.Tags.Add(DataPointTag.price_date);
+			request.Tags.Add(DataPointTag.pricetoearnings);
 			var datapointResponse = ApiClient.SearchDataPoints(request);
 		}
 
@@ -149,8 +155,8 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetCompanyNews()
 		{
-			//var request = new GetCom { identifier = "AAPL" };
-			var response = ApiClient.GetCompanyNews(new object());
+			var request = new GetCompanyNews { identifier = "AAPL" };
+			var response = ApiClient.GetCompanyNews(request);
 		}
 
 
