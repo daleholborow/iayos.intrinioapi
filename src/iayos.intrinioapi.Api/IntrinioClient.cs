@@ -306,7 +306,36 @@ namespace iayos.intrinioapi.Api
 		}
 
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetAsReportedFundamentalsResponse GetAsReportedFundamentals(GetAsReportedFundamentals request)
+		{
+			return BaseUrlGet<GetAsReportedFundamentals, GetAsReportedFundamentalsResponse>(request);
+		}
 
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetAsReportedTagsResponse GetAsReportedTags(GetAsReportedTags request)
+		{
+			return BaseUrlGet<GetAsReportedTags, GetAsReportedTagsResponse>(request);
+		}
+
+
+		/// <summary>
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetAsReportedFinancialsResponse GetAsReportedFinancials(GetAsReportedFinancials request)
+		{
+			return BaseUrlGet<GetAsReportedFinancials, GetAsReportedFinancialsResponse>(request);
+		}
 
 
 

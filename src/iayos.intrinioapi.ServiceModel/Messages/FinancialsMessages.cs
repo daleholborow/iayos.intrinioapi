@@ -71,4 +71,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 	public class GetStandardizedFinancialsResponse : Response<List<FinancialDataPointDto>>
 	{
 	}
+
+
+	
 }

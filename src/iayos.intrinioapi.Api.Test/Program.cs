@@ -175,6 +175,30 @@ namespace iayos.intrinioapi.Api.Test
 		}
 
 
+		[Fact]
+		public void CanGetAsReportedFundamentals()
+		{
+			var request = new GetAsReportedFundamentals { identifier = "AAPL" };
+			var response = _client.GetAsReportedFundamentals(request);
+		}
+
+
+		[Fact]
+		public void CanGetAsReportedTags()
+		{
+			var request = new GetAsReportedTags { identifier = "AAPL" };
+			var response = _client.GetAsReportedTags(request);
+		}
+
+
+		[Fact]
+		public void CanGetAsReportedFinancials()
+		{
+			var request = new GetAsReportedFinancials { identifier = "AAPL" };
+			var response = _client.GetAsReportedFinancials(request);
+		}
+
+
 		//[Fact]
 		//public void DoSomeStuff()
 		//{
