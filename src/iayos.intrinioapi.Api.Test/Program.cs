@@ -33,7 +33,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForCompanies()
 		{
 			// Currently working
-			var getCompaniesResponse = _client.GetMasterCompaniesList(new GetMasterCompaniesList { });
+			var getCompaniesResponse = _client.GetMasterCompaniesList(new GetCompaniesMasterList { });
 		}
 
 
@@ -41,7 +41,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForSecurities()
 		{
 			// Currently failing because empty parameter values cause internal server error
-			var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetMasterSecuritiesList { });
+			var getSecuritiesResponse = _client.GetMasterSecuritiesList(new GetSecuritiesMasterList { });
 		}
 
 
@@ -49,7 +49,7 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForIndices()
 		{
 			// Currently working
-			var getIndicesResponse = _client.GetMasterIndicesList(new GetMasterIndicesList { });
+			var getIndicesResponse = _client.GetMasterIndicesList(new GetIndicesMasterList { });
 		}
 
 
@@ -57,14 +57,14 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForOwners()
 		{
 			// Currently failing with error about insufficient permissions
-			var getOwnerResponse = _client.GetMasterOwnersList(new GetMasterOwnersList { });
+			var getOwnerResponse = _client.GetMasterOwnersList(new GetOwnersMasterList { });
 		}
 
 
 		[Fact]
 		public void CanSearchSecuritiesWithConditions()
 		{
-			var searchSecuritiesRequest = new SearchSecurities
+			var searchSecuritiesRequest = new GetSecurityDetails
 			{
 				page_size = 1,
 				SearchConditions = new List<SecuritiesSearchCondition>
@@ -72,7 +72,7 @@ namespace iayos.intrinioapi.Api.Test
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.accruedexpenses, Value = 0.01}
 				}
 			};
-			var companyDetails = _client.SearchSecurities(searchSecuritiesRequest);
+			var companyDetails = _client.GetSecurityDetails(searchSecuritiesRequest);
 		}
 
 

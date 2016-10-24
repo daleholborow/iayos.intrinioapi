@@ -6,7 +6,11 @@
 	/// </summary>
 	public enum DataPointTag
 	{
-		
+		/// <summary>
+		/// Default: Did you forget to specify which DataPointTag to use? I bet you did...
+		/// </summary>
+		IaYoS_Warning_Unset,
+
 		/// <summary>
 		/// 52 Week High
 		/// Statement code: current, type: prices, units: usdpershare 

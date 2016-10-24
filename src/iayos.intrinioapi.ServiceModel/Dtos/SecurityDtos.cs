@@ -1,8 +1,16 @@
-﻿using iayos.intrinioapi.ServiceModel.Enums;
+﻿using System;
+using iayos.intrinioapi.ServiceModel.Enums;
 
 namespace iayos.intrinioapi.ServiceModel.Dtos
 {
-	public class SecurityMasterDto
+
+	/// <summary>
+	/// Both:
+	/// http://docs.intrinio.com/#security-master
+	/// and
+	/// http://docs.intrinio.com/#securities
+	/// </summary>
+	public class SecurityDetailDto
 	{
 		/// <summary>
 		/// the stock market ticker symbol associated with the companies common stock securities
@@ -70,14 +78,14 @@ namespace iayos.intrinioapi.ServiceModel.Dtos
 		/// <summary>
 		/// the last recorded date (“YYYY-MM-DD”) of an CRSP adjustment made to prior prices due to a stock split or dividend event.
 		/// </summary>
-		public string last_crsp_adj_date { get; set; }
+		public DateTime last_crsp_adj_date { get; set; }
 	}
 
 
 	/// <summary>
 	/// http://docs.intrinio.com/#securities-search-screener
 	/// </summary>
-	public class SecurityDetailDto
+	public class SecurityScreenerDetailDto
 	{
 
 		/// <summary>

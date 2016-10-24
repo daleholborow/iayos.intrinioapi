@@ -36,7 +36,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// to 1996 for most companies, but some go back further to the 1970s or to the date of the IPO: YYYY-MM-DD
 		/// </summary>
 		/// <seealso cref="iayosStartDate"/>
-		public string start_date => iayosStartDate != null ? iayosStartDate.GetValueOrDefault().ToString("YYYY-MM-DD") : string.Empty;
+		public string start_date => iayosStartDate != null ? iayosStartDate.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
 
 		/// <summary>
 		/// Conveniently set start_date using actual date object
@@ -49,7 +49,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// are available around 5 p.m. EST and 15 minute delayed prices are updated every minute throughout the trading day: YYYY-MM-DD
 		/// </summary>
 		/// <seealso cref="iayosEndDate"/>
-		public string end_date => iayosEndDate != null ? iayosEndDate.GetValueOrDefault().ToString("YYYY-MM-DD") : string.Empty;
+		public string end_date => iayosEndDate != null ? iayosEndDate.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
 
 		/// <summary>
 		/// Conveniently set end_date using actual date object
@@ -75,7 +75,7 @@ namespace iayos.intrinioapi.ServiceModel.Messages
 		/// <summary>
 		/// (optional, default=desc) - the order of the historical stock price dates: asc | desc
 		/// </summary>
-		public Direction sort_order { get; set; } = Direction.asc;
+		public Direction? sort_order { get; set; }
 
 	}
 

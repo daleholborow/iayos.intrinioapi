@@ -1,9 +1,29 @@
 ﻿using iayos.intrinioapi.ServiceModel.Enums;
-using iayos.intrinioapi.ServiceModel.Messages;
 
 namespace iayos.intrinioapi.ServiceModel.Dtos
 {
-	public class IndexListDto
+
+	/// <summary>
+	/// http://docs.intrinio.com/#index-master
+	/// </summary>
+	public class IndexMasterDto
+	{
+		/// <summary>
+		/// the Intrinio symbol associated with the index
+		/// </summary>
+		public string symbol { get; set; }
+
+		/// <summary>
+		/// the index name
+		/// </summary>
+		public string index_name { get; set; }
+	}
+
+
+	/// <summary>
+	/// http://docs.intrinio.com/#indices47
+	/// </summary>
+	public class IndexDetailDto
 	{
 		/// <summary>
 		/// the Intrinio symbol associated with the index
@@ -32,18 +52,5 @@ namespace iayos.intrinioapi.ServiceModel.Dtos
 
 	}
 
-
-	public class IndexMasterDto
-	{
-		/// <summary>
-		/// the Intrinio symbol associated with the index
-		/// </summary>
-		public string symbol { get; set; }
-
-		/// <summary>
-		/// the index name
-		/// </summary>
-		public string index_name { get; set; }
-	}
 }
  
