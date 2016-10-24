@@ -276,6 +276,18 @@ namespace iayos.intrinioapi.Api
 			return BaseUrlGet<GetStandardizedFundamentals, GetStandardizedFundamentalsResponse>(request);
 		}
 
+
+		/// <summary>
+		/// http://docs.intrinio.com/#standardized-tags-and-labels
+		/// Returns the (dcos say 'As Reported'? I think typo, should be standardized) XBRL tags and labels for a given ticker, statement, and date or fiscal year/fiscal quarter.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetStandardizedTagsResponse GetStandardizedTags(GetStandardizedTags request)
+		{
+			return BaseUrlGet<GetStandardizedTags, GetStandardizedTagsResponse>(request);
+		}
+
 		#endregion
 
 	}
