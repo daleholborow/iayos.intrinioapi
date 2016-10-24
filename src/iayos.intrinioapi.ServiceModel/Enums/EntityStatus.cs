@@ -1,8 +1,12 @@
-﻿namespace iayos.intrinioapi.ServiceModel.Dtos
+﻿namespace iayos.intrinioapi.ServiceModel.Enums
 {
 	public enum EntityStatus
 	{
-		UNKNOWN = 0,		// iayos value, to be used as the default, but we expect to always resolve status 
+		/// <summary>
+		/// Default: Did you forget to specify which Entity Status to use? I bet you did...
+		/// </summary>
+		IaYoS_Warning_Unset,
+
 		ACTIVE
 	}
 }
