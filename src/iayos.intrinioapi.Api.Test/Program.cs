@@ -36,14 +36,6 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
-		public void TestParseStringWithE()
-		{
-			var mystring = "0.319834E2";
-			var mydec = mystring.ToDecimal();
-		}
-
-
-		[Fact]
 		public void CanQueryMasterDataListForCompanies()
 		{
 			// Currently working
