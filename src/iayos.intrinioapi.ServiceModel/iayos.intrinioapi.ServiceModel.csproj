@@ -69,6 +69,7 @@
     <Compile Include="Enums\FinancialStatement.cs" />
     <Compile Include="Messages\FinancialsMessages.cs" />
     <Compile Include="Enums\FiscalPeriod.cs" />
+    <Compile Include="Enums\FiscalPeriodAsReported.cs" />
     <Compile Include="Messages\FundamentalsMessages.cs" />
     <Compile Include="Messages\IndexMessages.cs" />
     <Compile Include="Messages\CompanyMessages.cs" />
