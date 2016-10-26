@@ -27,7 +27,4 @@
        <dependency id="ServiceStack.Text" /> 
     </dependencies>
   </metadata>
-  <files>
-	<file src="bin\Debug\iayos.intrinioapi.dll" target="lib" />
-  </files>
 </package>
