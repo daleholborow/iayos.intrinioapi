@@ -20,7 +20,7 @@
 		Intrinio Fintech financial data wrapper, implemented by inayearorso.io using ServiceStack request-response message style.
 	</summary>
     <tags>iayos intrinio fintech api finance in-a-year-or-so fundamentals</tags>
-	<title>iayos.intrinioapi financial data API wrapper</title>
+	<title>iayos.intrinioapi</title>
     <dependencies>
        <dependency id="ServiceStack.Client" /> 
        <dependency id="ServiceStack.Interfaces" /> 

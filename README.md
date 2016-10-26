@@ -4,13 +4,17 @@ Interface with Intrinio.com financial data API, (specifically/mainly/chiefly the
 
 Currently, master branch contains methods to access Master Data, US Company Data, and some insider functions. Develop and feature branches are... well.. you know... developy... so should be considered volatile.
 
-Alternatively, to install the Nuget package of iayos.intrinioapi, run the following command in the Package Manager Console:
+Alternatively, to install the Nuget package of iayos.intrinioapi, it is available as a nuget package.
 
+Run the following command in the Package Manager Console:
+
+iayos.intrinioapi is [available on NuGet](https://www.nuget.org/packages/iayos.intrinioapi/) as `iayos.intrinioapi`. Install it from NuGet Package Manager Console with:
+	
 ~~~~
-Install-Package iayos.intrinioapi.Api
+Install-Package iayos.intrinioapi
 ~~~~
 
-Other than some refactoring and minor bug fixes (as I discover them), work will largely cease as I have little need for the other data feeds (Insider transactions is partly done, but: Institutional holdings, Economic Data, Sector, bank and real-time prices I am unlikely to need for my particular strategies, and I'm time-poor - sorry guys!).
+Other than some refactoring and minor bug fixes (as I discover them), work will likely largely cease as I have little need for the other data feeds (Insider transactions is partly done, but: Institutional holdings, Economic Data, Sector, bank and real-time prices I am unlikely to need for my particular strategies, and I'm time-poor - sorry guys!).
 
 That said, anyone who wants those features should be able to easily see the style of the code layout and structure, and I welcome any contributions and pull-requests!
 
