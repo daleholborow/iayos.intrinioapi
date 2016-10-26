@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>iayos.core.finance</id>
-    <version>0.2.0.0</version>
-	<author>Dale Holborow - in-a-year-or-so</author>
-    <authors>Dale Holborow</authors>
-    <owners>Dale Holborow</owners>
+    <id>iayos.intrinioapi</id>
+    <version>$version$</version>
+    <authors>dale.holborow</authors>
+    <owners>dale.holborow</owners>
     <projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
 	<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
@@ -18,15 +17,17 @@
 	</releaseNotes>
     <copyright>Copyright 2016</copyright>
 	<summary>
-		Intrinio Fintech financial data wrapper, implemented using ServiceStack request-response message style, by inayearorso.io
+		Intrinio Fintech financial data wrapper, implemented by inayearorso.io using ServiceStack request-response message style.
 	</summary>
-    <tags>iayos finance in-a-year-or-so intrinio fintech fundamentals data api</tags>
-	<title>iayos.intrinioapi</title>
+    <tags>iayos intrinio fintech api finance in-a-year-or-so fundamentals</tags>
+	<title>iayos.intrinioapi financial data API wrapper</title>
     <dependencies>
-      <!-- <dependency id="SampleDependency" version="1.0" /> -->
+       <dependency id="ServiceStack.Client" /> 
+       <dependency id="ServiceStack.Interfaces" /> 
+       <dependency id="ServiceStack.Text" /> 
     </dependencies>
   </metadata>
   <files>
-	<file src="iayos.intrinioapi.Api\bin\Debug\iayos.intrinioapi.Api.dll" target="lib\iayos.intrinioapi.Api.dll" />
+	<file src="iayos.intrinioapi.Api\bin\Debug\iayos.intrinioapi.Api.dll" target="lib" />
   </files>
 </package>

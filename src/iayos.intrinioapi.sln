@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi.Api", "iayos.intrinioapi.Api\iayos.intrinioapi.Api.csproj", "{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi.ServiceModel", "iayos.intrinioapi.ServiceModel\iayos.intrinioapi.ServiceModel.csproj", "{B3EA619F-312B-460D-B5ED-C8E154676E7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi.Api.Test", "iayos.intrinioapi.Api.Test\iayos.intrinioapi.Api.Test.csproj", "{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi", "iayos.intrinioapi\iayos.intrinioapi.csproj", "{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3EA619F-312B-460D-B5ED-C8E154676E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3EA619F-312B-460D-B5ED-C8E154676E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3EA619F-312B-460D-B5ED-C8E154676E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

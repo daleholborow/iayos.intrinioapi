@@ -83,13 +83,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.Api\iayos.intrinioapi.Api.csproj">
-      <Project>{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}</Project>
-      <Name>iayos.intrinioapi.Api</Name>
-    </ProjectReference>
     <ProjectReference Include="..\iayos.intrinioapi.ServiceModel\iayos.intrinioapi.ServiceModel.csproj">
       <Project>{B3EA619F-312B-460D-B5ED-C8E154676E7F}</Project>
       <Name>iayos.intrinioapi.ServiceModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iayos.intrinioapi\iayos.intrinioapi.csproj">
+      <Project>{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}</Project>
+      <Name>iayos.intrinioapi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
