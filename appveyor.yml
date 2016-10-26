@@ -63,7 +63,7 @@
   before_build:
    - nuget restore src\iayos.intrinioapi.sln
    - echo %GitVersion_NuGetVersion%
-  - cd src\iayos.intrinioapi.Api.Test
+   - cd src\iayos.intrinioapi.Api.Test
    - echo hack to manually create a private settings file so that Test project can copy it during the build and bundle > AppSettings.Private.config
    - cd ..
    - cd ..
