@@ -15,7 +15,7 @@
     <releaseNotes>
 		All features in Master Data, US Financial Data and some of the Ownership implemented
 	</releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright © 2016</copyright>
 	<summary>
 		Intrinio Fintech financial data wrapper, implemented by inayearorso.io using ServiceStack request-response message style.
 	</summary>
