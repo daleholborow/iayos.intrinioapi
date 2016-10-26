@@ -28,6 +28,6 @@
     </dependencies>
   </metadata>
   <files>
-	<file src="iayos.intrinioapi\bin\Debug\iayos.intrinioapi.dll" target="lib" />
+	<file src="bin\Debug\iayos.intrinioapi.dll" target="lib" />
   </files>
 </package>
