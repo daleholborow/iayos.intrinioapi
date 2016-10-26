@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi.Api.Test"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi", "iayos.intrinioapi\iayos.intrinioapi.csproj", "{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildAndDeploy", "BuildAndDeploy", "{46EEF4B1-B5EA-4955-AE71-80D2F630A5B2}"
+	ProjectSection(SolutionItems) = preProject
+		..\appveyor.yml = ..\appveyor.yml
+		iayos.intrinioapi\iayos.intrinioapi.nuspec = iayos.intrinioapi\iayos.intrinioapi.nuspec
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
