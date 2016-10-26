@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Files Include="AppSettings.Private.config" />
+  </ItemGroup>
+  <Target Name="TouchFiles">
+    <Touch Files="@(Files)" AlwaysCreate="true">
+      <Output TaskParameter="TouchedFiles" ItemName="FilesTouched" />
+    </Touch>
+  </Target>
+  <ItemGroup>
     <Reference Include="ServiceStack, Version=4.5.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ServiceStack.4.5.4\lib\net45\ServiceStack.dll</HintPath>
       <Private>True</Private>
@@ -74,11 +82,6 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="AppSettings.Private.config">
-      <DependentUpon>App.config</DependentUpon>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
