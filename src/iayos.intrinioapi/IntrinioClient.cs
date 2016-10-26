@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using iayos.intrinioapi.ServiceModel;
-using iayos.intrinioapi.ServiceModel.Dtos;
+﻿using iayos.intrinioapi.ServiceModel;
 using iayos.intrinioapi.ServiceModel.Messages;
 using ServiceStack;
 
-namespace iayos.intrinioapi.Api
+namespace iayos.intrinioapi
 {
 
 	/// <summary>
