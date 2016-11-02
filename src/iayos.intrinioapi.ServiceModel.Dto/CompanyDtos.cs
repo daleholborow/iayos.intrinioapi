@@ -116,7 +116,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// the company’s headquarters address line 2
 		/// </summary>
-		public object hq_address2 { get; set; }
+		public string hq_address2 { get; set; }
 
 		/// <summary>
 		/// the company’s headquarters city
