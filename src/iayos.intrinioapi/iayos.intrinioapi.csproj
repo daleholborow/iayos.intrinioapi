@@ -60,9 +60,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.ServiceModel.Message.csproj">
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.servicemodel.message.csproj">
       <Project>{E06DD7A0-652E-4857-894D-345298185C5F}</Project>
-      <Name>iayos.intrinioapi.ServiceModel.Message</Name>
+      <Name>iayos.intrinioapi.servicemodel.message</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

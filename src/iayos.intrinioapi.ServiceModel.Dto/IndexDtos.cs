@@ -1,6 +1,6 @@
-﻿using iayos.intrinioapi.ServiceModel.Enum;
+﻿using iayos.intrinioapi.servicemodel.@enum;
 
-namespace iayos.intrinioapi.ServiceModel.Dto
+namespace iayos.intrinioapi.servicemodel.dto
 {
 
 	/// <summary>

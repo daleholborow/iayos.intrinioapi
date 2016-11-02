@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("iayos.intrinioapi.ServiceModel.Enum")]
+[assembly: AssemblyTitle("iayos.intrinioapi.servicemodel.flag")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("iayos.intrinioapi.ServiceModel.Enum")]
+[assembly: AssemblyProduct("iayos.intrinioapi.servicemodel.flag")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

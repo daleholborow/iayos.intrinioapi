@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iayos.intrinioapi.ServiceModel.Message.Messages
+namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 	public class CompanyNewsDto
 	{

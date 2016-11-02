@@ -1,4 +1,4 @@
-﻿namespace iayos.intrinioapi.ServiceModel.Enum
+﻿namespace iayos.intrinioapi.servicemodel.flag
 {
 	public enum IndexType
 	{

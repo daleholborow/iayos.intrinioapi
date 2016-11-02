@@ -7,8 +7,8 @@
     <ProjectGuid>{2EDAC755-0816-47EE-9D32-2B4503F4CBFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iayos.intrinioapi.ServiceModel.Dto</RootNamespace>
-    <AssemblyName>iayos.intrinioapi.ServiceModel.Dto</AssemblyName>
+    <RootNamespace>iayos.intrinioapi.servicemodel.dto</RootNamespace>
+    <AssemblyName>iayos.intrinioapi.servicemodel.dto</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -53,9 +53,9 @@
     <Compile Include="TagDtos.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Enum\iayos.intrinioapi.ServiceModel.Enum.csproj">
+    <ProjectReference Include="..\iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.csproj">
       <Project>{7A1B9A08-6E39-4754-BFF6-C9C36EB61EAF}</Project>
-      <Name>iayos.intrinioapi.ServiceModel.Enum</Name>
+      <Name>iayos.intrinioapi.servicemodel.flag</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

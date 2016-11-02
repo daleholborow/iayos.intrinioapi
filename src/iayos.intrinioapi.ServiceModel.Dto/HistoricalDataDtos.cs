@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iayos.intrinioapi.ServiceModel.Dto
+namespace iayos.intrinioapi.servicemodel.dto
 {
 	public class HistoricalDataDto
 	{

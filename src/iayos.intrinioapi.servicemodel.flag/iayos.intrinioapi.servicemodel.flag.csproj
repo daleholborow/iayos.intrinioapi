@@ -7,8 +7,8 @@
     <ProjectGuid>{7A1B9A08-6E39-4754-BFF6-C9C36EB61EAF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iayos.intrinioapi.ServiceModel.Enum</RootNamespace>
-    <AssemblyName>iayos.intrinioapi.ServiceModel.Enum</AssemblyName>
+    <RootNamespace>iayos.intrinioapi.servicemodel.flag</RootNamespace>
+    <AssemblyName>iayos.intrinioapi.servicemodel.flag</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

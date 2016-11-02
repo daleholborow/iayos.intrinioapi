@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using iayos.intrinioapi.ServiceModel.Dto;
+using iayos.intrinioapi.servicemodel.dto;
 using ServiceStack;
 
-namespace iayos.intrinioapi.ServiceModel.Message.Messages
+namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/owners", HttpMethods.Get)]

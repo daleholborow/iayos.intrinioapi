@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using iayos.intrinioapi.ServiceModel.Enum;
+using iayos.intrinioapi.servicemodel.flag;
 
-namespace iayos.intrinioapi.ServiceModel.Dto
+namespace iayos.intrinioapi.servicemodel.dto
 {
 
 	/// <summary>

@@ -1,4 +1,4 @@
-﻿namespace iayos.intrinioapi.ServiceModel.Message
+﻿namespace iayos.intrinioapi.servicemodel.message
 {
 
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{E06DD7A0-652E-4857-894D-345298185C5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iayos.intrinioapi.ServiceModel.Message</RootNamespace>
-    <AssemblyName>iayos.intrinioapi.ServiceModel.Message</AssemblyName>
+    <RootNamespace>iayos.intrinioapi.servicemodel.message</RootNamespace>
+    <AssemblyName>iayos.intrinioapi.servicemodel.message</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -68,13 +68,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Dto\iayos.intrinioapi.ServiceModel.Dto.csproj">
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Dto\iayos.intrinioapi.servicemodel.dto.csproj">
       <Project>{2EDAC755-0816-47EE-9D32-2B4503F4CBFA}</Project>
-      <Name>iayos.intrinioapi.ServiceModel.Dto</Name>
+      <Name>iayos.intrinioapi.servicemodel.dto</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Enum\iayos.intrinioapi.ServiceModel.Enum.csproj">
+    <ProjectReference Include="..\iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.csproj">
       <Project>{7A1B9A08-6E39-4754-BFF6-C9C36EB61EAF}</Project>
-      <Name>iayos.intrinioapi.ServiceModel.Enum</Name>
+      <Name>iayos.intrinioapi.servicemodel.flag</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

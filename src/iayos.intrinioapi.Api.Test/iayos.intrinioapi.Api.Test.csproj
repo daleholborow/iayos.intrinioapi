@@ -83,13 +83,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Enum\iayos.intrinioapi.ServiceModel.Enum.csproj">
-      <Project>{7A1B9A08-6E39-4754-BFF6-C9C36EB61EAF}</Project>
-      <Name>iayos.intrinioapi.ServiceModel.Enum</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.ServiceModel.Message.csproj">
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.servicemodel.message.csproj">
       <Project>{E06DD7A0-652E-4857-894D-345298185C5F}</Project>
-      <Name>iayos.intrinioapi.ServiceModel.Message</Name>
+      <Name>iayos.intrinioapi.servicemodel.message</Name>
     </ProjectReference>
     <ProjectReference Include="..\iayos.intrinioapi\iayos.intrinioapi.csproj">
       <Project>{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}</Project>
