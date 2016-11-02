@@ -1,39 +1,22 @@
-ï»¿using System;
+using System;
 
 namespace iayos.intrinioapi.servicemodel.dto
 {
-
-	/// <summary>
-	/// http://docs.intrinio.com/#return-values75
-	/// </summary>
-	public class CompanySecFilingDto
-	{
-		public DateTime filing_date { get; set; }
-		public DateTime accepted_date { get; set; }
-		public DateTime period_ended { get; set; }
-		public string accno { get; set; }
-		public string report_type { get; set; }
-		public string filing_url { get; set; }
-		public string report_url { get; set; }
-		public string instance_url { get; set; }
-	}
-
-
 	/// <summary>
 	/// http://docs.intrinio.com/#return-values128
 	/// </summary>
-	public class TransactionDto
+	public class CompanyInsiderTransactionDto
 	{
 
 		#region All Filings
 
 		/// <summary>
-		/// the ticker symbol for the companyâ€™s common stock
+		/// the ticker symbol for the company’s common stock
 		/// </summary>
 		public string identifier { get; set; }
 
 		/// <summary>
-		/// the companyâ€™s Central Index Key(CIK) unique identifier with the SEC
+		/// the company’s Central Index Key(CIK) unique identifier with the SEC
 		/// </summary>
 		public string company_cik { get; set; }
 
@@ -73,16 +56,14 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// </summary>
 		public string officer_title { get; set; }
 
+		
+		#endregion
 
 		/// <summary>
 		/// (false) a boolean indicating the transaction is not a derivative transaction and instead is dealings in the common stock of the company
 		/// (true) a boolean indicating the transaction is a derivative transaction, which may or may not become common stock due to various possible exercise or conversion requirements
 		/// </summary>
 		public bool derivative_transaction { get; set; }
-
-		#endregion
-
-
 
 		/// <summary>
 		///  the name of the derivative security transacted
@@ -112,12 +93,6 @@ namespace iayos.intrinioapi.servicemodel.dto
 		public int? report_line_number { get; set; }
 
 
-		#region Non-Derivate Filings
-
-		public string owner_cik { get; set; }
-
-		public string owner_name { get; set; }
-
 		/// <summary>
 		/// the date of the transaction
 		/// </summary>
@@ -129,7 +104,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		public DateTime? deemed_execution_date { get; set; }
 
 		/// <summary>
-		/// a symbol representing the transaction type: P - Purchase | S â€” Sale | A â€” Award | M - Conversion to Common | C â€” Conversion | X - Exercise of Derivative More Transaction Codes
+		/// a symbol representing the transaction type: P - Purchase | S — Sale | A — Award | M - Conversion to Common | C — Conversion | X - Exercise of Derivative More Transaction Codes
 		/// </summary>
 		public string transaction_type_code { get; set; }
 
@@ -143,9 +118,9 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// </summary>
 		public string acquisition_disposition_code { get; set; }
 
-		#endregion
 
 
+		
 		#region Derivate Filings
 
 		/// <summary>
@@ -156,7 +131,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// - the exercise date of the derivative securities
 		/// </summary>
-		public DateTime? exercise_date { get; set;  }
+		public DateTime? exercise_date { get; set; }
 
 		/// <summary>
 		/// the expiration date of the derivative securities
@@ -178,10 +153,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// </summary>
 		public string nature_of_ownership { get; set; }
 
-
 		#endregion
-
-
-
+		
 	}
 }

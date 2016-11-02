@@ -46,7 +46,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// http://docs.intrinio.com/#insider-transactions-by-company
 	/// </summary>
 	[Route("/companies/insider_transactions", HttpMethods.Get)]
-	public class GetInsiderTransactions : Request, IReturn<GetInsiderTransactionsResponse>
+	public class GetCompanyInsiderTransactions : Request, IReturn<GetCompanyInsiderTransactionsResponse>
 	{
 		/// <summary>
 		/// ( (optional, must have company cik otherwise) - the stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
@@ -60,13 +60,13 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetInsiderTransactionsResponse : Response<List<TransactionDto>> {}
+	public class GetCompanyInsiderTransactionsResponse : Response<List<CompanyInsiderTransactionDto>> {}
 
 
 	/// <summary>
 	/// </summary>
 	[Route("/companies/insider_ownership", HttpMethods.Get)]
-	public class GetInsiderOwnership: Request, IReturn<GetInsiderOwnershipResponse>
+	public class GetCompanyInsiderOwnership: Request, IReturn<GetCompanyInsiderOwnershipResponse>
 	{
 		/// <summary>
 		/// ( (optional, must have company cik otherwise) - the stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
@@ -80,6 +80,36 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetInsiderOwnershipResponse : Response<List<InsiderOwnerDto>> { }
+	public class GetCompanyInsiderOwnershipResponse : Response<List<InsiderOwnerDto>> { }
+
+
+	/// <summary>
+	/// http://docs.intrinio.com/#insider-transactions-by-owner
+	/// </summary>
+	[Route("/owners/insider_transactions", HttpMethods.Get)]
+	public class GetOwnerInsiderTransactions : Request, IReturn<GetOwnerInsiderTransactionsResponse>
+	{
+		/// <summary>
+		///  the Central Index Key issued by the SEC, which is the unique identifier all owner filings are issued under: CENTRAL INDEX KEY
+		/// </summary>
+		public string cik { get; set; }
+	}
+
+	public class GetOwnerInsiderTransactionsResponse : Response<List<OwnerInsiderTransactionDto>> {}
+
+
+	/// <summary>
+	/// http://docs.intrinio.com/#parameters139
+	/// </summary>
+	public class GetOwnerInsiderHoldings : Request, IReturn<GetOwnerInsiderHoldingsResponse>
+	{
+		/// <summary>
+		/// the Central Index Key issued by the SEC, which is the unique identifier all owner filings
+		/// </summary>
+		public string cik { get; set; }
+	}
+
+	public class GetOwnerInsiderHoldingsResponse : Response<List<InsiderHoldingDto>> {}
+
 
 }

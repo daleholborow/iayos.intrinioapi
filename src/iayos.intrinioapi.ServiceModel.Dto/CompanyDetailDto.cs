@@ -1,37 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using iayos.intrinioapi.servicemodel.flag;
 
 namespace iayos.intrinioapi.servicemodel.dto
 {
-
-	/// <summary>
-	/// Limited subset of company data as returned doing Master Data listing
-	/// </summary>
-	public class CompanyMasterDto
-	{
-		/// <summary>
-		/// the stock market ticker symbol associated with the companies common stock securities
-		/// </summary>
-		public string ticker { get; set; }
-
-		/// <summary>
-		/// the Central Index Key issued by the SEC, which is the unique identifier all company filings are issued under
-		/// </summary>
-		public string name { get; set; }
-
-		/// <summary>
-		/// the Legal Entity Identifier for the company
-		/// </summary>
-		public string lei { get; set; }
-
-		/// <summary>
-		/// the company name in shorter form
-		/// </summary>
-		public string cik { get; set; }
-	}
-
-
 	/// <summary>
 	/// Detailed company data as returned by specific company search
 	/// </summary>
@@ -190,31 +161,4 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// </summary>
 		public string industry_group { get; set; }
 	}
-
-
-	public class CompanyNewsDto
-	{
-		/// <summary>
-		/// the title of the article
-		/// </summary>
-		public string title { get; set; }
-
-		/// <summary>
-		/// the date the article was published
-		/// </summary>
-		public DateTime publication_date { get; set; }
-
-
-		/// <summary>
-		/// the hyperlink to the article
-		/// </summary>
-		public string url { get; set; }
-
-
-		/// <summary>
-		/// a brief summary of the article
-		/// </summary>
-		public string summary { get; set; }
-	}
-
 }

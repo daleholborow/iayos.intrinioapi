@@ -191,7 +191,7 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
-		public void CanGetAsReportedTags()
+		public void CanGetAsReportedXbrlTags()
 		{
 			var request = new GetAsReportedXbrlTags { identifier = "AAPL" };
 			var response = ApiClient.GetAsReportedXbrlTags(request);
@@ -205,6 +205,50 @@ namespace iayos.intrinioapi.Api.Test
 			var response = ApiClient.GetAsReportedFinancials(request);
 		}
 
+
+
+		#region Insider Transactions & Ownership Data
+
+		[Fact]
+		public void CanGetGetInsiderOwners()
+		{
+			var request = new GetInsiderOwners { institutional = false };
+			var response = ApiClient.GetInsiderOwners(request);
+		}
+
+
+		[Fact]
+		public void CanGetCompanyInsiderTransactions()
+		{
+			var request = new GetCompanyInsiderTransactions { identifier = "AAPL" };
+			var response = ApiClient.GetCompanyInsiderTransactions(request);
+		}
+
+
+		[Fact]
+		public void CanGetCompanyInsiderOwnership()
+		{
+			var request = new GetCompanyInsiderOwnership { identifier = "AAPL" };
+			var response = ApiClient.GetCompanyInsiderOwnership(request);
+		}
+
+
+		[Fact]
+		public void CanGetOwnerInsiderTransactions()
+		{
+			var request = new GetOwnerInsiderTransactions { cik = "0001494730" };
+			var response = ApiClient.GetOwnerInsiderTransactions(request);
+		}
+
+
+		[Fact]
+		public void CanGetOwnerInsiderHoldings()
+		{
+			var request = new GetOwnerInsiderHoldings { cik = "0001494730" };
+			var response = ApiClient.GetOwnerInsiderHoldings(request);
+		}
+
+		#endregion
 
 		//[Fact]
 		//public void DoSomeStuff()

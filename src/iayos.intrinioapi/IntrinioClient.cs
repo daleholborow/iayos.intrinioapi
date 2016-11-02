@@ -367,9 +367,9 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetInsiderTransactionsResponse GetInsiderTransactions(GetInsiderTransactions request)
+		public GetCompanyInsiderTransactionsResponse GetCompanyInsiderTransactions(GetCompanyInsiderTransactions request)
 		{
-			return BaseUrlGet<GetInsiderTransactions, GetInsiderTransactionsResponse>(request);
+			return BaseUrlGet<GetCompanyInsiderTransactions, GetCompanyInsiderTransactionsResponse>(request);
 		}
 
 
@@ -378,14 +378,36 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetInsiderOwnershipResponse GetInsiderOwnership(GetInsiderOwnership request)
+		public GetCompanyInsiderOwnershipResponse GetCompanyInsiderOwnership(GetCompanyInsiderOwnership request)
 		{
-			return BaseUrlGet<GetInsiderOwnership, GetInsiderOwnershipResponse>(request);
+			return BaseUrlGet<GetCompanyInsiderOwnership, GetCompanyInsiderOwnershipResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-transactions-by-owner
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetOwnerInsiderTransactionsResponse GetOwnerInsiderTransactions(GetOwnerInsiderTransactions request)
+		{
+			return BaseUrlGet<GetOwnerInsiderTransactions, GetOwnerInsiderTransactionsResponse>(request);
+		}
+
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-holdings-by-owner
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetOwnerInsiderHoldingsResponse GetOwnerInsiderHoldings(GetOwnerInsiderHoldings request)
+		{
+			return BaseUrlGet<GetOwnerInsiderHoldings, GetOwnerInsiderHoldingsResponse>(request);
 		}
 
 		#endregion
 
 	}
-
-	
 }
+	
