@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("iayos.intrinioapi.api.test")]
+[assembly: AssemblyTitle("iayos.intrinioapi.servicemodel.flag")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("iayos.intrinioapi.api.test")]
+[assembly: AssemblyProduct("iayos.intrinioapi.servicemodel.flag")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fb11062b-cec0-49c7-83a2-5d6e6c79416e")]
+[assembly: Guid("7a1b9a08-6e39-4754-bff6-c9c36eb61eaf")]
 
 // Version information for an assembly consists of the following four values:
 //
