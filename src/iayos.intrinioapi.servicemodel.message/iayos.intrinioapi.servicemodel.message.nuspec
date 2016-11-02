@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>iayos.intrinioapi</id>
+    <id>iayos.intrinioapi.servicemodel.message</id>
     <version>$version$</version>
     <authors>dale.holborow</authors>
     <owners>dale.holborow</owners>
@@ -9,18 +9,17 @@
 	<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>
-		A strongly typed package to wrap the Intrinio FinTech data api (www.intrinio.com). 
-		Author not affiliated with intrinio in any way, not does this come with any warranty. Contributions welcome.
+		Request/Response messages used by iayos.intrinioapi
 	</description>
     <releaseNotes>
 		All features in Master Data, US Financial Data and some of the Ownership implemented
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>
-		Intrinio Fintech financial data wrapper, implemented by inayearorso.io using ServiceStack request-response message style.
+		Request/Response messages used by iayos.intrinioapi
 	</summary>
     <tags>iayos intrinio fintech api finance in-a-year-or-so</tags>
-	<title>iayos.intrinioapi</title>
+	<title>iayos.intrinioapi.servicemodel.message</title>
     <dependencies>
        <dependency id="ServiceStack.Client" /> 
        <dependency id="ServiceStack.Interfaces" /> 

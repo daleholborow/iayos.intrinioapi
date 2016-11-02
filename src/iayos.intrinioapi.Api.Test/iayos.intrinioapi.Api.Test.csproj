@@ -7,8 +7,8 @@
     <ProjectGuid>{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iayos.intrinioapi.Api.Test</RootNamespace>
-    <AssemblyName>iayos.intrinioapi.Api.Test</AssemblyName>
+    <RootNamespace>iayos.intrinioapi.api.test</RootNamespace>
+    <AssemblyName>iayos.intrinioapi.api.test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -83,6 +83,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.csproj">
+      <Project>{7A1B9A08-6E39-4754-BFF6-C9C36EB61EAF}</Project>
+      <Name>iayos.intrinioapi.servicemodel.flag</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.servicemodel.message.csproj">
       <Project>{E06DD7A0-652E-4857-894D-345298185C5F}</Project>
       <Name>iayos.intrinioapi.servicemodel.message</Name>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi.Api.Test", "iayos.intrinioapi.Api.Test\iayos.intrinioapi.Api.Test.csproj", "{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi.api.test", "iayos.intrinioapi.Api.Test\iayos.intrinioapi.api.test.csproj", "{FB11062B-CEC0-49C7-83A2-5D6E6C79416E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iayos.intrinioapi", "iayos.intrinioapi\iayos.intrinioapi.csproj", "{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}"
 EndProject
@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildAndDeploy", "BuildAndD
 	ProjectSection(SolutionItems) = preProject
 		..\appveyor.yml = ..\appveyor.yml
 		iayos.intrinioapi\iayos.intrinioapi.nuspec = iayos.intrinioapi\iayos.intrinioapi.nuspec
+		iayos.intrinioapi.servicemodel.dto\iayos.intrinioapi.servicemodel.dto.nuspec = iayos.intrinioapi.servicemodel.dto\iayos.intrinioapi.servicemodel.dto.nuspec
+		iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.nuspec = iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.nuspec
+		iayos.intrinioapi.servicemodel.message\iayos.intrinioapi.servicemodel.message.nuspec = iayos.intrinioapi.servicemodel.message\iayos.intrinioapi.servicemodel.message.nuspec
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject

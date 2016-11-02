@@ -1,4 +1,4 @@
-﻿using iayos.intrinioapi.servicemodel.@enum;
+﻿using iayos.intrinioapi.servicemodel.flag;
 
 namespace iayos.intrinioapi.servicemodel.dto
 {

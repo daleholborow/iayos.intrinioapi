@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
-using iayos.intrinioapi.servicemodel.@enum;
+using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
 
 namespace iayos.intrinioapi.servicemodel.message.Messages
