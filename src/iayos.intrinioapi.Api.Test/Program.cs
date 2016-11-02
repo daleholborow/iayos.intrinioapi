@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using iayos.intrinioapi.ServiceModel.Enums;
-using iayos.intrinioapi.ServiceModel.Messages;
+using iayos.intrinioapi.ServiceModel.Enum;
+using iayos.intrinioapi.ServiceModel.Message.Messages;
 using ServiceStack.Configuration;
 using Xunit;
 

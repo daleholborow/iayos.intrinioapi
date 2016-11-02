@@ -1,5 +1,5 @@
-﻿using iayos.intrinioapi.ServiceModel;
-using iayos.intrinioapi.ServiceModel.Messages;
+﻿using iayos.intrinioapi.ServiceModel.Message;
+using iayos.intrinioapi.ServiceModel.Message.Messages;
 using ServiceStack;
 
 namespace iayos.intrinioapi

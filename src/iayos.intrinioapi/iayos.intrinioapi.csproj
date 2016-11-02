@@ -56,14 +56,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel\iayos.intrinioapi.ServiceModel.csproj">
-      <Project>{B3EA619F-312B-460D-B5ED-C8E154676E7F}</Project>
-      <Name>iayos.intrinioapi.ServiceModel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="iayos.intrinioapi.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.ServiceModel.Message.csproj">
+      <Project>{E06DD7A0-652E-4857-894D-345298185C5F}</Project>
+      <Name>iayos.intrinioapi.ServiceModel.Message</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -32,7 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  
   <ItemGroup>
     <Reference Include="ServiceStack, Version=4.5.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ServiceStack.4.5.4\lib\net45\ServiceStack.dll</HintPath>
@@ -75,19 +74,22 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
-     </None>
-	<None Include="AppSettings.Private.config">
+    </None>
+    <None Include="AppSettings.Private.config">
       <DependentUpon>App.config</DependentUpon>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel\iayos.intrinioapi.ServiceModel.csproj">
-      <Project>{B3EA619F-312B-460D-B5ED-C8E154676E7F}</Project>
-      <Name>iayos.intrinioapi.ServiceModel</Name>
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Enum\iayos.intrinioapi.ServiceModel.Enum.csproj">
+      <Project>{7A1B9A08-6E39-4754-BFF6-C9C36EB61EAF}</Project>
+      <Name>iayos.intrinioapi.ServiceModel.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.ServiceModel.Message.csproj">
+      <Project>{E06DD7A0-652E-4857-894D-345298185C5F}</Project>
+      <Name>iayos.intrinioapi.ServiceModel.Message</Name>
     </ProjectReference>
     <ProjectReference Include="..\iayos.intrinioapi\iayos.intrinioapi.csproj">
       <Project>{3D218FB0-6263-4E79-9A8F-E22F36BD30AD}</Project>
