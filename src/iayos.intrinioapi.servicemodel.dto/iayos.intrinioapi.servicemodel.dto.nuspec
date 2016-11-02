@@ -12,7 +12,7 @@
 		Data transfer objects used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		Swapped some "object" property types to be "string" where possible
+		Finalised all Insider Transactions and Institutional Holdings functionality
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>

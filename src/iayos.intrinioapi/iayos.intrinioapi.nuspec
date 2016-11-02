@@ -13,7 +13,7 @@
 		Author not affiliated with intrinio in any way, not does this come with any warranty. Contributions welcome.
 	</description>
     <releaseNotes>
-		Swapped some "object" property types to be "string" where possible
+		Finalised all Insider Transactions and Institutional Holdings functionality
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>
