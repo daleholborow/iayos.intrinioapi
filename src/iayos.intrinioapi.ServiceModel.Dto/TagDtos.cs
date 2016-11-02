@@ -73,7 +73,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// the specified domain XBRL tag, associated with certain data points on the financial statements that have a dimension associated with the data point
 		/// </summary>
-		public object domain_tag { get; set; }
+		public string domain_tag { get; set; }
 
 		/// <summary>
 		/// the type of value - true indicates that the value is a header label and has no associated data value, whereas false indicates that the XBRL tag has an associated value.
