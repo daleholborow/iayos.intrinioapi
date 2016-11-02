@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>iayos.intrinioapi.servicemodel.dto</id>
+    <version>$version$</version>
+    <authors>dale.holborow</authors>
+    <owners>dale.holborow</owners>
+    <projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
+	<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>
+		Data transfer objects used by iayos.intrinioapi
+	</description>
+    <releaseNotes>
+		All features in Master Data, US Financial Data and some of the Ownership implemented
+	</releaseNotes>
+    <copyright>Copyright © 2016</copyright>
+	<summary>
+		Data transfer objects used by iayos.intrinioapi
+	</summary>
+    <tags>iayos intrinio fintech api finance in-a-year-or-so</tags>
+	<title>iayos.intrinioapi.servicemodel.dto</title>
+    <dependencies>
+       <dependency id="ServiceStack.Client" /> 
+       <dependency id="ServiceStack.Interfaces" /> 
+       <dependency id="ServiceStack.Text" /> 
+    </dependencies>
+  </metadata>
+</package>
