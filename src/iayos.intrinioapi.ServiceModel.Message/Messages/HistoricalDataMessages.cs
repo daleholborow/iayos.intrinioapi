@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
@@ -25,6 +26,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Use this collection to populate the identifers
 		/// </summary>
 		/// <seealso cref="identifier"/>
+		[IgnoreDataMember]
 		public List<string> Identifier_IaYoS { get; set; } = new ArrayOfString();
 
 		/// <summary>
@@ -50,6 +52,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set start_date using actual date object
 		/// </summary>
 		/// <seealso cref="start_date"/>
+		[IgnoreDataMember]
 		public DateTime? StartDate_IaYoS { get; set; }
 
 
@@ -64,6 +67,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set end_date using actual date object
 		/// </summary>
 		/// <seealso cref="end_date"/>
+		[IgnoreDataMember]
 		public DateTime? EndDate_IaYoS { get; set; }
 
 		/// <summary>

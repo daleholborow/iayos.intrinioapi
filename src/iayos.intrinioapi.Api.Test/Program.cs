@@ -121,7 +121,8 @@ namespace iayos.intrinioapi.Api.Test
 			//request.Identifers.Add("AAC");
 			//request.Tags.Add(DataPointTag.price_time);
 			//request.Tags.Add(DataPointTag.price_date);
-			request.Tags.Add(DataPointTag.pricetoearnings);
+			request.Tags_IaYoS.Add(DataPointTag.pricetoearnings);
+			request.Identifers_IaYoS.Add("AAPL");
 			var datapointResponse = ApiClient.SearchDataPoints(request);
 		}
 
@@ -191,7 +192,7 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		[Fact]
-		public void CanGetAsReportedTags()
+		public void CanGetAsReportedXbrlTags()
 		{
 			var request = new GetAsReportedXbrlTags { identifier = "AAPL" };
 			var response = ApiClient.GetAsReportedXbrlTags(request);
@@ -205,6 +206,74 @@ namespace iayos.intrinioapi.Api.Test
 			var response = ApiClient.GetAsReportedFinancials(request);
 		}
 
+
+
+		#region Insider Transactions & Ownership Data
+
+		[Fact]
+		public void CanGetGetInsiderOwners()
+		{
+			var request = new GetInsiderOwners { institutional = false };
+			var response = ApiClient.GetInsiderOwners(request);
+		}
+
+
+		[Fact]
+		public void CanGetCompanyInsiderTransactions()
+		{
+			var request = new GetCompanyInsiderTransactions { identifier = "AAPL" };
+			var response = ApiClient.GetCompanyInsiderTransactions(request);
+		}
+
+
+		[Fact]
+		public void CanGetCompanyInsiderOwnership()
+		{
+			var request = new GetCompanyInsiderOwnership { identifier = "AAPL" };
+			var response = ApiClient.GetCompanyInsiderOwnership(request);
+		}
+
+
+		[Fact]
+		public void CanGetOwnerInsiderTransactions()
+		{
+			var request = new GetOwnerInsiderTransactions { cik = "0001494730" };
+			var response = ApiClient.GetOwnerInsiderTransactions(request);
+		}
+
+
+		[Fact]
+		public void CanGetOwnerInsiderHoldings()
+		{
+			var request = new GetOwnerInsiderHoldings { cik = "0001494730" };
+			var response = ApiClient.GetOwnerInsiderHoldings(request);
+		}
+
+
+		[Fact]
+		public void CanGetInstitutionalOwners()
+		{
+			var request = new GetInstitutionalOwners { cik = "0001494730" };
+			var response = ApiClient.GetInstitutionalOwners(request);
+		}
+
+
+		[Fact]
+		public void CanGetOwnerInstitutionalHoldings()
+		{
+			var request = new GetOwnerInstitutionalHoldings { cik = "0001494730" };
+			var response = ApiClient.GetOwnerInstitutionalHoldings(request);
+		}
+
+
+		[Fact]
+		public void CanGetSecurityInstitutionalOwners()
+		{
+			var request = new GetSecurityInstitutionalOwners { identifier = "AAPL" };
+			var response = ApiClient.GetSecurityInstitutionalOwners(request);
+		}
+
+		#endregion
 
 		//[Fact]
 		//public void DoSomeStuff()

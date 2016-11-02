@@ -9,7 +9,6 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	[Route("/companies", HttpMethods.Get)]
 	public class GetCompaniesMasterList : Request, IReturn<GetCompaniesMasterListResponse>
 	{
-		
 	}
 
 	public class GetCompaniesMasterListResponse : Response<List<CompanyMasterDto>>

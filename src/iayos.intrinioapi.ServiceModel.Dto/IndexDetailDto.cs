@@ -2,24 +2,6 @@
 
 namespace iayos.intrinioapi.servicemodel.dto
 {
-
-	/// <summary>
-	/// http://docs.intrinio.com/#index-master
-	/// </summary>
-	public class IndexMasterDto
-	{
-		/// <summary>
-		/// the Intrinio symbol associated with the index
-		/// </summary>
-		public string symbol { get; set; }
-
-		/// <summary>
-		/// the index name
-		/// </summary>
-		public string index_name { get; set; }
-	}
-
-
 	/// <summary>
 	/// http://docs.intrinio.com/#indices47
 	/// </summary>
@@ -51,6 +33,4 @@ namespace iayos.intrinioapi.servicemodel.dto
 		public IndexType index_type { get; set; } = IndexType.full;
 
 	}
-
 }
- 

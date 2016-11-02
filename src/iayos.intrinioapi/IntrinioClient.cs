@@ -367,9 +367,9 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetInsiderTransactionsResponse GetInsiderTransactions(GetInsiderTransactions request)
+		public GetCompanyInsiderTransactionsResponse GetCompanyInsiderTransactions(GetCompanyInsiderTransactions request)
 		{
-			return BaseUrlGet<GetInsiderTransactions, GetInsiderTransactionsResponse>(request);
+			return BaseUrlGet<GetCompanyInsiderTransactions, GetCompanyInsiderTransactionsResponse>(request);
 		}
 
 
@@ -378,14 +378,78 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetInsiderOwnershipResponse GetInsiderOwnership(GetInsiderOwnership request)
+		public GetCompanyInsiderOwnershipResponse GetCompanyInsiderOwnership(GetCompanyInsiderOwnership request)
 		{
-			return BaseUrlGet<GetInsiderOwnership, GetInsiderOwnershipResponse>(request);
+			return BaseUrlGet<GetCompanyInsiderOwnership, GetCompanyInsiderOwnershipResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-transactions-by-owner
+		/// Returns a list of all insider transactions by an owner in as many companies as the owner may be considered 
+		/// an insider. Criteria for being an insider include being a director, officer, or 10%+ owner in the company. 
+		/// Transactions are detailed for both non-derivative and derivative transactions by the insider.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetOwnerInsiderTransactionsResponse GetOwnerInsiderTransactions(GetOwnerInsiderTransactions request)
+		{
+			return BaseUrlGet<GetOwnerInsiderTransactions, GetOwnerInsiderTransactionsResponse>(request);
+		}
+
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#insider-holdings-by-owner
+		/// A list of all ownership interests and the value of their interests by a single owner. A single owner may own insider interests in a number of companies.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetOwnerInsiderHoldingsResponse GetOwnerInsiderHoldings(GetOwnerInsiderHoldings request)
+		{
+			return BaseUrlGet<GetOwnerInsiderHoldings, GetOwnerInsiderHoldingsResponse>(request);
+		}
+
+		#endregion
+
+
+		#region Institutional Holdings Data Feed
+
+		/// <summary>
+		/// http://docs.intrinio.com/#owners142
+		/// Returns owners list and information for all institutional owners of securities covered by Intrinio. Includes detailed info for a single owner and the ability to query by name.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetInstitutionalOwnersResponse GetInstitutionalOwners(GetInstitutionalOwners request)
+		{
+			return BaseUrlGet<GetInstitutionalOwners, GetInstitutionalOwnersResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#institutional-holdings-by-owner
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetOwnerInstitutionalHoldingsResponse GetOwnerInstitutionalHoldings(GetOwnerInstitutionalHoldings request)
+		{
+			return BaseUrlGet<GetOwnerInstitutionalHoldings, GetOwnerInstitutionalHoldingsResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#institutional-owners-by-security
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetSecurityInstitutionalOwnersResponse GetSecurityInstitutionalOwners(GetSecurityInstitutionalOwners request)
+		{
+			return BaseUrlGet<GetSecurityInstitutionalOwners, GetSecurityInstitutionalOwnersResponse>(request);
 		}
 
 		#endregion
 
 	}
-
-	
 }
+	

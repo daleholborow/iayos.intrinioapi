@@ -12,7 +12,7 @@
 		Request/Response messages used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		All features in Master Data, US Financial Data and some of the Ownership implemented
+		Finalised all Insider Transactions and Institutional Holdings functionality
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>
