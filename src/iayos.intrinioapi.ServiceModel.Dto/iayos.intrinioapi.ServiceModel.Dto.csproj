@@ -56,6 +56,7 @@
     <Compile Include="OwnerDetailsDto.cs" />
     <Compile Include="InsiderOwnerDto.cs" />
     <Compile Include="OwnerInsiderTransactionDto.cs" />
+    <Compile Include="OwnerInstitutionalHoldingDto.cs" />
     <Compile Include="OwnerMasterDto.cs" />
     <Compile Include="PriceDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +64,6 @@
     <Compile Include="SecurityScreenerDetailDto.cs" />
     <Compile Include="StandardizedTagDto.cs" />
     <Compile Include="XbrlTagDto.cs" />
-    <Compile Include="TransactionDtos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.csproj">

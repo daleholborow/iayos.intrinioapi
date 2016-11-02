@@ -1,5 +1,73 @@
-﻿namespace iayos.intrinioapi.servicemodel.dto
+﻿using System;
+
+namespace iayos.intrinioapi.servicemodel.dto
 {
+
+	/// <summary>
+	/// http://docs.intrinio.com/#return-values153
+	/// </summary>
+	public class SecurityInstitutionalOwnerDetailsDto
+	{
+		/// <summary>
+		/// the Central Index Key issued by the SEC, which is the unique identifier all owner filings
+		/// </summary>
+		public string owner_cik { get; set; }
+
+		/// <summary>
+		/// the name of the owner, either an institutional owner or an insider owner
+		/// </summary>
+		public string owner_name { get; set; }
+
+		/// <summary>
+		/// - the date of the latest 13-F filing on record with the SEC.
+		/// </summary>
+		public DateTime period_ended { get; set; }
+
+		/// <summary>
+		/// the market value in amount of dollars of the holding in the listed security
+		/// </summary>
+		public double value { get; set; }
+
+		/// <summary>
+		/// the number of shares held in the listed security
+		/// </summary>
+		public double amount { get; set; }
+
+		/// <summary>
+		/// the number of shares where the insitutional holder has sole voting authority
+		/// </summary>
+		public double sole_voting_authority { get; set; }
+
+		/// <summary>
+		/// the number of shares where the insitutional holder has shared voting authority
+		/// </summary>
+		public double shared_voting_authority { get; set; }
+
+		/// <summary>
+		/// the number of shares where the insitutional holder has no voting authority
+		/// </summary>
+		public double no_voting_authority { get; set; }
+
+		/// <summary>
+		/// the prior quarter number of shares held by the owner
+		/// </summary>
+		public double prev_amount { get; set; }
+
+		/// <summary>
+		/// the change in number of shares held from the prior quarter
+		/// </summary>
+		public double amount_chg { get; set; }
+
+		/// <summary>
+		/// the percentage change in the number of shares held from the prior quarter
+		/// </summary>
+		public double amount_pct_chg { get; set;  } 
+
+	}
+
+
+
+
 	/// <summary>
 	/// http://docs.intrinio.com/#return-values124
 	/// </summary>

@@ -101,6 +101,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// <summary>
 	/// http://docs.intrinio.com/#parameters139
 	/// </summary>
+	[Route("/owners/insider_holdings", HttpMethods.Get)]
 	public class GetOwnerInsiderHoldings : Request, IReturn<GetOwnerInsiderHoldingsResponse>
 	{
 		/// <summary>
@@ -112,4 +113,58 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	public class GetOwnerInsiderHoldingsResponse : Response<List<InsiderHoldingDto>> {}
 
 
+	/// <summary>
+	/// http://docs.intrinio.com/#owners142
+	/// </summary>
+	[Route("/owners", HttpMethods.Get)]
+	public class GetInstitutionalOwners : Request, IReturn<GetInstitutionalOwnersResponse>
+	{
+
+		/// <summary>
+		/// (optional, returns full list of owners with compacted response values, if no identifier specified) - the Central 
+		/// Index Key issued by the SEC, which is the unique identifier all owner filings are issued under: CENTRAL INDEX KEY
+		/// </summary>
+		public string cik { get; set; }
+
+
+		/// <summary>
+		/// (true) - a boolean to include only institutional owners who file 13-F with the SEC
+		/// </summary>
+		public bool institutional => true;
+
+
+		/// <summary>
+		/// (optional, returns full list of owners with compacted response values, if no query specified) - a string query search 
+		/// of owner name or cik id with the returned results being the relevant owners in compacted list format.
+		/// </summary>
+		public string query { get; set; }
+	}
+
+	public class GetInstitutionalOwnersResponse : Response<List<OwnerDetailsDto>> { }
+
+
+
+
+	/// <summary>
+	/// http://docs.intrinio.com/#owners142
+	/// </summary>
+	[Route("/owners", HttpMethods.Get)]
+	public class GetOwnerInstitutionalHoldings : Request, IReturn<GetOwnerInstitutionalHoldingsResponse>
+	{
+
+		/// <summary>
+		///  (optional, must have owner cik otherwise) - the stock market ticker symbol associated with the institutional 
+		/// owner’s common stock securities: TICKER SYMBOL
+		/// </summary>
+		public string identifier { get; set; }
+
+
+		/// <summary>
+		/// the Central Index Key issued by the SEC, which is the unique identifier for the institutional owner: CENTRAL INDEX KEY
+		/// </summary>
+		public string cik { get; set; }
+		
+	}
+
+	public class GetOwnerInstitutionalHoldingsResponse : Response<List<OwnerInstitutionalHoldingDto>> {}
 }
