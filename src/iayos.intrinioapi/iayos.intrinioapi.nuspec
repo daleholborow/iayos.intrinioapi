@@ -13,7 +13,7 @@
 		Author not affiliated with intrinio in any way, not does this come with any warranty. Contributions welcome.
 	</description>
     <releaseNotes>
-		All features in Master Data, US Financial Data and some of the Ownership implemented
+		Swapped some "object" property types to be "string" where possible
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>

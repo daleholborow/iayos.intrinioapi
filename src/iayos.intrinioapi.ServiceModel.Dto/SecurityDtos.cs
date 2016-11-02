@@ -45,7 +45,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the NASDAQ market category for a NASDAQ listed company.
 		/// </summary>
-		public object market_category { get; set; }
+		public string market_category { get; set; }
 
 		/// <summary>
 		/// true or false, depending on whether the security is an ETF or not.
