@@ -7,7 +7,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/fundamentals/standardized", HttpMethods.Get)]
-	public class GetStandardizedFundamentals : RequestMany, IReturn<GetStandardizedFundamentalsResponse> 
+	public class GetStandardizedFundamentals : RequestList, IReturn<GetStandardizedFundamentalsResponse> 
 	{
 
 		/// <summary>
@@ -49,14 +49,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedFundamentalsResponse : ResponseMany<FundamentalsDto>
+	public class GetStandardizedFundamentalsResponse : ResponseMetaList<FundamentalsDto>
 	{
 	}
 
 
 
 	[Route("/fundamentals/reported", HttpMethods.Get)]
-	public class GetAsReportedFundamentals : RequestMany, IReturn<GetAsReportedFundamentalsResponse>
+	public class GetAsReportedFundamentals : RequestList, IReturn<GetAsReportedFundamentalsResponse>
 	{
 
 		/// <summary>
@@ -95,7 +95,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedFundamentalsResponse : ResponseMany<FundamentalsDto>
+	public class GetAsReportedFundamentalsResponse : ResponseMetaList<FundamentalsDto>
 	{
 	}
 }

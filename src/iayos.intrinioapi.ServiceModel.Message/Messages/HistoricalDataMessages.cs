@@ -10,7 +10,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/historical_data", HttpMethods.Get)]
-	public class SearchHistoricalData : RequestMany, IReturn<SearchHistoricalDataResponse>
+	public class SearchHistoricalData : RequestList, IReturn<SearchHistoricalDataResponse>
 	{
 
 		/// <summary>
@@ -93,7 +93,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class SearchHistoricalDataResponse : ResponseMany<HistoricalDataDto>
+	public class SearchHistoricalDataResponse : ResponseMetaList<HistoricalDataDto>
 	{
 
 		/// <summary>

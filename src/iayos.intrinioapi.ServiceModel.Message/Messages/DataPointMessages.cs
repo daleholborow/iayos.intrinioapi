@@ -7,7 +7,7 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 	[Route("/data_point", HttpMethods.Get)]
-	public class SearchDataPoints : RequestMany, IReturn<SearchDataPointsResponse>
+	public class SearchDataPoints : RequestList, IReturn<SearchDataPointsResponse>
 	{
 
 		/// <summary>
@@ -38,7 +38,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public List<DataPointTag> Tags_IaYoS { get; set; } = new List<DataPointTag>();
 	}
 
-	public class SearchDataPointsResponse : ResponseMany<DataPointDto>
+	public class SearchDataPointsResponse : ResponseMetaList<DataPointDto>
 	{
 	}
 

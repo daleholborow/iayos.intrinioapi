@@ -7,7 +7,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/tags/standardized", HttpMethods.Get)]
-	public class GetStandardizedTags : RequestMany, IReturn<GetStandardizedTagsResponse>
+	public class GetStandardizedTags : RequestList, IReturn<GetStandardizedTagsResponse>
 	{
 		/// <summary>
 		/// the financial statement requested, options include the income statement, balance sheet, statement 
@@ -34,13 +34,13 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedTagsResponse : ResponseMany<StandardizedTagDto>
+	public class GetStandardizedTagsResponse : ResponseMetaList<StandardizedTagDto>
 	{
 	}
 
 
 	[Route("/tags/reported", HttpMethods.Get)]
-	public class GetAsReportedXbrlTags : RequestMany, IReturn<GetAsReportedXbrlTagsResponse>
+	public class GetAsReportedXbrlTags : RequestList, IReturn<GetAsReportedXbrlTagsResponse>
 	{
 		/// <summary>
 		///the financial statement requested: income_statement | balance_sheet | cash_flow_statement
@@ -92,6 +92,6 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedXbrlTagsResponse : ResponseMany<AsReportedTagDto> {}
+	public class GetAsReportedXbrlTagsResponse : ResponseMetaList<AsReportedTagDto> {}
 
 }

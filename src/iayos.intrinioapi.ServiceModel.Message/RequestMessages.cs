@@ -14,7 +14,7 @@
 	}
 
 
-	public interface IRequestMany : IRequest
+	public interface IRequestList : IRequest
 	{
 		int page_size { get; set; }
 
@@ -25,7 +25,7 @@
 	/// <summary>
 	/// The base Request typically used for requesting 1+ items as a collection, with potential paging applied
 	/// </summary>
-	public abstract class RequestMany : IRequestMany
+	public abstract class RequestList : IRequestList
 	{
 		public int page_size { get; set; } = 250;
 

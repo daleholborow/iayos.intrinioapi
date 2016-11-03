@@ -4,7 +4,6 @@ using iayos.intrinioapi.servicemodel.message.Messages;
 using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
-using Xunit.Sdk;
 
 namespace iayos.intrinioapi.Api.Test
 {
@@ -75,25 +74,86 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		/// <summary>
-		/// Can load all companies that match some conditions
+		/// Can get single company by its unique ticker or cik or query 
+		/// </summary>
+		[Theory]
+		[InlineData("thereisnowaythistickerexists", null, false)]
+		[InlineData(null, "thereisnowaythiscikexists", false)]
+		[InlineData("AA", null, true)]
+		[InlineData(null, "0000004281", true)]
+		public void CanGetSingleCompanyDetails(string ticker, string cik, bool expectResults)
+		{
+			var request = new GetSingleCompanyDetails { identifier = ticker, cik = cik };
+			//var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSingleCompanyDetails(request);
+			Assert.True((response == null) == !expectResults);
+			if (expectResults) Assert.True(response?.ticker == request.identifier || ticker.IsNullOrEmpty());
+			if (expectResults) Assert.True(response?.cik == request.cik || cik.IsNullOrEmpty());
+		}
+
+
+		/// <summary>
+		/// Can load all companies that match some conditions in the query
 		/// </summary>
 		[Theory]
 		[InlineData(null, true)]
 		[InlineData("thereisnowaythiscompanyexists", false)]
-		public void CanGetCompanyDetails(string searchQuery, bool expectResults)
+		public void CanGetMultipleCompanyDetails(string searchQuery, bool expectResults)
 		{
 			var request = new GetCompanyDetails { query = searchQuery };
 			var response = ApiClient.GetCompanyDetails(request);
 			Assert.True(response.data.Count > 0 == expectResults);
 		}
 
-
-		[Fact]
-		public void CanGetSecurityDetails()
+		
+		/// <summary>
+		/// Can get a collection of security by stock unique ticker or cik or query 
+		/// </summary>
+		[Theory]
+		[InlineData("thereisnowaythistickerexists", false)]
+		[InlineData("AA", true)]
+		public void CanGetSecurityDetailsByTicker(string ticker, bool expectResults)
 		{
-			var request = new GetSecurityDetails {};
+			var request = new GetSecurityDetailsByCompany { identifier = ticker };
+			var requestUrl = request.ToGetUrl();
+			var responseList = ApiClient.GetSingleSecurityDetails(request);
+			Assert.True((responseList == null) == !expectResults);
+			if (!expectResults) return;
+			foreach (var security in responseList)
+			{
+				Assert.True(security.ticker == request.identifier || ticker.IsNullOrEmpty());
+			}
+		}
+
+
+		/// <summary>
+		/// Can load all securities that match query conditions
+		/// </summary>
+		[Theory]
+		//[InlineData(null, true)]
+		//[InlineData("AA", true)]
+		[InlineData("thereisnowaythissecurityexists", false)]
+		public void CanGetMultipleSecurityDetailsForMultipleCompanies(string searchQuery, bool expectResults)
+		{
+			var request = new GetSecurityDetails { query = searchQuery };
+			var requestUrl = request.ToGetUrl();
 			var response = ApiClient.GetSecurityDetails(request);
-			Assert.True(response.data.Count > 0);
+			Assert.True((response == null) == !expectResults);
+			Assert.True(response.data.Count > 0 == expectResults);
+		}
+
+		
+		/// <summary>
+		/// Can get single index by its unique Intrinio code
+		/// </summary>
+		[Fact]
+		public void CanGetSingleIndexDetails()
+		{
+			var request = new GetSingleIndexDetails { identifier = "$TA100" };
+			var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSingleIndexDetails(request);
+			Assert.True(response != null);
+			Assert.True(response.symbol == request.identifier);
 		}
 
 
@@ -111,19 +171,9 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		/// <summary>
-		/// Can get single index by its unique Intrinio code
+		/// http://docs.intrinio.com/#return-values62
+		/// Search a filtered list of the securities based on search conditions
 		/// </summary>
-		[Fact]
-		public void CanGetSingleIndexDetails()
-		{
-			var request = new GetSingleIndexDetails { identifier = "$TA100" };
-			var tet = request.ToGetUrl();
-			var response = ApiClient.GetSingleIndexDetails(request);
-			Assert.True(response != null);
-			Assert.True(response.symbol == request.identifier);
-		}
-
-
 		[Fact]
 		public void CanSearchSecuritiesWithConditions()
 		{
@@ -136,8 +186,9 @@ namespace iayos.intrinioapi.Api.Test
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.pricetoearnings, Value = 10}
 				}
 			};
-			var companyDetails = ApiClient.SearchSecurities(request);
-			//var requestUrlToTest = request.ToGetUrl();
+			var response = ApiClient.SearchSecurities(request);
+			Assert.True(response != null);
+			Assert.True(response.data.Count > 0);
 		}
 
 

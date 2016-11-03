@@ -7,7 +7,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/financials/standardized", HttpMethods.Get)]
-	public class GetStandardizedFinancials : RequestMany, IReturn<GetStandardizedFinancialsResponse> 
+	public class GetStandardizedFinancials : RequestList, IReturn<GetStandardizedFinancialsResponse> 
 	{
 
 		/// <summary>
@@ -67,13 +67,13 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedFinancialsResponse : ResponseMany<FinancialDataPointDto>
+	public class GetStandardizedFinancialsResponse : ResponseMetaList<FinancialDataPointDto>
 	{
 	}
 
 
 	[Route("/financials/reported", HttpMethods.Get)]
-	public class GetAsReportedFinancials : RequestMany, IReturn<GetAsReportedFinancialsResponse>
+	public class GetAsReportedFinancials : RequestList, IReturn<GetAsReportedFinancialsResponse>
 	{
 
 		/// <summary>
@@ -134,7 +134,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedFinancialsResponse : ResponseMany<XbrlTagDto>
+	public class GetAsReportedFinancialsResponse : ResponseMetaList<XbrlTagDto>
 	{
 	}
 

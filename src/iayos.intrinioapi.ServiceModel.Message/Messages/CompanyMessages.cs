@@ -9,11 +9,11 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// Get all the master companies list items
 	/// </summary>
 	[Route("/companies", HttpMethods.Get)]
-	public class GetCompaniesMasterList : RequestMany, IReturn<GetCompaniesMasterListResponse>
+	public class GetCompaniesMasterList : RequestList, IReturn<GetCompaniesMasterListResponse>
 	{
 	}
 
-	public class GetCompaniesMasterListResponse : ResponseMany<CompanyMasterDto>
+	public class GetCompaniesMasterListResponse : ResponseMetaList<CompanyMasterDto>
 	{
 	}
 
@@ -55,7 +55,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// Load a collection of companies
 	/// </summary>
 	[Route("/companies", HttpMethods.Get)]
-	public class GetCompanyDetails : RequestMany, IReturn<GetCompanyDetailsResponse>
+	public class GetCompanyDetails : RequestList, IReturn<GetCompanyDetailsResponse>
 	{
 		/*/// <summary>
 		/// identifier (optional, returns full list of companies with compacted response values, if no identifier 
@@ -76,14 +76,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string query { get; set; }
 	}
 
-	public class GetCompanyDetailsResponse : ResponseMany<CompanyMasterDto>
+	public class GetCompanyDetailsResponse : ResponseMetaList<CompanyMasterDto>
 	{
 		
 	}
 
 
 	[Route("/news", HttpMethods.Get)]
-	public class GetCompanyNews : RequestMany, IReturn<GetCompanyNewsResponse>
+	public class GetCompanyNews : RequestList, IReturn<GetCompanyNewsResponse>
 	{
 		/// <summary>
 		/// ithe stock market ticker symbol associated with the company’s common stock. If the company is foreign, use the stock 
@@ -92,7 +92,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string identifier { get; set; }
 	}
 
-	public class GetCompanyNewsResponse : ResponseMany<CompanyNewsDto>
+	public class GetCompanyNewsResponse : ResponseMetaList<CompanyNewsDto>
 	{
 		
 	}
