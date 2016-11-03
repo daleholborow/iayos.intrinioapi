@@ -281,6 +281,19 @@ namespace iayos.intrinioapi
 
 		/// <summary>
 		/// http://docs.intrinio.com/#data-point
+		/// Query for a SINGLE data point only.  If rubbish ticker put in, value=nm (NOT MEANINGFUL) returned!!
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetSingleDataPointResponse GetSingleDataPoint(GetSingleDataPoint request)
+		{
+			return GetSingle<GetSingleDataPoint, GetSingleDataPointResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#data-point
+		/// Query for MULTIPLE data points at one - MUST BE MORE THAN ONE OR ELSE OUR PARSE OF THE RESPONSE DATA WONT WORK
 		/// Returns that most recent data point for a selected identifier (ticker symbol, stock market 
 		/// index symbol, CIK ID, etc.) for a selected tag. The complete list of tags available through 
 		/// this function are available here. Income statement, cash flow statement, and ratios are 
@@ -289,9 +302,9 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public SearchDataPointsResponse SearchDataPoints(SearchDataPoints request)
+		public GetMultipleDataPointsResponse GetMultipleDataPoints(GetMultipleDataPoints request)
 		{
-			return GetMetaList<SearchDataPoints, SearchDataPointsResponse>(request);
+			return GetMetaList<GetMultipleDataPoints, GetMultipleDataPointsResponse>(request);
 		}
 
 

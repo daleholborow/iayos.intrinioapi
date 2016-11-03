@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
 using iayos.intrinioapi.servicemodel.flag;
 using iayos.intrinioapi.servicemodel.message.Messages;
 using ServiceStack;
@@ -192,16 +194,42 @@ namespace iayos.intrinioapi.Api.Test
 		}
 
 
-		[Fact]
-		public void CanSearchDataPoints()
+		/// <summary>
+		/// http://docs.intrinio.com/#data-point
+		/// Search for a single data point. If rubbish ticker put in, NOT MEANINGFUL (NM) returned!!
+		/// </summary>
+		[Theory]
+		[InlineData("GOOGL", DataPointTag.price_date, true)]
+		[InlineData("thisidentifierwillneverexist", DataPointTag.price_date, false)]
+		public void CanGetSingleDataPoint(string identifier, DataPointTag item, bool expectResults)
 		{
-			var request = new SearchDataPoints { };
-			//request.Identifers.Add("AAC");
-			//request.Tags.Add(DataPointTag.price_time);
-			//request.Tags.Add(DataPointTag.price_date);
+			var request = new GetSingleDataPoint { identifier = identifier, item = item };
+			var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSingleDataPoint(request);
+			Assert.True((response == null) == !expectResults);
+			if (expectResults == false) Assert.True(response.value.ToString() == "nm");
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#data-point
+		/// Search for a collection of data points
+		/// </summary>
+		[Fact]
+		public void CanGetMultipleDataPoints()
+		{
+			var request = new GetMultipleDataPoints { };
+			request.Tags_IaYoS.Add(DataPointTag.price_date);
 			request.Tags_IaYoS.Add(DataPointTag.pricetoearnings);
 			request.Identifers_IaYoS.Add("AAPL");
-			var datapointResponse = ApiClient.SearchDataPoints(request);
+			request.Identifers_IaYoS.Add("GOOGL");
+			var response = ApiClient.GetMultipleDataPoints(request);
+			Assert.True(response != null);
+			Assert.True(response.data.Count == 4);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "AAPL" && d.item == DataPointTag.price_date) != null);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "AAPL" && d.item == DataPointTag.pricetoearnings) != null);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "GOOGL" && d.item == DataPointTag.price_date) != null);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "GOOGL" && d.item == DataPointTag.pricetoearnings) != null);
 		}
 
 
@@ -209,7 +237,15 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanSearchHistoricalData()
 		{
 			var request = new SearchHistoricalData { };
+			request.identifier = "AAPL";
+			request.item = DataPointTag.accruedexpenses;
+			//request.type = HistoricalDataType.QTR;
+			var requestUrl = request.ToGetUrl();
 			var response = ApiClient.SearchHistoricalData(request);
+			Assert.True(response != null);
+			Assert.True(response.identifier == request.identifier);
+			Assert.True(response.data.Count > 0);
+			Assert.True(response != null);
 		}
 
 
@@ -353,29 +389,6 @@ namespace iayos.intrinioapi.Api.Test
 
 		#endregion
 
-		//[Fact]
-		//public void DoSomeStuff()
-		//{
-		//	try
-		//	{
-		//	}
-		//	catch (WebServiceException webEx)
-		//	{
-		//		// TODO Inspect the webEx to see what went wrong:
-		//		var errorMessage = webEx.ErrorMessage;
-		//		/*
-		//		 * Example error response:
-		//		  webEx.StatusCode        = 400
-		//		  webEx.StatusDescription = ArgumentNullException
-		//		  webEx.ErrorCode         = ArgumentNullException
-		//		  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
-		//		  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
-		//		  webEx.ResponseDto       = (your populated Response DTO)
-		//		  webEx.ResponseStatus    = (your populated Response Status DTO)
-		//		  webEx.GetFieldErrors()  = (individual errors for each field if any)
-		//		*/
-		//	}
-		//}
 
 	}
 }

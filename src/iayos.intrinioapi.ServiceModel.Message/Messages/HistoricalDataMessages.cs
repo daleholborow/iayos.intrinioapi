@@ -14,20 +14,11 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	{
 
 		/// <summary>
+		/// Despite what doco says, its 1-ticker
 		/// the stock market ticker symbol associated with the company’s common stock or index. If the company is 
-		/// foreign, use the stock exchange code, followed by a colon, then the ticker. You may request up to 150 
-		/// tickers at once by separating them by a coma (each ticker and item combination requested will count
-		///  as 1 query of the API): TICKER SYMBOL | INDEX SYMBOL
+		/// foreign, use the stock exchange code, followed by a colon, then the ticker. TICKER SYMBOL | INDEX SYMBOL
 		/// </summary>
-		/// <seealso cref="Identifier_IaYoS" />
-		public string identifier => string.Join(",", Identifier_IaYoS);
-
-		/// <summary>
-		/// Use this collection to populate the identifers
-		/// </summary>
-		/// <seealso cref="identifier"/>
-		[IgnoreDataMember]
-		public List<string> Identifier_IaYoS { get; set; } = new ArrayOfString();
+		public string identifier { get; set; }
 
 		/// <summary>
 		/// the specified standardized tag requested. INTRINIO TAGS
@@ -74,7 +65,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// (optional, returns daily historical price data otherwise) - the frequency of the historical prices & valuation 
 		/// data: daily | weekly | monthly | quarterly | yearly
 		/// </summary>
-		public DataFrequency frequency { get; set; } = DataFrequency.daily;
+		public DataFrequency? frequency { get; set; }
 
 		/// <summary>
 		/// (optional, returns trailing twelve months (TTM) for the income statement, cash flow statement and calculations, and 
