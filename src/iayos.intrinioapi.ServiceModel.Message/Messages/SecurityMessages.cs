@@ -11,18 +11,18 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecuritiesMasterList : Request, IReturn<GetSecuritiesMasterListResponse>
+	public class GetSecuritiesMasterList : RequestMany, IReturn<GetSecuritiesMasterListResponse>
 	{
 	}
 
-	public class GetSecuritiesMasterListResponse : Response<List<SecurityDetailDto>>
+	public class GetSecuritiesMasterListResponse : ResponseMany<SecurityDetailDto>
 	{
 	}
 
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecurityDetails : Request, IReturn<GetSecurityDetailsResponse>
+	public class GetSecurityDetails : RequestMany, IReturn<GetSecurityDetailsResponse>
 	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
@@ -50,7 +50,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public DateTime? LastCrspAdjDate_IaYoS { get; set; }
 	}
 
-	public class GetSecurityDetailsResponse : Response<List<SecurityDetailDto>>
+	public class GetSecurityDetailsResponse : ResponseMany<SecurityDetailDto>
 	{
 	}
 
@@ -59,7 +59,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// Massively detailed dataset when searching for particular securities
 	/// </summary>
 	[Route("/securities/search", HttpMethods.Get)]
-	public class SearchSecurities : Request, IReturn<SearchSecuritiesResponse>
+	public class SearchSecurities : RequestMany, IReturn<SearchSecuritiesResponse>
 	{
 
 		/// <summary>
@@ -94,7 +94,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class SearchSecuritiesResponse : Response<List<SecurityScreenerDetailDto>>
+	public class SearchSecuritiesResponse : ResponseMany<SecurityScreenerDetailDto>
 	{
 	}
 
@@ -113,7 +113,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// http://docs.intrinio.com/#endpoint151
 	/// </summary>
 	[Route("/securities/institutional_ownership", HttpMethods.Get)]
-	public class GetSecurityInstitutionalOwners : Request, IReturn<GetSecurityInstitutionalOwnersResponse>
+	public class GetSecurityInstitutionalOwners : RequestMany, IReturn<GetSecurityInstitutionalOwnersResponse>
 	{
 
 		/// <summary>
@@ -130,5 +130,5 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string cik { get; set; }
 	}
 
-	public class GetSecurityInstitutionalOwnersResponse : Response<List<SecurityInstitutionalOwnerDetailsDto>> { }
+	public class GetSecurityInstitutionalOwnersResponse : ResponseMany<SecurityInstitutionalOwnerDetailsDto> { }
 }

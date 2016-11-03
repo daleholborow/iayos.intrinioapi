@@ -4,6 +4,7 @@ using iayos.intrinioapi.servicemodel.message.Messages;
 using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
+using Xunit.Sdk;
 
 namespace iayos.intrinioapi.Api.Test
 {
@@ -33,12 +34,14 @@ namespace iayos.intrinioapi.Api.Test
 			ApiClient = new IntrinioClient(username, password);
 		}
 
+		#region Master Data queries
 
 		[Fact]
 		public void CanQueryMasterDataListForCompanies()
 		{
 			// Currently working
-			var getCompaniesResponse = ApiClient.GetMasterCompaniesList(new GetCompaniesMasterList { });
+			var response = ApiClient.GetMasterCompaniesList(new GetCompaniesMasterList { });
+			Assert.True(response.data.Count > 0);
 		}
 
 
@@ -46,7 +49,8 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForSecurities()
 		{
 			// Currently failing because empty parameter values cause internal server error
-			var getSecuritiesResponse = ApiClient.GetMasterSecuritiesList(new GetSecuritiesMasterList { });
+			var response = ApiClient.GetMasterSecuritiesList(new GetSecuritiesMasterList { });
+			Assert.True(response.data.Count > 0);
 		}
 
 
@@ -54,7 +58,8 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForIndices()
 		{
 			// Currently working
-			var getIndicesResponse = ApiClient.GetMasterIndicesList(new GetIndicesMasterList { });
+			var response = ApiClient.GetMasterIndicesList(new GetIndicesMasterList { });
+			Assert.True(response.data.Count > 0);
 		}
 
 
@@ -62,40 +67,61 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanQueryMasterDataListForOwners()
 		{
 			// Currently failing with error about insufficient permissions
-			var getOwnerResponse = ApiClient.GetMasterOwnersList(new GetOwnersMasterList { });
+			var response = ApiClient.GetMasterOwnersList(new GetOwnersMasterList { });
+			Assert.True(response.data.Count > 0);
 		}
 
+		#endregion
 
-		[Fact]
-		public void CanGetCompanyDetails()
+
+		/// <summary>
+		/// Can load all companies that match some conditions
+		/// </summary>
+		[Theory]
+		[InlineData(null, true)]
+		[InlineData("thereisnowaythiscompanyexists", false)]
+		public void CanGetCompanyDetails(string searchQuery, bool expectResults)
 		{
-			var request = new GetCompanyDetails
-			{
-
-			};
+			var request = new GetCompanyDetails { query = searchQuery };
 			var response = ApiClient.GetCompanyDetails(request);
+			Assert.True(response.data.Count > 0 == expectResults);
 		}
 
 
 		[Fact]
 		public void CanGetSecurityDetails()
 		{
-			var request = new GetSecurityDetails
-			{
-
-			};
+			var request = new GetSecurityDetails {};
 			var response = ApiClient.GetSecurityDetails(request);
+			Assert.True(response.data.Count > 0);
 		}
 
+
+		/// <summary>
+		/// Test that we can get back a COLLECTION of indices
+		/// </summary>
 		[Fact]
 		public void CanGetIndexDetails()
 		{
-			var request = new GetIndexDetails { identifier = "$TA100", type = IndexType.stock_market };
-			//var request = new GetIndexDetails {identifier = "$SPX" };
-			//var request = new GetIndexDetails {};
-			var tet = request.ToGetUrl();
+			var request = new GetIndexDetails { type = IndexType.stock_market };
 			var response = ApiClient.GetIndexDetails(request);
-	}
+			Assert.False(response.IsErrorResponse());
+			Assert.True(response.data.Count > 0);
+		}
+
+
+		/// <summary>
+		/// Can get single index by its unique Intrinio code
+		/// </summary>
+		[Fact]
+		public void CanGetSingleIndexDetails()
+		{
+			var request = new GetSingleIndexDetails { identifier = "$TA100" };
+			var tet = request.ToGetUrl();
+			var response = ApiClient.GetSingleIndexDetails(request);
+			Assert.True(response != null);
+			Assert.True(response.symbol == request.identifier);
+		}
 
 
 		[Fact]

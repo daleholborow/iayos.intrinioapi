@@ -7,7 +7,7 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 	[Route("/prices", HttpMethods.Get)]
-	public class GetPrices : Request, IReturn<GetPricesResponse>
+	public class GetPrices : RequestMany, IReturn<GetPricesResponse>
 	{
 
 		/// <summary>
@@ -69,7 +69,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetPricesResponse : Response<List<PriceDto>>
+	public class GetPricesResponse : ResponseMany<PriceDto>
 	{
 	}
 

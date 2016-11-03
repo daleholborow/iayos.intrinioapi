@@ -32,7 +32,7 @@ namespace iayos.intrinioapi
 		#region Generic methods
 
 		/// <summary>
-		/// 
+		/// Get a response that is simply an instance of a single record (i.e. a DTO)
 		/// </summary>
 		/// <typeparam name="TRequest"></typeparam>
 		/// <typeparam name="TResponse"></typeparam>
@@ -48,9 +48,9 @@ namespace iayos.intrinioapi
 		///	  webEx.ResponseStatus    = (your populated Response Status DTO)
 		///	  webEx.GetFieldErrors()  = (individual errors for each field if any)</exception>
 		/// <returns></returns>
-		private TResponse BaseUrlGet<TRequest, TResponse>(TRequest request)
-			where TRequest : Request
-			where TResponse : new()
+		private TResponse GetSingle<TRequest, TResponse>(TRequest request)
+			where TRequest : IRequestSingle
+			where TResponse : IResponseSingle
 		{
 			return _jsonClient.Get<TResponse>(request);
 			//try
@@ -66,6 +66,32 @@ namespace iayos.intrinioapi
 		}
 
 
+		/// <summary>
+		/// Get a response that is a payload object, containing a collection of data and metadata about that collection
+		/// </summary>
+		/// <typeparam name="TRequest"></typeparam>
+		/// <typeparam name="TResponse"></typeparam>
+		/// <param name="request"></param>
+		/// <exception cref="WebServiceException">
+		///  Eg:
+		///   webEx.StatusCode        = 400
+		///	  webEx.StatusDescription = ArgumentNullException
+		///	  webEx.ErrorCode         = ArgumentNullException
+		///	  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
+		///	  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
+		///	  webEx.ResponseDto       = (your populated Response DTO)
+		///	  webEx.ResponseStatus    = (your populated Response Status DTO)
+		///	  webEx.GetFieldErrors()  = (individual errors for each field if any)</exception>
+		/// <returns></returns>
+		private TResponse GetMany<TRequest, TResponse>(TRequest request)
+			where TRequest : IRequestMany
+			where TResponse : IResponseMany
+		{
+			return _jsonClient.Get<TResponse>(request);
+		}
+
+
+		/*
 		/// <summary>
 		/// 
 		/// </summary>
@@ -84,11 +110,12 @@ namespace iayos.intrinioapi
 		///	  webEx.GetFieldErrors()  = (individual errors for each field if any)</exception>
 		/// <returns></returns>
 		private TResponse BaseUrlPost<TRequest, TResponse>(TRequest request)
-			where TRequest : Request
+			where TRequest : RequestMany
 			where TResponse : new()
 		{
 			return _jsonClient.Post<TResponse>(request);
 		}
+		*/
 
 		#endregion
 
@@ -102,7 +129,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetCompaniesMasterListResponse GetMasterCompaniesList(GetCompaniesMasterList request)
 		{
-			return BaseUrlGet<GetCompaniesMasterList, GetCompaniesMasterListResponse>(request);
+			return GetMany<GetCompaniesMasterList, GetCompaniesMasterListResponse>(request);
 		}
 
 
@@ -113,7 +140,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetSecuritiesMasterListResponse GetMasterSecuritiesList(GetSecuritiesMasterList request)
 		{
-			return BaseUrlGet<GetSecuritiesMasterList, GetSecuritiesMasterListResponse>(request);
+			return GetMany<GetSecuritiesMasterList, GetSecuritiesMasterListResponse>(request);
 		}
 
 
@@ -124,7 +151,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetIndicesMasterListResponse GetMasterIndicesList(GetIndicesMasterList request)
 		{
-			return BaseUrlGet<GetIndicesMasterList, GetIndicesMasterListResponse>(request);
+			return GetMany<GetIndicesMasterList, GetIndicesMasterListResponse>(request);
 		}
 
 
@@ -135,13 +162,26 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetOwnersMasterListResponse GetMasterOwnersList(GetOwnersMasterList request)
 		{
-			return BaseUrlGet<GetOwnersMasterList, GetOwnersMasterListResponse>(request);
+			return GetMany<GetOwnersMasterList, GetOwnersMasterListResponse>(request);
 		}
 
 		#endregion
 
 
 		#region U.S. Public Company Data Feed
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#companies
+		/// Returns company list and information for all companies covered by Intrinio.
+		/// </summary>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		public GetSingleCompanyDetailsResponse GetSingleCompanyDetails(GetSingleCompanyDetails request)
+		{
+			return GetSingle<GetSingleCompanyDetails, GetSingleCompanyDetailsResponse>(request);
+		}
+
 
 		/// <summary>
 		/// http://docs.intrinio.com/#companies
@@ -151,7 +191,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetCompanyDetailsResponse GetCompanyDetails(GetCompanyDetails request)
 		{
-			return BaseUrlGet<GetCompanyDetails, GetCompanyDetailsResponse>(request);
+			return GetMany<GetCompanyDetails, GetCompanyDetailsResponse>(request);
 		}
 
 
@@ -163,7 +203,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetSecurityDetailsResponse GetSecurityDetails(GetSecurityDetails request)
 		{
-			return BaseUrlGet<GetSecurityDetails, GetSecurityDetailsResponse>(request);
+			return GetMany<GetSecurityDetails, GetSecurityDetailsResponse>(request);
 		}
 
 
@@ -174,7 +214,18 @@ namespace iayos.intrinioapi
 		/// <param name="request"></param>
 		public GetIndexDetailsResponse GetIndexDetails(GetIndexDetails request)
 		{
-			return BaseUrlGet<GetIndexDetails, GetIndexDetailsResponse>(request);
+			return GetMany<GetIndexDetails, GetIndexDetailsResponse>(request);
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#indices47
+		/// Returns SINGLE index
+		/// </summary>
+		/// <param name="request"></param>
+		public GetSingleIndexDetailsResponse GetSingleIndexDetails(GetSingleIndexDetails request)
+		{
+			return GetSingle<GetSingleIndexDetails, GetSingleIndexDetailsResponse>(request);
 		}
 
 
@@ -187,7 +238,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public SearchSecuritiesResponse SearchSecurities(SearchSecurities request)
 		{
-			return BaseUrlGet<SearchSecurities, SearchSecuritiesResponse>(request);
+			return GetMany<SearchSecurities, SearchSecuritiesResponse>(request);
 		}
 
 
@@ -203,7 +254,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public SearchDataPointsResponse SearchDataPoints(SearchDataPoints request)
 		{
-			return BaseUrlGet<SearchDataPoints, SearchDataPointsResponse>(request);
+			return GetMany<SearchDataPoints, SearchDataPointsResponse>(request);
 		}
 
 
@@ -219,7 +270,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public SearchHistoricalDataResponse SearchHistoricalData(SearchHistoricalData request)
 		{
-			return BaseUrlGet<SearchHistoricalData, SearchHistoricalDataResponse>(request);
+			return GetMany<SearchHistoricalData, SearchHistoricalDataResponse>(request);
 		}
 
 
@@ -235,7 +286,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetPricesResponse GetPrices(GetPrices request)
 		{
-			return BaseUrlGet<GetPrices, GetPricesResponse>(request);
+			return GetMany<GetPrices, GetPricesResponse>(request);
 		}
 
 
@@ -247,7 +298,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetCompanySecFilingsResponse GetCompanySecFilings(GetCompanySecFilings request)
 		{
-			return BaseUrlGet<GetCompanySecFilings, GetCompanySecFilingsResponse>(request);
+			return GetMany<GetCompanySecFilings, GetCompanySecFilingsResponse>(request);
 		}
 
 
@@ -259,7 +310,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetCompanyNewsResponse GetCompanyNews(GetCompanyNews request)
 		{
-			return BaseUrlGet<GetCompanyNews, GetCompanyNewsResponse>(request);
+			return GetMany<GetCompanyNews, GetCompanyNewsResponse>(request);
 		}
 
 
@@ -272,7 +323,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetStandardizedFundamentalsResponse GetStandardizedFundamentals(GetStandardizedFundamentals request)
 		{
-			return BaseUrlGet<GetStandardizedFundamentals, GetStandardizedFundamentalsResponse>(request);
+			return GetMany<GetStandardizedFundamentals, GetStandardizedFundamentalsResponse>(request);
 		}
 
 
@@ -284,7 +335,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetStandardizedTagsResponse GetStandardizedTags(GetStandardizedTags request)
 		{
-			return BaseUrlGet<GetStandardizedTags, GetStandardizedTagsResponse>(request);
+			return GetMany<GetStandardizedTags, GetStandardizedTagsResponse>(request);
 		}
 
 
@@ -301,7 +352,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetStandardizedFinancialsResponse GetStandardizedFinancials(GetStandardizedFinancials request)
 		{
-			return BaseUrlGet<GetStandardizedFinancials, GetStandardizedFinancialsResponse>(request);
+			return GetMany<GetStandardizedFinancials, GetStandardizedFinancialsResponse>(request);
 		}
 
 
@@ -315,7 +366,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetAsReportedFundamentalsResponse GetAsReportedFundamentals(GetAsReportedFundamentals request)
 		{
-			return BaseUrlGet<GetAsReportedFundamentals, GetAsReportedFundamentalsResponse>(request);
+			return GetMany<GetAsReportedFundamentals, GetAsReportedFundamentalsResponse>(request);
 		}
 
 
@@ -327,7 +378,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetAsReportedXbrlTagsResponse GetAsReportedXbrlTags(GetAsReportedXbrlTags request)
 		{
-			return BaseUrlGet<GetAsReportedXbrlTags, GetAsReportedXbrlTagsResponse>(request);
+			return GetMany<GetAsReportedXbrlTags, GetAsReportedXbrlTagsResponse>(request);
 		}
 
 
@@ -339,7 +390,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetAsReportedFinancialsResponse GetAsReportedFinancials(GetAsReportedFinancials request)
 		{
-			return BaseUrlGet<GetAsReportedFinancials, GetAsReportedFinancialsResponse>(request);
+			return GetMany<GetAsReportedFinancials, GetAsReportedFinancialsResponse>(request);
 		}
 
 		#endregion
@@ -356,7 +407,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetInsiderOwnersResponse GetInsiderOwners(GetInsiderOwners request)
 		{
-			return BaseUrlGet<GetInsiderOwners, GetInsiderOwnersResponse>(request);
+			return GetMany<GetInsiderOwners, GetInsiderOwnersResponse>(request);
 		}
 
 
@@ -369,7 +420,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetCompanyInsiderTransactionsResponse GetCompanyInsiderTransactions(GetCompanyInsiderTransactions request)
 		{
-			return BaseUrlGet<GetCompanyInsiderTransactions, GetCompanyInsiderTransactionsResponse>(request);
+			return GetMany<GetCompanyInsiderTransactions, GetCompanyInsiderTransactionsResponse>(request);
 		}
 
 
@@ -380,7 +431,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetCompanyInsiderOwnershipResponse GetCompanyInsiderOwnership(GetCompanyInsiderOwnership request)
 		{
-			return BaseUrlGet<GetCompanyInsiderOwnership, GetCompanyInsiderOwnershipResponse>(request);
+			return GetMany<GetCompanyInsiderOwnership, GetCompanyInsiderOwnershipResponse>(request);
 		}
 
 
@@ -394,7 +445,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetOwnerInsiderTransactionsResponse GetOwnerInsiderTransactions(GetOwnerInsiderTransactions request)
 		{
-			return BaseUrlGet<GetOwnerInsiderTransactions, GetOwnerInsiderTransactionsResponse>(request);
+			return GetMany<GetOwnerInsiderTransactions, GetOwnerInsiderTransactionsResponse>(request);
 		}
 
 
@@ -407,7 +458,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetOwnerInsiderHoldingsResponse GetOwnerInsiderHoldings(GetOwnerInsiderHoldings request)
 		{
-			return BaseUrlGet<GetOwnerInsiderHoldings, GetOwnerInsiderHoldingsResponse>(request);
+			return GetMany<GetOwnerInsiderHoldings, GetOwnerInsiderHoldingsResponse>(request);
 		}
 
 		#endregion
@@ -423,7 +474,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetInstitutionalOwnersResponse GetInstitutionalOwners(GetInstitutionalOwners request)
 		{
-			return BaseUrlGet<GetInstitutionalOwners, GetInstitutionalOwnersResponse>(request);
+			return GetMany<GetInstitutionalOwners, GetInstitutionalOwnersResponse>(request);
 		}
 
 
@@ -434,7 +485,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetOwnerInstitutionalHoldingsResponse GetOwnerInstitutionalHoldings(GetOwnerInstitutionalHoldings request)
 		{
-			return BaseUrlGet<GetOwnerInstitutionalHoldings, GetOwnerInstitutionalHoldingsResponse>(request);
+			return GetMany<GetOwnerInstitutionalHoldings, GetOwnerInstitutionalHoldingsResponse>(request);
 		}
 
 
@@ -445,7 +496,7 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetSecurityInstitutionalOwnersResponse GetSecurityInstitutionalOwners(GetSecurityInstitutionalOwners request)
 		{
-			return BaseUrlGet<GetSecurityInstitutionalOwners, GetSecurityInstitutionalOwnersResponse>(request);
+			return GetMany<GetSecurityInstitutionalOwners, GetSecurityInstitutionalOwnersResponse>(request);
 		}
 
 		#endregion

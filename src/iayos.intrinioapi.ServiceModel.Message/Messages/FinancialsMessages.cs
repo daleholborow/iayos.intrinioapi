@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
@@ -8,7 +7,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/financials/standardized", HttpMethods.Get)]
-	public class GetStandardizedFinancials : Request, IReturn<GetStandardizedFinancialsResponse> 
+	public class GetStandardizedFinancials : RequestMany, IReturn<GetStandardizedFinancialsResponse> 
 	{
 
 		/// <summary>
@@ -68,13 +67,13 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedFinancialsResponse : Response<List<FinancialDataPointDto>>
+	public class GetStandardizedFinancialsResponse : ResponseMany<FinancialDataPointDto>
 	{
 	}
 
 
 	[Route("/financials/reported", HttpMethods.Get)]
-	public class GetAsReportedFinancials : Request, IReturn<GetAsReportedFinancialsResponse>
+	public class GetAsReportedFinancials : RequestMany, IReturn<GetAsReportedFinancialsResponse>
 	{
 
 		/// <summary>
@@ -135,7 +134,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedFinancialsResponse : Response<List<XbrlTagDto>>
+	public class GetAsReportedFinancialsResponse : ResponseMany<XbrlTagDto>
 	{
 	}
 

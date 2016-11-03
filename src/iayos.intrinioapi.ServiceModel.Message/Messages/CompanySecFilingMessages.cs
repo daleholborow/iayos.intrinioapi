@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using iayos.intrinioapi.servicemodel.dto;
+﻿using iayos.intrinioapi.servicemodel.dto;
 using ServiceStack;
 
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/companies/filings", HttpMethods.Get)]
-	public class GetCompanySecFilings : Request, IReturn<GetCompanySecFilingsResponse>
+	public class GetCompanySecFilings : RequestMany, IReturn<GetCompanySecFilingsResponse>
 	{
 		/// <summary>
 		/// the ticker or identifier for the data point
@@ -21,7 +20,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	
 
-	public class GetCompanySecFilingsResponse : Response<List<CompanySecFilingDto>>
+	public class GetCompanySecFilingsResponse : ResponseMany<CompanySecFilingDto>
 	{
 	}
 }
