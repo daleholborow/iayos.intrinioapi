@@ -3,7 +3,7 @@
 	public enum TagTemplate
 	{
 		/// <summary>
-		/// Default: Did you forget to specify which FinancialStatement type to use? I bet you did...
+		/// Default: Did you forget to specify which TagTemplat type to use? I bet you did...
 		/// </summary>
 		IaYoS_Warning_Unset,
 

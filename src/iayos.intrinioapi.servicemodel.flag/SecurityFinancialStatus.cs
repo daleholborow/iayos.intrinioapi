@@ -3,6 +3,11 @@
 	public enum SecurityFinancialStatus
 	{
 		/// <summary>
+		/// Default: Did you forget to specify which SecurityFinancialStatus to use? I bet you did...
+		/// </summary>
+		IaYoS_Warning_Unset,
+
+		/// <summary>
 		/// Deficient: Issuer Failed to Meet NASDAQ Continued Listing Requirements, 
 		/// </summary>
 		D,

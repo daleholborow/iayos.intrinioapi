@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using iayos.intrinioapi.servicemodel.flag;
 using iayos.intrinioapi.servicemodel.message.Messages;
+using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
 
@@ -89,12 +90,12 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetIndexDetails()
 		{
-			var request = new GetIndexDetails
-			{
-
-			};
+			var request = new GetIndexDetails { identifier = "$TA100", type = IndexType.stock_market };
+			//var request = new GetIndexDetails {identifier = "$SPX" };
+			//var request = new GetIndexDetails {};
+			var tet = request.ToGetUrl();
 			var response = ApiClient.GetIndexDetails(request);
-		}
+	}
 
 
 		[Fact]

@@ -40,7 +40,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// <summary>
 		/// (optional, returns full list of indices otherwise) - the type of indices specified: stock_market
 		/// </summary>
-		public IndexType type { get; set; } = IndexType.full;
+		public IndexType? type { get; set; } //= IndexType.full;
 	}
 
 	public class GetIndexDetailsResponse : Response<List<IndexDetailDto>>
