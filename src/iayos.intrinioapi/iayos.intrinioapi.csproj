@@ -60,6 +60,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Dto\iayos.intrinioapi.servicemodel.dto.csproj">
+      <Project>{2edac755-0816-47ee-9d32-2b4503f4cbfa}</Project>
+      <Name>iayos.intrinioapi.servicemodel.dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.csproj">
+      <Project>{7a1b9a08-6e39-4754-bff6-c9c36eb61eaf}</Project>
+      <Name>iayos.intrinioapi.servicemodel.flag</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iayos.intrinioapi.ServiceModel.Message\iayos.intrinioapi.servicemodel.message.csproj">
       <Project>{E06DD7A0-652E-4857-894D-345298185C5F}</Project>
       <Name>iayos.intrinioapi.servicemodel.message</Name>

@@ -62,7 +62,8 @@
     <Compile Include="Messages\SecurityMessages.cs" />
     <Compile Include="Messages\TagMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResponseMessage.cs" />
+    <Compile Include="RequestMessages.cs" />
+    <Compile Include="ResponseMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

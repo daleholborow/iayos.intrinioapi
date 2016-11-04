@@ -1,4 +1,6 @@
-﻿namespace iayos.intrinioapi.servicemodel.dto
+﻿using iayos.intrinioapi.servicemodel.flag;
+
+namespace iayos.intrinioapi.servicemodel.dto
 {
 
 	/// <summary>
@@ -14,7 +16,7 @@
 		/// <summary>
 		/// the requested standardized tag or series ID
 		/// </summary>
-		public string item { get; set; }
+		public DataPointTag item { get; set; }
 
 		/// <summary>
 		/// the value of the Intrinio tag of the financial data point

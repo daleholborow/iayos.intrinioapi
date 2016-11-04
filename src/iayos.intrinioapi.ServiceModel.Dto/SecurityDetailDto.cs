@@ -54,29 +54,29 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the round lot size for the security.
 		/// </summary>
-		public int round_lot_size { get; set; }
+		public int? round_lot_size { get; set; }
 
 		/// <summary>
 		/// indicates when an issuer has failed to submit its regulatory filings on a timely basis, has failed 
 		/// to meet NASDAQ’s continuing listing standards, and/or has filed for bankruptcy. 
 		/// </summary>
-		public SecurityFinancialStatus financial_status { get; set; }
+		public SecurityFinancialStatus? financial_status { get; set; }
 
 		/// <summary>
 		/// true if the subject security is the primary security for the company. If a security is the default, 
 		/// the ticker symbol for the security is the same as the ticker for the company (see /Companies endpoint).
 		/// </summary>
-		public bool primary_security { get; set; }
+		public bool? primary_security { get; set; }
 
 		/// <summary>
 		/// if the security is no longer traded on public exchanges, the security will be considered delisted 
 		/// and the security no longer will report pricing data.
 		/// </summary>
-		public bool delisted_security { get; set; }
+		public bool? delisted_security { get; set; }
 
 		/// <summary>
 		/// the last recorded date (“YYYY-MM-DD”) of an CRSP adjustment made to prior prices due to a stock split or dividend event.
 		/// </summary>
-		public DateTime last_crsp_adj_date { get; set; }
+		public DateTime? last_crsp_adj_date { get; set; }
 	}
 }
