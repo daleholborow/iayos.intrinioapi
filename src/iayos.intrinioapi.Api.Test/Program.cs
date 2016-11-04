@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using iayos.intrinioapi.servicemodel.flag;
 using iayos.intrinioapi.servicemodel.message.Messages;
@@ -102,7 +101,7 @@ namespace iayos.intrinioapi.Api.Test
 		[InlineData("thereisnowaythiscompanyexists", false)]
 		public void CanGetMultipleCompanyDetails(string searchQuery, bool expectResults)
 		{
-			var request = new GetCompanyDetails { query = searchQuery };
+			var request = new GetCompaniesDetails { query = searchQuery };
 			var response = ApiClient.GetCompanyDetails(request);
 			Assert.True(response.data.Count > 0 == expectResults);
 		}
@@ -116,10 +115,10 @@ namespace iayos.intrinioapi.Api.Test
 		[InlineData("AA", true)]
 		public void CanGetSecurityDetailsByTicker(string ticker, bool expectResults)
 		{
-			var request = new GetSecurityDetailsByCompany { identifier = ticker };
+			var request = new GetSecuritiesDetailsByCompany { identifier = ticker };
 			var requestUrl = request.ToGetUrl();
-			var responseList = ApiClient.GetSingleSecurityDetails(request);
-			Assert.True((responseList == null) == !expectResults);
+			var responseList = ApiClient.GetSecuritiesDetailsByCompany(request);
+			Assert.True((responseList.IsNullOrEmpty()) == !expectResults);
 			if (!expectResults) return;
 			foreach (var security in responseList)
 			{
@@ -132,14 +131,14 @@ namespace iayos.intrinioapi.Api.Test
 		/// Can load all securities that match query conditions
 		/// </summary>
 		[Theory]
-		//[InlineData(null, true)]
-		//[InlineData("AA", true)]
+		[InlineData(null, true)]
+		[InlineData("AA", true)]
 		[InlineData("thereisnowaythissecurityexists", false)]
 		public void CanGetMultipleSecurityDetailsForMultipleCompanies(string searchQuery, bool expectResults)
 		{
 			var request = new GetSecurityDetails { query = searchQuery };
 			var requestUrl = request.ToGetUrl();
-			var response = ApiClient.GetSecurityDetails(request);
+			var response = ApiClient.GetSecuritiesDetails(request);
 			Assert.True((response == null) == !expectResults);
 			Assert.True(response.data.Count > 0 == expectResults);
 		}
@@ -165,8 +164,8 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetIndexDetails()
 		{
-			var request = new GetIndexDetails { type = IndexType.stock_market };
-			var response = ApiClient.GetIndexDetails(request);
+			var request = new GetIndicesDetails { type = IndexType.stock_market };
+			var response = ApiClient.GetIndicesDetails(request);
 			Assert.False(response.IsErrorResponse());
 			Assert.True(response.data.Count > 0);
 		}

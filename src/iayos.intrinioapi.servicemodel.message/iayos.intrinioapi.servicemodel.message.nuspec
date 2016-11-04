@@ -12,7 +12,7 @@
 		Request/Response messages used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		Finalised all Insider Transactions and Institutional Holdings functionality
+		Massive refactor to support iayos.intrinioapi base package changes
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>

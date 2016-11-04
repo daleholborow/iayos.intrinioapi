@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;

@@ -214,9 +214,9 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetCompanyDetailsResponse GetCompanyDetails(GetCompanyDetails request)
+		public GetCompaniesDetailsResponse GetCompanyDetails(GetCompaniesDetails request)
 		{
-			return GetMetaList<GetCompanyDetails, GetCompanyDetailsResponse>(request);
+			return GetMetaList<GetCompaniesDetails, GetCompaniesDetailsResponse>(request);
 		}
 
 
@@ -226,21 +226,21 @@ namespace iayos.intrinioapi
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetSecurityDetailsByCompanyResponse GetSingleSecurityDetails(GetSecurityDetailsByCompany request)
+		public GetSecuritiesDetailsByCompanyResponse GetSecuritiesDetailsByCompany(GetSecuritiesDetailsByCompany request)
 		{
-			return GetList<GetSecurityDetailsByCompany, GetSecurityDetailsByCompanyResponse>(request);
+			return GetList<GetSecuritiesDetailsByCompany, GetSecuritiesDetailsByCompanyResponse>(request);
 		}
 
 
 		/// <summary>
 		/// http://docs.intrinio.com/#securities
-		///Returns security list and information for all securities covered by Intrinio.
+		/// Returns security list and information for all securities covered by Intrinio.
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
-		public GetSecurityDetailsResponse GetSecurityDetails(GetSecurityDetails request)
+		public GetSecuritiesDetailsResponse GetSecuritiesDetails(GetSecurityDetails request)
 		{
-			return GetMetaList<GetSecurityDetails, GetSecurityDetailsResponse>(request);
+			return GetMetaList<GetSecurityDetails, GetSecuritiesDetailsResponse>(request);
 		}
 
 
@@ -260,9 +260,9 @@ namespace iayos.intrinioapi
 		/// Returns indices list and information for all indices covered by Intrinio.
 		/// </summary>
 		/// <param name="request"></param>
-		public GetIndexDetailsResponse GetIndexDetails(GetIndexDetails request)
+		public GetIndicesDetailsResponse GetIndicesDetails(GetIndicesDetails request)
 		{
-			return GetMetaList<GetIndexDetails, GetIndexDetailsResponse>(request);
+			return GetMetaList<GetIndicesDetails, GetIndicesDetailsResponse>(request);
 		}
 		
 

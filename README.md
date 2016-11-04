@@ -14,25 +14,29 @@ MiniVersion - hotfixes for urgent release patches
 
 I will try my absolute best to make sure that these rules are followed, but don't hit me with sticks if occasionally there are hiccups (late nights and not enough coffee)
 
-Run the following command in the Package Manager Console:
-
-iayos.intrinioapi is [available on NuGet](https://www.nuget.org/packages/iayos.intrinioapi/) as `iayos.intrinioapi`. Install it from NuGet Package Manager Console with:
+Conveniently, iayos.intrinioapi is [available on NuGet](https://www.nuget.org/packages/iayos.intrinioapi/) as `iayos.intrinioapi`. Install it from NuGet Package Manager Console with:
 	
 ~~~~
 Install-Package iayos.intrinioapi
 ~~~~
 
-Other than some refactoring and minor bug fixes (as I discover them), work will likely largely cease as I have little need for the other data feeds (Economic Data, Sector, bank and real-time prices I am unlikely to need for my particular strategies, and I'm time-poor - sorry guys!).
+Other than some refactoring and minor bug fixes (as I discover them), work to wrap additional endpoints will likely largely cease as I have little need for the other data feeds (Economic Data, Sector, bank and real-time prices I am unlikely to need for my particular strategies, and I'm time-poor - sorry guys!).
 
 That said, anyone who wants those features should be able to easily see the style of the code layout and structure, and I welcome any contributions and pull-requests!
 
-Library is dead simple, check out the .Test project for initial examples of how to query Intrinio api. All requests inherit the Request abstract class, and all responses Response<SomeType>. Doco is copied from Intrinio for reference, but their site is authoritive.
+Library is dead simple, check out the .Test project for initial examples of how to query Intrinio api. 
 
-E.g: query http://docs.intrinio.com/#companies and get back a class wrapping the payload for for http://docs.intrinio.com/#return-values42
+Generally speaking, you GetSingleOfSomething(), GetPluralsOfSomething(), SearchSomething()... most methods take that general form, depending on what data they are targetting. Note that sometimes Intrinio return a collection as an array, and sometimes they bundle collections into a "data" property and include other metadata for paging purposes.
+
+All requests will therefore inherit the RequestSingle or RequestMultiple interfaces as required, and similarly all responses inherit a SingleResponse, ListResponse, MetaListResponse... Get familiar with Intrinion and you'll see. All doco is copied from Intrinio for reference, but their site is authoritive.
+
+E.g: query http://docs.intrinio.com/#indices54 and get back a class wrapping the payload for http://docs.intrinio.com/#indices47
 
 ~~~~
 var intrinio = new IntrinioClient(username, password);
-var companiesResponse = intrinio.GetMasterCompaniesList(new GetCompaniesMasterList { });
+var request = new GetSingleIndexDetails { identifier = "$TA100" };
+var requestUrl = request.ToGetUrl(); // where we'll be GETTING data from, for interest's sake
+var response = ApiClient.GetSingleIndexDetails(request);
 ~~~~
 
 voila!

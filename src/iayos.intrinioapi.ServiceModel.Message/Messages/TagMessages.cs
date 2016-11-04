@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
@@ -6,6 +7,9 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
+	/// <summary>
+	/// http://docs.intrinio.com/#standardized-tags-and-labels
+	/// </summary>
 	[Route("/tags/standardized", HttpMethods.Get)]
 	public class GetStandardizedTags : RequestList, IReturn<GetStandardizedTagsResponse>
 	{
@@ -39,6 +43,9 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	}
 
 
+	/// <summary>
+	/// http://docs.intrinio.com/#as-reported-xbrl-tags-and-labels
+	/// </summary>
 	[Route("/tags/reported", HttpMethods.Get)]
 	public class GetAsReportedXbrlTags : RequestList, IReturn<GetAsReportedXbrlTagsResponse>
 	{
@@ -82,13 +89,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set date using actual date object
 		/// </summary>
 		/// <seealso cref="date"/>
+		[IgnoreDataMember]
 		public DateTime? Date_IaYoS { get; set; }
 
 		/// <summary>
 		/// type (optional, must specify a date or must specify a fiscal year and fiscal period) - the type of periods requested - includes 
 		/// fiscal years for annual data, quarters for quarterly data and trailing twelve months for annual data on a quarterly basis: FY | QTR
 		/// </summary>
-		public FiscalPeriodAsReported type { get; set; }
+		public FiscalPeriodAsReported? type { get; set; }
 
 	}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
@@ -6,6 +7,9 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
+	/// <summary>
+	/// http://docs.intrinio.com/#standardized-fundamentals
+	/// </summary>
 	[Route("/fundamentals/standardized", HttpMethods.Get)]
 	public class GetStandardizedFundamentals : RequestList, IReturn<GetStandardizedFundamentalsResponse> 
 	{
@@ -19,7 +23,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// the financial statement requested, options include the income statement, balance sheet, statement of cash 
 		/// flows and calculated metrics and ratios: income_statement | balance_sheet | cash_flow_statement | calculations
 		/// </summary>
-		public FinancialStatement statement { get; set; }
+		public FinancialStatement statement { get; set; } = FinancialStatement.IaYoS_Warning_Unset;
 
 		/// <summary>
 		/// (optional, returns all available fundamentals) - the type of periods requested - includes fiscal years for 
@@ -45,6 +49,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set date using actual date object
 		/// </summary>
 		/// <seealso cref="date"/>
+		[IgnoreDataMember]
 		public DateTime? Date_IaYoS { get; set; }
 
 	}
@@ -55,6 +60,9 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 
 
+	/// <summary>
+	/// http://docs.intrinio.com/#as-reported-fundamentals
+	/// </summary>
 	[Route("/fundamentals/reported", HttpMethods.Get)]
 	public class GetAsReportedFundamentals : RequestList, IReturn<GetAsReportedFundamentalsResponse>
 	{
@@ -68,7 +76,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// the financial statement requested, options include the income statement, balance sheet, statement of 
 		/// cash flows and calculated metrics and ratios: income_statement | balance_sheet | cash_flow_statement | calculations
 		/// </summary>
-		public FinancialStatement statement { get; set; }
+		public FinancialStatement statement { get; set; } = FinancialStatement.IaYoS_Warning_Unset;
 
 		/*
 		 * sequence (optional, must specify a date or must specify a fiscal year and fiscal period) - the sequence of the requested fundamental 
@@ -91,6 +99,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set date using actual date object
 		/// </summary>
 		/// <seealso cref="date"/>
+		[IgnoreDataMember]
 		public DateTime? Date_IaYoS { get; set; }
 
 	}

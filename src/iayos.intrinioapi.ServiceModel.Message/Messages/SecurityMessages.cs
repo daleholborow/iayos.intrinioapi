@@ -21,7 +21,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecurityDetailsByCompany : RequestList, IReturn<GetSecurityDetailsByCompanyResponse>
+	public class GetSecuritiesDetailsByCompany : RequestList, IReturn<GetSecuritiesDetailsByCompanyResponse>
 	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
@@ -30,20 +30,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string identifier { get; set; }
 	}
 
-	public class GetSecurityDetailsByCompanyResponse : ResponseList<SecurityDetailDto>
+	public class GetSecuritiesDetailsByCompanyResponse : ResponseList<SecurityDetailDto>
 	{
 	}
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecurityDetails : RequestList, IReturn<GetSecurityDetailsResponse>
+	public class GetSecurityDetails : RequestList, IReturn<GetSecuritiesDetailsResponse>
 	{
-		///// <summary>
-		///// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
-		///// stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
-		///// </summary>
-		//public string identifier { get; set; }
-
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no query specified) - a string 
 		/// query search of security name or ticker symbol with the returned results being the relevant securities in compacted list format.
@@ -65,7 +59,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public DateTime? LastCrspAdjDate_IaYoS { get; set; }
 	}
 
-	public class GetSecurityDetailsResponse : ResponseMetaList<SecurityDetailDto>
+	public class GetSecuritiesDetailsResponse : ResponseMetaList<SecurityDetailDto>
 	{
 	}
 
