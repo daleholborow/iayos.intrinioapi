@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace iayos.intrinioapi.servicemodel.message
 {
@@ -16,10 +17,23 @@ namespace iayos.intrinioapi.servicemodel.message
 	}
 
 
+	public interface IResponseList : IResponse
+	{
+	}
+
+	public interface IResponseList<TDto> : IList<TDto>, IResponseList
+	{
+	}
+
+	public abstract class ResponseList<TDto> : List<TDto>, IResponseList<TDto>
+	{
+	}
+
+
 	/// <summary>
 	/// The base Response capturing many records returned
 	/// </summary>
-	public interface IResponseMany : IResponse
+	public interface IResponseMetaList : IResponse
 	{
 		int result_count { get; set; }
 
@@ -31,7 +45,7 @@ namespace iayos.intrinioapi.servicemodel.message
 	}
 
 
-	public interface IResponseMany<TDto> : IResponseMany
+	public interface IResponseMetaList<TDto> : IResponseMetaList
 	{
 		List<TDto> data { get; set; }
 	}
@@ -51,7 +65,7 @@ namespace iayos.intrinioapi.servicemodel.message
 	/// The base Response class where the result is bundled into a payload, with additional metadata, used for collections of results (paged, lists)
 	/// </summary>
 	/// <typeparam name="TDto"></typeparam>
-	public abstract class ResponseMany<TDto> : IResponseMany<TDto> where TDto : new()
+	public abstract class ResponseMetaList<TDto> : IResponseMetaList<TDto> where TDto : new()
 	{
 
 		public int result_count { get; set; }

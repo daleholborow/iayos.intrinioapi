@@ -4,18 +4,21 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
+	/// <summary>
+	/// http://docs.intrinio.com/#owner-master
+	/// </summary>
 	[Route("/owners", HttpMethods.Get)]
-	public class GetOwnersMasterList : RequestMany, IReturn<GetOwnersMasterListResponse>
+	public class GetOwnersMasterList : RequestList, IReturn<GetOwnersMasterListResponse>
 	{
 	}
 
-	public class GetOwnersMasterListResponse : ResponseMany<OwnerMasterDto>
+	public class GetOwnersMasterListResponse : ResponseMetaList<OwnerMasterDto>
 	{
 	}
 
 
 	[Route("/owners", HttpMethods.Get)]
-	public class GetInsiderOwners : RequestMany, IReturn<GetInsiderOwnersResponse>
+	public class GetInsiderOwners : RequestList, IReturn<GetInsiderOwnersResponse>
 	{
 
 		/// <summary>
@@ -38,14 +41,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string query { get; set; }
 	}
 
-	public class GetInsiderOwnersResponse : ResponseMany<OwnerDetailsDto> { }
+	public class GetInsiderOwnersResponse : ResponseMetaList<OwnerDetailsDto> { }
 
 
 	/// <summary>
 	/// http://docs.intrinio.com/#insider-transactions-by-company
 	/// </summary>
 	[Route("/companies/insider_transactions", HttpMethods.Get)]
-	public class GetCompanyInsiderTransactions : RequestMany, IReturn<GetCompanyInsiderTransactionsResponse>
+	public class GetCompanyInsiderTransactions : RequestList, IReturn<GetCompanyInsiderTransactionsResponse>
 	{
 		/// <summary>
 		/// ( (optional, must have company cik otherwise) - the stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
@@ -59,13 +62,13 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetCompanyInsiderTransactionsResponse : ResponseMany<CompanyInsiderTransactionDto> {}
+	public class GetCompanyInsiderTransactionsResponse : ResponseMetaList<CompanyInsiderTransactionDto> {}
 
 
 	/// <summary>
 	/// </summary>
 	[Route("/companies/insider_ownership", HttpMethods.Get)]
-	public class GetCompanyInsiderOwnership: RequestMany, IReturn<GetCompanyInsiderOwnershipResponse>
+	public class GetCompanyInsiderOwnership: RequestList, IReturn<GetCompanyInsiderOwnershipResponse>
 	{
 		/// <summary>
 		/// ( (optional, must have company cik otherwise) - the stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
@@ -79,14 +82,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetCompanyInsiderOwnershipResponse : ResponseMany<InsiderOwnerDto> { }
+	public class GetCompanyInsiderOwnershipResponse : ResponseMetaList<InsiderOwnerDto> { }
 
 
 	/// <summary>
 	/// http://docs.intrinio.com/#insider-transactions-by-owner
 	/// </summary>
 	[Route("/owners/insider_transactions", HttpMethods.Get)]
-	public class GetOwnerInsiderTransactions : RequestMany, IReturn<GetOwnerInsiderTransactionsResponse>
+	public class GetOwnerInsiderTransactions : RequestList, IReturn<GetOwnerInsiderTransactionsResponse>
 	{
 		/// <summary>
 		///  the Central Index Key issued by the SEC, which is the unique identifier all owner filings are issued under: CENTRAL INDEX KEY
@@ -94,14 +97,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string cik { get; set; }
 	}
 
-	public class GetOwnerInsiderTransactionsResponse : ResponseMany<OwnerInsiderTransactionDto> {}
+	public class GetOwnerInsiderTransactionsResponse : ResponseMetaList<OwnerInsiderTransactionDto> {}
 
 
 	/// <summary>
 	/// http://docs.intrinio.com/#parameters139
 	/// </summary>
 	[Route("/owners/insider_holdings", HttpMethods.Get)]
-	public class GetOwnerInsiderHoldings : RequestMany, IReturn<GetOwnerInsiderHoldingsResponse>
+	public class GetOwnerInsiderHoldings : RequestList, IReturn<GetOwnerInsiderHoldingsResponse>
 	{
 		/// <summary>
 		/// the Central Index Key issued by the SEC, which is the unique identifier all owner filings
@@ -109,14 +112,14 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string cik { get; set; }
 	}
 
-	public class GetOwnerInsiderHoldingsResponse : ResponseMany<InsiderHoldingDto> {}
+	public class GetOwnerInsiderHoldingsResponse : ResponseMetaList<InsiderHoldingDto> {}
 
 
 	/// <summary>
 	/// http://docs.intrinio.com/#owners142
 	/// </summary>
 	[Route("/owners", HttpMethods.Get)]
-	public class GetInstitutionalOwners : RequestMany, IReturn<GetInstitutionalOwnersResponse>
+	public class GetInstitutionalOwners : RequestList, IReturn<GetInstitutionalOwnersResponse>
 	{
 
 		/// <summary>
@@ -139,7 +142,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string query { get; set; }
 	}
 
-	public class GetInstitutionalOwnersResponse : ResponseMany<OwnerDetailsDto> { }
+	public class GetInstitutionalOwnersResponse : ResponseMetaList<OwnerDetailsDto> { }
 
 
 
@@ -148,7 +151,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// http://docs.intrinio.com/#owners142
 	/// </summary>
 	[Route("/owners", HttpMethods.Get)]
-	public class GetOwnerInstitutionalHoldings : RequestMany, IReturn<GetOwnerInstitutionalHoldingsResponse>
+	public class GetOwnerInstitutionalHoldings : RequestList, IReturn<GetOwnerInstitutionalHoldingsResponse>
 	{
 
 		/// <summary>
@@ -165,5 +168,5 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		
 	}
 
-	public class GetOwnerInstitutionalHoldingsResponse : ResponseMany<OwnerInstitutionalHoldingDto> {}
+	public class GetOwnerInstitutionalHoldingsResponse : ResponseMetaList<OwnerInstitutionalHoldingDto> {}
 }

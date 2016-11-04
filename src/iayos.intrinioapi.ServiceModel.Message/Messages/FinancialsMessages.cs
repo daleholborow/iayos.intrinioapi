@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
@@ -6,8 +7,11 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
+	/// <summary>
+	/// http://docs.intrinio.com/#standardized-financials
+	/// </summary>
 	[Route("/financials/standardized", HttpMethods.Get)]
-	public class GetStandardizedFinancials : RequestMany, IReturn<GetStandardizedFinancialsResponse> 
+	public class GetStandardizedFinancials : RequestList, IReturn<GetStandardizedFinancialsResponse> 
 	{
 
 		/// <summary>
@@ -19,7 +23,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// the financial statement requested, options include the income statement, balance sheet, statement of 
 		/// cash flows and calculated metrics and ratios: income_statement | balance_sheet | cash_flow_statement | calculations
 		/// </summary>
-		public FinancialStatement statement { get; set; }
+		public FinancialStatement statement { get; set; } = FinancialStatement.IaYoS_Warning_Unset;
 
 
 		/// <summary>
@@ -55,6 +59,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set date using actual date object
 		/// </summary>
 		/// <seealso cref="date"/>
+		[IgnoreDataMember]
 		public DateTime? Date_IaYoS { get; set; }
 
 		/*
@@ -67,13 +72,16 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedFinancialsResponse : ResponseMany<FinancialDataPointDto>
+	public class GetStandardizedFinancialsResponse : ResponseMetaList<FinancialDataPointDto>
 	{
 	}
 
-
+	
+	/// <summary>
+	/// http://docs.intrinio.com/#as-reported-financials
+	/// </summary>
 	[Route("/financials/reported", HttpMethods.Get)]
-	public class GetAsReportedFinancials : RequestMany, IReturn<GetAsReportedFinancialsResponse>
+	public class GetAsReportedFinancials : RequestList, IReturn<GetAsReportedFinancialsResponse>
 	{
 
 		/// <summary>
@@ -85,7 +93,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// the financial statement requested, options include the income statement, balance sheet, statement of 
 		/// cash flows and calculated metrics and ratios: income_statement | balance_sheet | cash_flow_statement | calculations
 		/// </summary>
-		public FinancialStatement statement { get; set; }
+		public FinancialStatement statement { get; set; } = FinancialStatement.IaYoS_Warning_Unset;
 
 
 		/// <summary>
@@ -121,6 +129,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set date using actual date object
 		/// </summary>
 		/// <seealso cref="date"/>
+		[IgnoreDataMember]
 		public DateTime? Date_IaYoS { get; set; }
 
 		/*
@@ -134,7 +143,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedFinancialsResponse : ResponseMany<XbrlTagDto>
+	public class GetAsReportedFinancialsResponse : ResponseMetaList<XbrlTagDto>
 	{
 	}
 

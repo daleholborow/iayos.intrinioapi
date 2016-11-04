@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using iayos.intrinioapi.servicemodel.dto;
 using iayos.intrinioapi.servicemodel.flag;
 using ServiceStack;
@@ -6,8 +7,11 @@ using ServiceStack;
 namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
+	/// <summary>
+	/// http://docs.intrinio.com/#standardized-tags-and-labels
+	/// </summary>
 	[Route("/tags/standardized", HttpMethods.Get)]
-	public class GetStandardizedTags : RequestMany, IReturn<GetStandardizedTagsResponse>
+	public class GetStandardizedTags : RequestList, IReturn<GetStandardizedTagsResponse>
 	{
 		/// <summary>
 		/// the financial statement requested, options include the income statement, balance sheet, statement 
@@ -34,13 +38,16 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedTagsResponse : ResponseMany<StandardizedTagDto>
+	public class GetStandardizedTagsResponse : ResponseMetaList<StandardizedTagDto>
 	{
 	}
 
 
+	/// <summary>
+	/// http://docs.intrinio.com/#as-reported-xbrl-tags-and-labels
+	/// </summary>
 	[Route("/tags/reported", HttpMethods.Get)]
-	public class GetAsReportedXbrlTags : RequestMany, IReturn<GetAsReportedXbrlTagsResponse>
+	public class GetAsReportedXbrlTags : RequestList, IReturn<GetAsReportedXbrlTagsResponse>
 	{
 		/// <summary>
 		///the financial statement requested: income_statement | balance_sheet | cash_flow_statement
@@ -82,16 +89,17 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set date using actual date object
 		/// </summary>
 		/// <seealso cref="date"/>
+		[IgnoreDataMember]
 		public DateTime? Date_IaYoS { get; set; }
 
 		/// <summary>
 		/// type (optional, must specify a date or must specify a fiscal year and fiscal period) - the type of periods requested - includes 
 		/// fiscal years for annual data, quarters for quarterly data and trailing twelve months for annual data on a quarterly basis: FY | QTR
 		/// </summary>
-		public FiscalPeriodAsReported type { get; set; }
+		public FiscalPeriodAsReported? type { get; set; }
 
 	}
 
-	public class GetAsReportedXbrlTagsResponse : ResponseMany<AsReportedTagDto> {}
+	public class GetAsReportedXbrlTagsResponse : ResponseMetaList<AsReportedTagDto> {}
 
 }

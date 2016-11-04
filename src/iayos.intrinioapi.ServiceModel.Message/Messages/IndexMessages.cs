@@ -7,7 +7,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 
 	[Route("/indices", HttpMethods.Get)]
-	public class GetIndicesMasterList : RequestMany, IReturn<GetIndicesMasterListResponse>
+	public class GetIndicesMasterList : RequestList, IReturn<GetIndicesMasterListResponse>
 	{
 		///// <summary>
 		///// (optional, returns full list of indices otherwise) - the type of indices specified: stock_market
@@ -15,7 +15,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		//public IndexType type { get; set; } = IndexType.full;
 	}
 
-	public class GetIndicesMasterListResponse : ResponseMany<IndexMasterDto>
+	public class GetIndicesMasterListResponse : ResponseMetaList<IndexMasterDto>
 	{
 	}
 
@@ -25,7 +25,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// Returns a COLLECTION of indices that match the search string
 	/// </summary>
 	[Route("/indices", HttpMethods.Get)]
-	public class GetIndexDetails : RequestMany, IReturn<GetIndexDetailsResponse>
+	public class GetIndicesDetails : RequestList, IReturn<GetIndicesDetailsResponse>
 	{
 		/// <summary>
 		/// (optional, returns list of indices with compacted response values, if no query specified) - a 
@@ -40,7 +40,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public IndexType? type { get; set; } //= IndexType.full;
 	}
 
-	public class GetIndexDetailsResponse : ResponseMany<IndexDetailDto>
+	public class GetIndicesDetailsResponse : ResponseMetaList<IndexDetailDto>
 	{
 	}
 

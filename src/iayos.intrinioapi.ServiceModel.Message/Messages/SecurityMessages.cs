@@ -11,25 +11,33 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecuritiesMasterList : RequestMany, IReturn<GetSecuritiesMasterListResponse>
+	public class GetSecuritiesMasterList : RequestList, IReturn<GetSecuritiesMasterListResponse>
 	{
 	}
 
-	public class GetSecuritiesMasterListResponse : ResponseMany<SecurityDetailDto>
+	public class GetSecuritiesMasterListResponse : ResponseMetaList<SecurityDetailDto>
 	{
 	}
-
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecurityDetails : RequestMany, IReturn<GetSecurityDetailsResponse>
+	public class GetSecuritiesDetailsByCompany : RequestList, IReturn<GetSecuritiesDetailsByCompanyResponse>
 	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
 		/// stock market ticker symbol associated with the companies common stock securities: TICKER SYMBOL
 		/// </summary>
 		public string identifier { get; set; }
+	}
 
+	public class GetSecuritiesDetailsByCompanyResponse : ResponseList<SecurityDetailDto>
+	{
+	}
+
+
+	[Route("/securities", HttpMethods.Get)]
+	public class GetSecurityDetails : RequestList, IReturn<GetSecuritiesDetailsResponse>
+	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no query specified) - a string 
 		/// query search of security name or ticker symbol with the returned results being the relevant securities in compacted list format.
@@ -47,10 +55,11 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// Conveniently set last_crsp_adj_date using actual date object
 		/// </summary>
 		/// <seealso cref="last_crsp_adj_date"/>
+		[IgnoreDataMember]
 		public DateTime? LastCrspAdjDate_IaYoS { get; set; }
 	}
 
-	public class GetSecurityDetailsResponse : ResponseMany<SecurityDetailDto>
+	public class GetSecuritiesDetailsResponse : ResponseMetaList<SecurityDetailDto>
 	{
 	}
 
@@ -59,7 +68,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// Massively detailed dataset when searching for particular securities
 	/// </summary>
 	[Route("/securities/search", HttpMethods.Get)]
-	public class SearchSecurities : RequestMany, IReturn<SearchSecuritiesResponse>
+	public class SearchSecurities : RequestList, IReturn<SearchSecuritiesResponse>
 	{
 
 		/// <summary>
@@ -94,7 +103,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class SearchSecuritiesResponse : ResponseMany<SecurityScreenerDetailDto>
+	public class SearchSecuritiesResponse : ResponseMetaList<SecurityScreenerDetailDto>
 	{
 	}
 
@@ -113,7 +122,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 	/// http://docs.intrinio.com/#endpoint151
 	/// </summary>
 	[Route("/securities/institutional_ownership", HttpMethods.Get)]
-	public class GetSecurityInstitutionalOwners : RequestMany, IReturn<GetSecurityInstitutionalOwnersResponse>
+	public class GetSecurityInstitutionalOwners : RequestList, IReturn<GetSecurityInstitutionalOwnersResponse>
 	{
 
 		/// <summary>
@@ -130,5 +139,5 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string cik { get; set; }
 	}
 
-	public class GetSecurityInstitutionalOwnersResponse : ResponseMany<SecurityInstitutionalOwnerDetailsDto> { }
+	public class GetSecurityInstitutionalOwnersResponse : ResponseMetaList<SecurityInstitutionalOwnerDetailsDto> { }
 }

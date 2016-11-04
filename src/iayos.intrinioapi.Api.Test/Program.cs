@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using iayos.intrinioapi.servicemodel.flag;
 using iayos.intrinioapi.servicemodel.message.Messages;
 using ServiceStack;
 using ServiceStack.Configuration;
 using Xunit;
-using Xunit.Sdk;
 
 namespace iayos.intrinioapi.Api.Test
 {
@@ -75,25 +75,86 @@ namespace iayos.intrinioapi.Api.Test
 
 
 		/// <summary>
-		/// Can load all companies that match some conditions
+		/// Can get single company by its unique ticker or cik or query 
+		/// </summary>
+		[Theory]
+		[InlineData("thereisnowaythistickerexists", null, false)]
+		[InlineData(null, "thereisnowaythiscikexists", false)]
+		[InlineData("AA", null, true)]
+		[InlineData(null, "0000004281", true)]
+		public void CanGetSingleCompanyDetails(string ticker, string cik, bool expectResults)
+		{
+			var request = new GetSingleCompanyDetails { identifier = ticker, cik = cik };
+			//var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSingleCompanyDetails(request);
+			Assert.True((response == null) == !expectResults);
+			if (expectResults) Assert.True(response?.ticker == request.identifier || ticker.IsNullOrEmpty());
+			if (expectResults) Assert.True(response?.cik == request.cik || cik.IsNullOrEmpty());
+		}
+
+
+		/// <summary>
+		/// Can load all companies that match some conditions in the query
 		/// </summary>
 		[Theory]
 		[InlineData(null, true)]
 		[InlineData("thereisnowaythiscompanyexists", false)]
-		public void CanGetCompanyDetails(string searchQuery, bool expectResults)
+		public void CanGetMultipleCompanyDetails(string searchQuery, bool expectResults)
 		{
-			var request = new GetCompanyDetails { query = searchQuery };
+			var request = new GetCompaniesDetails { query = searchQuery };
 			var response = ApiClient.GetCompanyDetails(request);
 			Assert.True(response.data.Count > 0 == expectResults);
 		}
 
-
-		[Fact]
-		public void CanGetSecurityDetails()
+		
+		/// <summary>
+		/// Can get a collection of security by stock unique ticker or cik or query 
+		/// </summary>
+		[Theory]
+		[InlineData("thereisnowaythistickerexists", false)]
+		[InlineData("AA", true)]
+		public void CanGetSecurityDetailsByTicker(string ticker, bool expectResults)
 		{
-			var request = new GetSecurityDetails {};
-			var response = ApiClient.GetSecurityDetails(request);
-			Assert.True(response.data.Count > 0);
+			var request = new GetSecuritiesDetailsByCompany { identifier = ticker };
+			var requestUrl = request.ToGetUrl();
+			var responseList = ApiClient.GetSecuritiesDetailsByCompany(request);
+			Assert.True((responseList.IsNullOrEmpty()) == !expectResults);
+			if (!expectResults) return;
+			foreach (var security in responseList)
+			{
+				Assert.True(security.ticker == request.identifier || ticker.IsNullOrEmpty());
+			}
+		}
+
+
+		/// <summary>
+		/// Can load all securities that match query conditions
+		/// </summary>
+		[Theory]
+		[InlineData(null, true)]
+		[InlineData("AA", true)]
+		[InlineData("thereisnowaythissecurityexists", false)]
+		public void CanGetMultipleSecurityDetailsForMultipleCompanies(string searchQuery, bool expectResults)
+		{
+			var request = new GetSecurityDetails { query = searchQuery };
+			var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSecuritiesDetails(request);
+			Assert.True((response == null) == !expectResults);
+			Assert.True(response.data.Count > 0 == expectResults);
+		}
+
+		
+		/// <summary>
+		/// Can get single index by its unique Intrinio code
+		/// </summary>
+		[Fact]
+		public void CanGetSingleIndexDetails()
+		{
+			var request = new GetSingleIndexDetails { identifier = "$TA100" };
+			var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSingleIndexDetails(request);
+			Assert.True(response != null);
+			Assert.True(response.symbol == request.identifier);
 		}
 
 
@@ -103,27 +164,17 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetIndexDetails()
 		{
-			var request = new GetIndexDetails { type = IndexType.stock_market };
-			var response = ApiClient.GetIndexDetails(request);
+			var request = new GetIndicesDetails { type = IndexType.stock_market };
+			var response = ApiClient.GetIndicesDetails(request);
 			Assert.False(response.IsErrorResponse());
 			Assert.True(response.data.Count > 0);
 		}
 
 
 		/// <summary>
-		/// Can get single index by its unique Intrinio code
+		/// http://docs.intrinio.com/#return-values62
+		/// Search a filtered list of the securities based on search conditions
 		/// </summary>
-		[Fact]
-		public void CanGetSingleIndexDetails()
-		{
-			var request = new GetSingleIndexDetails { identifier = "$TA100" };
-			var tet = request.ToGetUrl();
-			var response = ApiClient.GetSingleIndexDetails(request);
-			Assert.True(response != null);
-			Assert.True(response.symbol == request.identifier);
-		}
-
-
 		[Fact]
 		public void CanSearchSecuritiesWithConditions()
 		{
@@ -136,21 +187,48 @@ namespace iayos.intrinioapi.Api.Test
 					new SecuritiesSearchCondition {Operator = SearchOperator.gt, Tag = DataPointTag.pricetoearnings, Value = 10}
 				}
 			};
-			var companyDetails = ApiClient.SearchSecurities(request);
-			//var requestUrlToTest = request.ToGetUrl();
+			var response = ApiClient.SearchSecurities(request);
+			Assert.True(response != null);
+			Assert.True(response.data.Count > 0);
 		}
 
 
-		[Fact]
-		public void CanSearchDataPoints()
+		/// <summary>
+		/// http://docs.intrinio.com/#data-point
+		/// Search for a single data point. If rubbish ticker put in, NOT MEANINGFUL (NM) returned!!
+		/// </summary>
+		[Theory]
+		[InlineData("GOOGL", DataPointTag.price_date, true)]
+		[InlineData("thisidentifierwillneverexist", DataPointTag.price_date, false)]
+		public void CanGetSingleDataPoint(string identifier, DataPointTag item, bool expectResults)
 		{
-			var request = new SearchDataPoints { };
-			//request.Identifers.Add("AAC");
-			//request.Tags.Add(DataPointTag.price_time);
-			//request.Tags.Add(DataPointTag.price_date);
+			var request = new GetSingleDataPoint { identifier = identifier, item = item };
+			var requestUrl = request.ToGetUrl();
+			var response = ApiClient.GetSingleDataPoint(request);
+			Assert.True((response == null) == !expectResults);
+			if (expectResults == false) Assert.True(response.value.ToString() == "nm");
+		}
+
+
+		/// <summary>
+		/// http://docs.intrinio.com/#data-point
+		/// Search for a collection of data points
+		/// </summary>
+		[Fact]
+		public void CanGetMultipleDataPoints()
+		{
+			var request = new GetMultipleDataPoints { };
+			request.Tags_IaYoS.Add(DataPointTag.price_date);
 			request.Tags_IaYoS.Add(DataPointTag.pricetoearnings);
 			request.Identifers_IaYoS.Add("AAPL");
-			var datapointResponse = ApiClient.SearchDataPoints(request);
+			request.Identifers_IaYoS.Add("GOOGL");
+			var response = ApiClient.GetMultipleDataPoints(request);
+			Assert.True(response != null);
+			Assert.True(response.data.Count == 4);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "AAPL" && d.item == DataPointTag.price_date) != null);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "AAPL" && d.item == DataPointTag.pricetoearnings) != null);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "GOOGL" && d.item == DataPointTag.price_date) != null);
+			Assert.True(response.data.SingleOrDefault(d => d.identifier == "GOOGL" && d.item == DataPointTag.pricetoearnings) != null);
 		}
 
 
@@ -158,7 +236,15 @@ namespace iayos.intrinioapi.Api.Test
 		public void CanSearchHistoricalData()
 		{
 			var request = new SearchHistoricalData { };
+			request.identifier = "AAPL";
+			request.item = DataPointTag.accruedexpenses;
+			//request.type = HistoricalDataType.QTR;
+			var requestUrl = request.ToGetUrl();
 			var response = ApiClient.SearchHistoricalData(request);
+			Assert.True(response != null);
+			Assert.True(response.identifier == request.identifier);
+			Assert.True(response.data.Count > 0);
+			Assert.True(response != null);
 		}
 
 
@@ -302,29 +388,6 @@ namespace iayos.intrinioapi.Api.Test
 
 		#endregion
 
-		//[Fact]
-		//public void DoSomeStuff()
-		//{
-		//	try
-		//	{
-		//	}
-		//	catch (WebServiceException webEx)
-		//	{
-		//		// TODO Inspect the webEx to see what went wrong:
-		//		var errorMessage = webEx.ErrorMessage;
-		//		/*
-		//		 * Example error response:
-		//		  webEx.StatusCode        = 400
-		//		  webEx.StatusDescription = ArgumentNullException
-		//		  webEx.ErrorCode         = ArgumentNullException
-		//		  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
-		//		  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
-		//		  webEx.ResponseDto       = (your populated Response DTO)
-		//		  webEx.ResponseStatus    = (your populated Response Status DTO)
-		//		  webEx.GetFieldErrors()  = (individual errors for each field if any)
-		//		*/
-		//	}
-		//}
 
 	}
 }

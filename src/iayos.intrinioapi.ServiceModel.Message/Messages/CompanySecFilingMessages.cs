@@ -5,7 +5,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 {
 
 	[Route("/companies/filings", HttpMethods.Get)]
-	public class GetCompanySecFilings : RequestMany, IReturn<GetCompanySecFilingsResponse>
+	public class GetCompanySecFilings : RequestList, IReturn<GetCompanySecFilingsResponse>
 	{
 		/// <summary>
 		/// the ticker or identifier for the data point
@@ -20,7 +20,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	
 
-	public class GetCompanySecFilingsResponse : ResponseMany<CompanySecFilingDto>
+	public class GetCompanySecFilingsResponse : ResponseMetaList<CompanySecFilingDto>
 	{
 	}
 }
