@@ -138,9 +138,19 @@ namespace iayos.intrinioapi.Api.Test
 		{
 			var request = new GetSecurityDetails { query = searchQuery };
 			var requestUrl = request.ToGetUrl();
-			var response = ApiClient.GetSecuritiesDetails(request);
-			Assert.True((response == null) == !expectResults);
-			Assert.True(response.data.Count > 0 == expectResults);
+
+			if (expectResults)
+			{
+				var response = ApiClient.GetSecuritiesDetails(request);
+				Assert.True((response == null) == !expectResults);
+				Assert.True(response.data.Count > 0 == expectResults);
+			}
+			else
+			{
+				var exception = Record.Exception(() => ApiClient.GetSecuritiesDetails(request));
+				Assert.NotNull(exception);
+				Assert.IsType<WebServiceException>(exception);
+			}
 		}
 
 		
@@ -205,8 +215,11 @@ namespace iayos.intrinioapi.Api.Test
 			var request = new GetSingleDataPoint { identifier = identifier, item = item };
 			var requestUrl = request.ToGetUrl();
 			var response = ApiClient.GetSingleDataPoint(request);
-			Assert.True((response == null) == !expectResults);
-			if (expectResults == false) Assert.True(response.value.ToString() == "nm");
+			
+			if (expectResults == false) Assert.True(response.value.ToString() == IntrinioInternalFlags.nm.ToString());
+			//Assert.True((response == null) == !expectResults);
+			if (expectResults == true) Assert.True(response.identifier == request.identifier);
+			if (expectResults == true) Assert.True(response.item == request.item);
 		}
 
 

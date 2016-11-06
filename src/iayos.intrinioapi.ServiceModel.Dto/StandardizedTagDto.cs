@@ -20,7 +20,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the parent Intrinio standardized tag forming the statement relationship with the factor.
 		/// </summary>
-		public DataPointTag parent { get; set; }
+		public DataPointTag? parent { get; set; }
 
 		/// <summary>
 		///  the operator forming the statement relationship between the child tag (or tags) and the parent.

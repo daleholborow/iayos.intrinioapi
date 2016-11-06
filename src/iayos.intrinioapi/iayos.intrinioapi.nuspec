@@ -13,13 +13,8 @@
 		Author not affiliated with intrinio in any way, not does this come with any warranty. Contributions welcome.
 	</description>
     <releaseNotes>
-		Sorry in advance!
-		Massive refactor and breaking changes as result of reworking and renaming to split out concepts of "GetSingleResult", "GetListOfResults"
-		and "GetListOfResultsWithPagingMetaData", which became blindingly obvious as I started to pipe more specific requests through to Intrinio.
-		Mildly enhanced test cases to capture some of these scenarios.
-		Some errors in Intrinio doco meant code definitions were off, have been brought into line now but their staff may
-		make additional changes to their API - so still in flux.
-		Unfortunately, these changes meant a BIG change to the way I named things, which I had intended to leave stable.
+		- making more properties nullable after seeing intrinio data returned
+		- updated test cases
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>

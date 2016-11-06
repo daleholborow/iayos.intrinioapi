@@ -12,17 +12,17 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the date the filing was submitted to the SEC by the company
 		/// </summary>
-		public DateTime filing_date { get; set; }
+		public DateTime? filing_date { get; set; }
 
 		/// <summary>
 		/// the date and time when the filing was submitted to the SEC by the company
 		/// </summary>
-		public DateTime accepted_date { get; set; }
+		public DateTime? accepted_date { get; set; }
 
 		/// <summary>
 		/// the date of the period end for the filing
 		/// </summary>
-		public DateTime period_ended { get; set; }
+		public DateTime? period_ended { get; set; }
 
 		/// <summary>
 		/// the SEC unique number for the filing

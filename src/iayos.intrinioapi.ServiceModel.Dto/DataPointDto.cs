@@ -16,7 +16,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// the requested standardized tag or series ID
 		/// </summary>
-		public DataPointTag item { get; set; }
+		public DataPointTag item { get; set; } = DataPointTag.IaYoS_Warning_Unset;
 
 		/// <summary>
 		/// the value of the Intrinio tag of the financial data point
