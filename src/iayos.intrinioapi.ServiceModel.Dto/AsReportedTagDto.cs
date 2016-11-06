@@ -33,17 +33,17 @@
 		/// <summary>
 		/// the type of value - true indicates that the value is a header label and has no associated data value, whereas false indicates that the XBRL tag has an associated value.
 		/// </summary>
-		public bool @abstract { get; set; }
+		public bool? @abstract { get; set; }
 
 		/// <summary>
 		/// an integer 0 or greater indicating the presentation order of the XBRL tag and label in the financial statement
 		/// </summary>
-		public int sequence { get; set; }
+		public int? sequence { get; set; }
 
 		/// <summary>
 		/// an integer 0 or greater indicating the presentation indentation depth of the XBRL tag and label in the financial statement
 		/// </summary>
-		public int depth { get; set; }
+		public int? depth { get; set; }
 
 		/// <summary>
 		/// + / -

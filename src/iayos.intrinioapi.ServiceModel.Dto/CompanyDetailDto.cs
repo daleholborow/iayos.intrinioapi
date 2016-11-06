@@ -42,7 +42,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the Standard Industrial Classification (SIC) determined by the company filed with the SEC
 		/// </summary>
-		public int sic { get; set; }
+		public int? sic { get; set; }
 
 		/// <summary>
 		///  a one or two sentence description of the company’s operations
@@ -104,8 +104,10 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// </summary>
 		public string entity_legal_form { get; set; }
 
-
-		public List<SecurityDetailDto> securities { get; set; }
+		/// <summary>
+		/// Mapped collection of securities under this company
+		/// </summary>
+		public List<SecurityDetailDto> securities { get; set; } = new List<SecurityDetailDto>();
 
 		/// <summary>
 		///  the financial statement template used by Intrinio to standardize the as reported data
@@ -116,7 +118,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// if true, the company has standardized and as reported fundamental data via the Intrinio API; 
 		/// if false, the company has as reported data only.
 		/// </summary>
-		public bool standardized_active { get; set; }
+		public bool? standardized_active { get; set; }
 
 		/// <summary>
 		/// the state (US &amp; Canada Only) where the company headquarters is located
@@ -144,7 +146,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		public int employees { get; set; }
 
 
-		public EntityStatus entity_status { get; set; }
+		public EntityStatus? entity_status { get; set; }
 
 		/// <summary>
 		///  the company’s operating sector

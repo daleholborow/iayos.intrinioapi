@@ -42,7 +42,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// the date of the latest 13-F filing on record with the SEC.
 		/// </summary> 
-		public DateTime period_ended { get; set; }
+		public DateTime? period_ended { get; set; }
 
 		/// <summary>
 		/// shares
@@ -77,11 +77,11 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the market value in amount of dollars of the holding in the listed security
 		/// </summary>
-		public double value { get; set; }
+		public double? value { get; set; }
 
 		/// <summary>
 		/// the number of shares held in the listed security
 		/// </summary>
-		public double amount { get; set; }
+		public double? amount { get; set; }
 	}
 }

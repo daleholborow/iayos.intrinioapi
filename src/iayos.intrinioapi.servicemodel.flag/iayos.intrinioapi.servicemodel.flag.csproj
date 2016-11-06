@@ -49,6 +49,7 @@
     <Compile Include="FiscalPeriodAsReported.cs" />
     <Compile Include="HistoricalDataType.cs" />
     <Compile Include="IndexType.cs" />
+    <Compile Include="IntrinioInternalFlags.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchOperator.cs" />
     <Compile Include="SecurityFinancialStatus.cs" />

@@ -63,7 +63,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// (false) a boolean indicating the transaction is not a derivative transaction and instead is dealings in the common stock of the company
 		/// (true) a boolean indicating the transaction is a derivative transaction, which may or may not become common stock due to various possible exercise or conversion requirements
 		/// </summary>
-		public bool derivative_transaction { get; set; }
+		public bool? derivative_transaction { get; set; }
 
 		/// <summary>
 		///  the name of the derivative security transacted
