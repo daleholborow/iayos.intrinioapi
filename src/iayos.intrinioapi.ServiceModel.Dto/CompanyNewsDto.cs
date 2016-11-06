@@ -12,7 +12,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// the date the article was published
 		/// </summary>
-		public DateTime publication_date { get; set; }
+		public DateTime? publication_date { get; set; }
 
 
 		/// <summary>

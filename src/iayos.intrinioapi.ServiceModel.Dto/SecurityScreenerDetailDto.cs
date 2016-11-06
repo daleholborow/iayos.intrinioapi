@@ -147,7 +147,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// Ask Size
 		/// Statement code: current, type: prices, units: integer 
 		/// </summary>
-		public int ask_size { get; set; }
+		public int? ask_size { get; set; }
 
 		/// <summary>
 		/// Ask Timestamp
@@ -213,7 +213,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// Bid Size
 		/// Statement code: current, type: prices, units: integer 
 		/// </summary>
-		public int bid_size { get; set; }
+		public int? bid_size { get; set; }
 
 		/// <summary>
 		/// Bid Timestamp
@@ -267,7 +267,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// Cash Conversion Cycle (CCC)
 		/// Statement code: calculations, type: efficiency, units: days 
 		/// </summary>
-		public int ccc { get; set; }
+		public int? ccc { get; set; }
 
 		/// <summary>
 		/// Cash Dividends to Common per Share
@@ -447,25 +447,25 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// Days Inventory Outstanding (DIO)
 		/// Statement code: calculations, type: efficiency, units: days 
 		/// </summary>
-		public int dio { get; set; }
+		public int? dio { get; set; }
 
 		/// <summary>
 		/// Days Payable Outstanding (DPO)
 		/// Statement code: calculations, type: efficiency, units: days 
 		/// </summary>
-		public int dpo { get; set; }
+		public int? dpo { get; set; }
 
 		/// <summary>
 		/// Days Sales Outstanding (DSO)
 		/// Statement code: calculations, type: efficiency, units: days 
 		/// </summary>
-		public int dso { get; set; }
+		public int? dso { get; set; }
 
 		/// <summary>
 		/// Days to Cover
 		/// Statement code: current, type: short_interest, units: days 
 		/// </summary>
-		public int days_to_cover { get; set; }
+		public int? days_to_cover { get; set; }
 
 		/// <summary>
 		/// Debt to Equity
@@ -681,7 +681,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// Employees
 		/// Statement code: current, type: info, units: integer 
 		/// </summary>
-		public int employees { get; set; }
+		public int? employees { get; set; }
 
 		/// <summary>
 		/// Enterprise Value (EV)
@@ -2145,7 +2145,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// Standard Industrial Classification Code (SIC)
 		/// Statement code: current, type: info, units: integer 
 		/// </summary>
-		public int sic { get; set; }
+		public int? sic { get; set; }
 
 		/// <summary>
 		/// State

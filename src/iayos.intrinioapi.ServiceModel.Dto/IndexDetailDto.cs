@@ -30,7 +30,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		///  the index type, either stock_market, economic or sector
 		/// </summary>
-		public IndexType index_type { get; set; } = IndexType.full;
+		public IndexType? index_type { get; set; }
 
 	}
 }

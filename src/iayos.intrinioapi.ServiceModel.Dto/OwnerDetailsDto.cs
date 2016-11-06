@@ -21,47 +21,47 @@ namespace iayos.intrinioapi.servicemodel.dto
 		/// <summary>
 		/// - the date of the latest 13-F filing on record with the SEC.
 		/// </summary>
-		public DateTime period_ended { get; set; }
+		public DateTime? period_ended { get; set; }
 
 		/// <summary>
 		/// the market value in amount of dollars of the holding in the listed security
 		/// </summary>
-		public double value { get; set; }
+		public double? value { get; set; }
 
 		/// <summary>
 		/// the number of shares held in the listed security
 		/// </summary>
-		public double amount { get; set; }
+		public double? amount { get; set; }
 
 		/// <summary>
 		/// the number of shares where the insitutional holder has sole voting authority
 		/// </summary>
-		public double sole_voting_authority { get; set; }
+		public double? sole_voting_authority { get; set; }
 
 		/// <summary>
 		/// the number of shares where the insitutional holder has shared voting authority
 		/// </summary>
-		public double shared_voting_authority { get; set; }
+		public double? shared_voting_authority { get; set; }
 
 		/// <summary>
 		/// the number of shares where the insitutional holder has no voting authority
 		/// </summary>
-		public double no_voting_authority { get; set; }
+		public double? no_voting_authority { get; set; }
 
 		/// <summary>
 		/// the prior quarter number of shares held by the owner
 		/// </summary>
-		public double prev_amount { get; set; }
+		public double? prev_amount { get; set; }
 
 		/// <summary>
 		/// the change in number of shares held from the prior quarter
 		/// </summary>
-		public double amount_chg { get; set; }
+		public double? amount_chg { get; set; }
 
 		/// <summary>
 		/// the percentage change in the number of shares held from the prior quarter
 		/// </summary>
-		public double amount_pct_chg { get; set;  } 
+		public double? amount_pct_chg { get; set;  } 
 
 	}
 
