@@ -45,7 +45,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// (optional, must specify a date or must specify a fiscal year and fiscal period) - the type of periods requested - includes 
 		/// fiscal years for annual data, quarters for quarterly data and trailing twelve months for annual data on a quarterly basis: FY | QTR | TTM | YTD
 		/// </summary>
-		public HistoricalDataType? type { get; set; }
+		public FiscalPeriod? type { get; set; }
 
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// (optional, must specify a date or must specify a fiscal year and fiscal period) - the type of periods requested - includes 
 		/// fiscal years for annual data, quarters for quarterly data and trailing twelve months for annual data on a quarterly basis: FY | QTR | TTM | YTD
 		/// </summary>
-		public HistoricalDataType? type { get; set; }
+		public FiscalPeriod? type { get; set; }
 
 
 		/// <summary>
