@@ -12,7 +12,7 @@
 		Data transfer objects used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		Massive refactor to support iayos.intrinioapi base package changes
+		Patched queryable financial statement type, was too restrictive previously because of incorrect enum usage
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>

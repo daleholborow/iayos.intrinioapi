@@ -117,10 +117,10 @@ namespace iayos.intrinioapi.Api.Test
 		{
 			var request = new GetSecuritiesDetailsByCompany { identifier = ticker };
 			var requestUrl = request.ToGetUrl();
-			var responseList = ApiClient.GetSecuritiesDetailsByCompany(request);
-			Assert.True((responseList.IsNullOrEmpty()) == !expectResults);
+			var response = ApiClient.GetSecuritiesDetailsByCompany(request);
+			Assert.True((response.data.IsNullOrEmpty()) == !expectResults);
 			if (!expectResults) return;
-			foreach (var security in responseList)
+			foreach (var security in response.data)
 			{
 				Assert.True(security.ticker == request.identifier || ticker.IsNullOrEmpty());
 			}
@@ -139,17 +139,13 @@ namespace iayos.intrinioapi.Api.Test
 			var request = new GetSecurityDetails { query = searchQuery };
 			var requestUrl = request.ToGetUrl();
 
-			if (expectResults)
+			var response = ApiClient.GetSecuritiesDetails(request);
+			Assert.True((response.data.IsNullOrEmpty()) == !expectResults);
+			if (!expectResults) return;
+			foreach (var security in response.data)
 			{
-				var response = ApiClient.GetSecuritiesDetails(request);
-				Assert.True((response == null) == !expectResults);
-				Assert.True(response.data.Count > 0 == expectResults);
-			}
-			else
-			{
-				var exception = Record.Exception(() => ApiClient.GetSecuritiesDetails(request));
-				Assert.NotNull(exception);
-				Assert.IsType<WebServiceException>(exception);
+				if (searchQuery.IsNullOrEmpty()) continue;
+				Assert.True(security.ticker.Contains(request.query)); 
 			}
 		}
 
@@ -216,7 +212,7 @@ namespace iayos.intrinioapi.Api.Test
 			var requestUrl = request.ToGetUrl();
 			var response = ApiClient.GetSingleDataPoint(request);
 			
-			if (expectResults == false) Assert.True(response.value.ToString() == IntrinioInternalFlags.nm.ToString());
+			if (expectResults == false) Assert.True(response.value.ToString() == IntrinioInternalFlags.na.ToString());
 			//Assert.True((response == null) == !expectResults);
 			if (expectResults == true) Assert.True(response.identifier == request.identifier);
 			if (expectResults == true) Assert.True(response.item == request.item);

@@ -3,9 +3,9 @@
 namespace iayos.intrinioapi.servicemodel.dto
 {
 	/// <summary>
-	/// http://docs.intrinio.com/#return-values96
+	/// http://docs.intrinio.com/#return-values104
 	/// </summary>
-	public class FinancialDataPointDto
+	public class StandardizedFinancialDto
 	{
 		/// <summary>
 		/// the Intrinio standardized tag of the financial data point

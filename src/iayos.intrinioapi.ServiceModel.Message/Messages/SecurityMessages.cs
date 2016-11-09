@@ -21,7 +21,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 
 	[Route("/securities", HttpMethods.Get)]
-	public class GetSecuritiesDetailsByCompany : RequestList, IReturn<GetSecuritiesDetailsByCompanyResponse>
+	public class GetSecuritiesDetailsByCompany : RequestList, IReturn<ResponseList<SecurityDetailDto>>
 	{
 		/// <summary>
 		/// (optional, returns list of securities with compacted response values, if no identifier specified) - the 
@@ -30,7 +30,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		public string identifier { get; set; }
 	}
 
-	public class GetSecuritiesDetailsByCompanyResponse : ResponseList<SecurityDetailDto>
+	public class GetSecuritiesDetailsByCompanyResponse : ResponseMetaList<SecurityDetailDto>
 	{
 	}
 

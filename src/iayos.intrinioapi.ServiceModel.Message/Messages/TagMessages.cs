@@ -32,10 +32,12 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// </summary>
 		public string identifier { get; set; }
 
-		/*
-		public int sequence(optional, returns full list without a sequence number) - an integer 0 or greater for calling a single tag from the first entry, based on order
-		*/
-
+		/// <summary>
+		/// (optional, returns full list without a sequence number) - an integer 0 or greater for 
+		/// calling a single tag from the first entry, based on order
+		/// </summary>
+		public int? sequence { get; set; }
+		
 	}
 
 	public class GetStandardizedTagsResponse : ResponseMetaList<StandardizedTagDto>
