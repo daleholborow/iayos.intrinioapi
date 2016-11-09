@@ -29,7 +29,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// (optional, returns all available fundamentals) - the type of periods requested - includes fiscal years for 
 		/// annual data, quarters for quarterly data and trailing twelve months for annual data on a quarterly basis: FY | QTR | TTM | YTD
 		/// </summary>
-		public HistoricalDataType? type { get; set; }
+		public FiscalPeriod? type { get; set; }
 
 		/*
 		 * sequence (required, only in Excel add-in function) - an integer 0 or greater for calling a single fundamental from the first entry, most recent first: 0..last available
@@ -54,7 +54,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedFundamentalsResponse : ResponseMetaList<FundamentalsDto>
+	public class GetStandardizedFundamentalsResponse : ResponseMetaList<FundamentalDto>
 	{
 	}
 
@@ -86,7 +86,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// <summary>
 		///  (optional, returns all available fundamentals) - the type of periods requested - includes fiscal years for annual data, quarters for quarterly data: FY | QTR
 		/// </summary>
-		public HistoricalDataType? type { get; set; }
+		public FiscalPeriod? type { get; set; }
 
 
 		/// <summary>
@@ -104,7 +104,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedFundamentalsResponse : ResponseMetaList<FundamentalsDto>
+	public class GetAsReportedFundamentalsResponse : ResponseMetaList<FundamentalDto>
 	{
 	}
 }

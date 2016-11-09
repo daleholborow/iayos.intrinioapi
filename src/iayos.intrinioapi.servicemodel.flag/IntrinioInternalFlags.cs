@@ -6,8 +6,12 @@
 		/// <summary>
 		/// Not Meaningful, e.g. when requesting a tagged item for some tag value that doesnt exist
 		/// </summary>
-		nm
+		nm,
 
+		/// <summary>
+		/// Not Available, (similar to the 'nm' above?)
+		/// </summary>
+		na
 	}
 
 }

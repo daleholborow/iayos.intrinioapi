@@ -3,7 +3,7 @@
 	/// <summary>
 	/// http://docs.intrinio.com/#return-values111
 	/// </summary>
-	public class XbrlTagDto
+	public class AsReportedFinancialDto
 	{
 		/// <summary>
 		/// the reported XBRL tag of the financial data point
