@@ -7,7 +7,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 	/// <summary>
 	/// http://docs.intrinio.com/#return-values85
 	/// </summary>
-	public class FundamentalsDto
+	public class FundamentalDto
 	{
 
 		/// <summary>

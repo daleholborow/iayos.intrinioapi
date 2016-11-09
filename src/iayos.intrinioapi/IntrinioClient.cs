@@ -1,10 +1,12 @@
-﻿using iayos.intrinioapi.servicemodel.message;
+﻿using System.Collections.Generic;
+using System.Linq;
+using iayos.intrinioapi.servicemodel.dto;
+using iayos.intrinioapi.servicemodel.message;
 using iayos.intrinioapi.servicemodel.message.Messages;
 using ServiceStack;
 
 namespace iayos.intrinioapi
 {
-
 	/// <summary>
 	/// Client to query Intrinio Financial Market Data Api (http://docs.intrinio.com/#introduction).
 	/// Uses the ServiceStack IJsonServiceClient approach, and so errors will be bundled into WebServiceException s.
@@ -30,6 +32,20 @@ namespace iayos.intrinioapi
 
 
 		#region Generic methods
+
+		/// <summary>
+		/// Sometimes, Ingenia break their pattern of request/metaresponse for collections, and we stick to our standard request/response 
+		/// by simply parsing the dirty result and pushing it into our standardized response wrapper
+		/// </summary>
+		/// <typeparam name="TRequest"></typeparam>
+		/// <typeparam name="TResponse"></typeparam>
+		/// <param name="request"></param>
+		/// <returns></returns>
+		private TResponse DirtyGetWhatever<TRequest, TResponse>(TRequest request)
+		{
+			return _jsonClient.Get<TResponse>(request);
+		}
+
 
 		/// <summary>
 		/// Get a response that is simply an instance of a single record (i.e. a DTO)
@@ -115,33 +131,6 @@ namespace iayos.intrinioapi
 			return _jsonClient.Get<TResponse>(request);
 		}
 
-
-		/*
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <typeparam name="TRequest"></typeparam>
-		/// <typeparam name="TResponse"></typeparam>
-		/// <param name="request"></param>
-		/// <exception cref="WebServiceException">
-		///  Eg:
-		///   webEx.StatusCode        = 400
-		///	  webEx.StatusDescription = ArgumentNullException
-		///	  webEx.ErrorCode         = ArgumentNullException
-		///	  webEx.ErrorMessage      = Value cannot be null. Parameter name: Name
-		///	  webEx.StackTrace        = (your Server Exception StackTrace - in DebugMode)
-		///	  webEx.ResponseDto       = (your populated Response DTO)
-		///	  webEx.ResponseStatus    = (your populated Response Status DTO)
-		///	  webEx.GetFieldErrors()  = (individual errors for each field if any)</exception>
-		/// <returns></returns>
-		private TResponse BaseUrlPost<TRequest, TResponse>(TRequest request)
-			where TRequest : RequestMany
-			where TResponse : new()
-		{
-			return _jsonClient.Post<TResponse>(request);
-		}
-		*/
-
 		#endregion
 
 
@@ -222,13 +211,22 @@ namespace iayos.intrinioapi
 
 		/// <summary>
 		/// http://docs.intrinio.com/#securities
-		/// Returns a list of security for a single ticker
+		/// Returns a list of security for a single ticker. We wrap default Intrinio behaviour to clear out the 
+		/// 'no match by identifier' case and make sure resultset is empty
 		/// </summary>
 		/// <param name="request"></param>
 		/// <returns></returns>
 		public GetSecuritiesDetailsByCompanyResponse GetSecuritiesDetailsByCompany(GetSecuritiesDetailsByCompany request)
 		{
-			return GetList<GetSecuritiesDetailsByCompany, GetSecuritiesDetailsByCompanyResponse>(request);
+			var dirtyResponse = DirtyGetWhatever<GetSecuritiesDetailsByCompany, List<SecurityDetailDto>>(request);
+			// Handle the weird case that an invalid identifier actually sends back data which was being parsed into an empty, nulled out object
+			//if (response.data.Count == 1  && IntrinioClientUtils.IsAllNullOrEmpty(response.data.First())) return new GetSecuritiesDetailsByCompanyResponse();
+			if (dirtyResponse.Count == 1 && IntrinioClientUtils.IsAllNullOrEmpty(dirtyResponse.First())) return new GetSecuritiesDetailsByCompanyResponse();
+			// Otherwise, return the reguarl response
+			return new GetSecuritiesDetailsByCompanyResponse
+			{
+				api_call_credits = 1, current_page = 1, data = dirtyResponse, result_count = dirtyResponse.Count, total_pages = 1
+			};
 		}
 
 
@@ -240,7 +238,15 @@ namespace iayos.intrinioapi
 		/// <returns></returns>
 		public GetSecuritiesDetailsResponse GetSecuritiesDetails(GetSecurityDetails request)
 		{
-			return GetMetaList<GetSecurityDetails, GetSecuritiesDetailsResponse>(request);
+			try
+			{
+				return GetMetaList<GetSecurityDetails, GetSecuritiesDetailsResponse>(request);
+			}
+			catch (WebServiceException e)
+			{
+				// Invalid identifier throws an error, not empty
+				return new GetSecuritiesDetailsResponse {};
+			}
 		}
 
 
@@ -497,8 +503,7 @@ namespace iayos.intrinioapi
 		{
 			return GetMetaList<GetOwnerInsiderTransactions, GetOwnerInsiderTransactionsResponse>(request);
 		}
-
-
+		
 
 		/// <summary>
 		/// http://docs.intrinio.com/#insider-holdings-by-owner

@@ -12,7 +12,7 @@
 		Request/Response messages used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		Massive refactor to support iayos.intrinioapi base package changes
+		Minor refactor to support iayos.intrinioapi request/response standardization, even if intrinio's actual api breaks their rules occasionally
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>

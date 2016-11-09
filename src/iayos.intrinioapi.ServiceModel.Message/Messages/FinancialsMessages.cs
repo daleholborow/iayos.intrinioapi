@@ -72,7 +72,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetStandardizedFinancialsResponse : ResponseMetaList<FinancialDataPointDto>
+	public class GetStandardizedFinancialsResponse : ResponseMetaList<StandardizedFinancialDto>
 	{
 	}
 
@@ -143,7 +143,7 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 	}
 
-	public class GetAsReportedFinancialsResponse : ResponseMetaList<XbrlTagDto>
+	public class GetAsReportedFinancialsResponse : ResponseMetaList<AsReportedFinancialDto>
 	{
 	}
 

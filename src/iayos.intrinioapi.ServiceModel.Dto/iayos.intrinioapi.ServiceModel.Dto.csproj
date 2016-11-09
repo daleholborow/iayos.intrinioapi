@@ -47,8 +47,8 @@
     <Compile Include="CompanyMasterDto.cs" />
     <Compile Include="CompanySecFilingDto.cs" />
     <Compile Include="DataPointDto.cs" />
-    <Compile Include="FinancialDataPointDto.cs" />
-    <Compile Include="FundamentalsDto.cs" />
+    <Compile Include="StandardizedFinancialDto.cs" />
+    <Compile Include="FundamentalDto.cs" />
     <Compile Include="HistoricalDataDto.cs" />
     <Compile Include="IndexDetailDto.cs" />
     <Compile Include="IndexMasterDto.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="SecurityDetailDto.cs" />
     <Compile Include="SecurityScreenerDetailDto.cs" />
     <Compile Include="StandardizedTagDto.cs" />
-    <Compile Include="XbrlTagDto.cs" />
+    <Compile Include="AsReportedFinancialDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iayos.intrinioapi.servicemodel.flag\iayos.intrinioapi.servicemodel.flag.csproj">
