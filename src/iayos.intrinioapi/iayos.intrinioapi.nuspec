@@ -13,10 +13,8 @@
 		Author not affiliated with intrinio in any way, not does this come with any warranty. Contributions welcome.
 	</description>
     <releaseNotes>
-		- tweaked searchable fundamental selection enum
-		- standardizing the format to be always Request/ResponseSingle or Request/ResponseMetaList, (i.e. always wrap ResponseList in meta payload, 
-		even in those cases where intrinio break their own conventions)
-		- renamed data points for asreported and standarized financial data points
+		Patched historicvalue, asreportedfinancial and standardizedfinancial to be nullable double isntead of object,
+		since they appear to be always numerical values and this prevented me (easily) mapping to db entities
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>
