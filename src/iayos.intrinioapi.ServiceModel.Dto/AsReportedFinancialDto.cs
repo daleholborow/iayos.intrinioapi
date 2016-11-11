@@ -15,6 +15,6 @@
 		/// <summary>
 		/// the value of the XBRL tag of the financial data point
 		/// </summary>
-		public object value { get; set; }
+		public double? value { get; set; }
 	}
 }

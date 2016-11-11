@@ -12,7 +12,8 @@
 		Data transfer objects used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		Patched queryable financial statement type, was too restrictive previously because of incorrect enum usage
+		Patched historicvalue, asreportedfinancial and standardizedfinancial to be nullable double isntead of object, 
+		since they appear to be always numerical values and this prevented me (easily) mapping to db entities
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>
