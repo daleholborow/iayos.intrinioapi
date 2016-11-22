@@ -33,10 +33,10 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 		/// <summary>
 		/// Set using 
 		/// (optional) - the first date in which historical stock prices are delivered - historical daily prices go back 
-		/// to 1996 for most companies, but some go back further to the 1970s or to the date of the IPO: YYYY-MM-DD
+		/// to 1996 for most companies, but some go back further to the 1970s or to the date of the IPO: yyyy-MM-dd
 		/// </summary>
 		/// <seealso cref="StartDate_IaYoS"/>
-		public string start_date => StartDate_IaYoS != null ? StartDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		public string start_date => StartDate_IaYoS != null ? StartDate_IaYoS.GetValueOrDefault().ToString("yyyy-MM-dd") : null;
 
 		/// <summary>
 		/// Conveniently set start_date using actual date object
@@ -48,10 +48,10 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 		/// <summary>
 		/// (optional, default=today) - the last date in which historical stock prices are delivered - end of day prices 
-		/// are available around 5 p.m. EST and 15 minute delayed prices are updated every minute throughout the trading day: YYYY-MM-DD
+		/// are available around 5 p.m. EST and 15 minute delayed prices are updated every minute throughout the trading day: yyyy-MM-dd
 		/// </summary>
 		/// <seealso cref="EndDate_IaYoS"/>
-		public string end_date => EndDate_IaYoS != null ? EndDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		public string end_date => EndDate_IaYoS != null ? EndDate_IaYoS.GetValueOrDefault().ToString("yyyy-MM-dd") : null;
 
 		/// <summary>
 		/// Conveniently set end_date using actual date object

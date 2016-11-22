@@ -46,10 +46,10 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 		/// <summary>
 		/// (optional) - a date value that returns the list of securities that have had adjusted stock prices 
-		/// due to a corporate event after this date: YYYY-MM-DD
+		/// due to a corporate event after this date: yyyy-MM-dd
 		/// </summary>
 		/// <seealso cref="LastCrspAdjDate_IaYoS"/>
-		public string last_crsp_adj_date => LastCrspAdjDate_IaYoS != null ? LastCrspAdjDate_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		public string last_crsp_adj_date => LastCrspAdjDate_IaYoS != null ? LastCrspAdjDate_IaYoS.GetValueOrDefault().ToString("yyyy-MM-dd") : null;
 
 		/// <summary>
 		/// Conveniently set last_crsp_adj_date using actual date object

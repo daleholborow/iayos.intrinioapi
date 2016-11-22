@@ -12,8 +12,9 @@
 		Data transfer objects used by iayos.intrinioapi
 	</description>
     <releaseNotes>
-		Patched historicvalue, asreportedfinancial and standardizedfinancial to be nullable double isntead of object, 
-		since they appear to be always numerical values and this prevented me (easily) mapping to db entities
+		Bugfix for broken date formatter whereby the StartDate_IaYoS and EndDate_IaYoS convenience properties didnt actually
+		parse correctly into a formatted date string (such as when trying to query historic price ranges, would erroneously
+		end up with string 'YYYY-08-DD' instead of '1980-08-14' for example
 	</releaseNotes>
     <copyright>Copyright © 2016</copyright>
 	<summary>
