@@ -1,31 +1,32 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>iayos.intrinioapi.servicemodel.message</id>
-    <version>$version$</version>
-    <authors>dale.holborow</authors>
-    <owners>dale.holborow</owners>
-    <projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
-	<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>
-		Request/Response messages used by iayos.intrinioapi
-	</description>
-    <releaseNotes>
-		Bugfix for broken date formatter whereby the StartDate_IaYoS and EndDate_IaYoS convenience properties didnt actually
-		parse correctly into a formatted date string (such as when trying to query historic price ranges, would erroneously
-		end up with string 'YYYY-08-DD' instead of '1980-08-14' for example
-	</releaseNotes>
-    <copyright>Copyright © 2016</copyright>
-	<summary>
-		Request/Response messages used by iayos.intrinioapi
-	</summary>
-    <tags>iayos intrinio fintech api finance in-a-year-or-so</tags>
-	<title>iayos.intrinioapi.servicemodel.message</title>
-    <dependencies>
-       <dependency id="ServiceStack.Client" /> 
-       <dependency id="ServiceStack.Interfaces" /> 
-       <dependency id="ServiceStack.Text" /> 
-    </dependencies>
-  </metadata>
+	<metadata>
+		<id>iayos.intrinioapi.servicemodel.message</id>
+		<version>$version$</version>
+		<authors>dale.holborow</authors>
+		<owners>dale.holborow</owners>
+		<projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
+		<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<description>
+			Request/Response messages used by iayos.intrinioapi
+		</description>
+		<releaseNotes>
+			Bugfix for broken date formatter whereby the StartDate_IaYoS and EndDate_IaYoS convenience properties didnt actually
+			parse correctly into a formatted date string (such as when trying to query historic price ranges, would erroneously
+			end up with string 'YYYY-08-DD' instead of '1980-08-14' for example - trying to bump version in nuget
+		</releaseNotes>
+		<copyright>Copyright © 2016</copyright>
+		<summary>
+			Request/Response messages used by iayos.intrinioapi
+		</summary>
+		<tags>iayos intrinio fintech api finance in-a-year-or-so</tags>
+		<title>iayos.intrinioapi.servicemodel.message</title>
+		<dependencies>
+			<dependency id="ServiceStack.Interfaces" />
+			<dependency id="ServiceStack.Text" />
+			<dependency id="iayos.intrinioapi.servicemodel.flag" />
+			<dependency id="iayos.intrinioapi.servicemodel.dto" />
+		</dependencies>
+	</metadata>
 </package>
