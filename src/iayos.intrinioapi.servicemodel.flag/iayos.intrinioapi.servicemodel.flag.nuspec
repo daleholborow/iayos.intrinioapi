@@ -1,29 +1,24 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>iayos.intrinioapi.servicemodel.flag</id>
-    <version>$version$</version>
-    <authors>dale.holborow</authors>
-    <owners>dale.holborow</owners>
-    <projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
-	<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>
-		Enum flags used by iayos.intrinioapi
-	</description>
-    <releaseNotes>
-		Massive refactor to support iayos.intrinioapi base package changes
-	</releaseNotes>
-    <copyright>Copyright © 2016</copyright>
-	<summary>
-		Enum flags used by iayos.intrinioapi
-	</summary>
-    <tags>iayos intrinio fintech api finance in-a-year-or-so</tags>
-	<title>iayos.intrinioapi.servicemodel.flag</title>
-    <dependencies>
-       <dependency id="ServiceStack.Client" /> 
-       <dependency id="ServiceStack.Interfaces" /> 
-       <dependency id="ServiceStack.Text" /> 
-    </dependencies>
-  </metadata>
+	<metadata>
+		<id>iayos.intrinioapi.servicemodel.flag</id>
+		<version>$version$</version>
+		<authors>dale.holborow</authors>
+		<owners>dale.holborow</owners>
+		<projectUrl>https://github.com/daleholborow/iayos.intrinioapi</projectUrl>
+		<licenseUrl>https://github.com/daleholborow/iayos.intrinioapi/blob/master/LICENSE</licenseUrl>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<description>
+			Enum flags used by iayos.intrinioapi
+		</description>
+		<releaseNotes>
+			Massive refactor to support iayos.intrinioapi base package changes
+		</releaseNotes>
+		<copyright>Copyright © 2016</copyright>
+		<summary>
+			Enum flags used by iayos.intrinioapi
+		</summary>
+		<tags>iayos intrinio fintech api finance in-a-year-or-so</tags>
+		<title>iayos.intrinioapi.servicemodel.flag</title>
+	</metadata>
 </package>
