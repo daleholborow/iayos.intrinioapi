@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using iayos.intrinioapi.servicemodel.flag;
 using iayos.intrinioapi.servicemodel.message.Messages;
@@ -260,7 +261,8 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetPrices()
 		{
-			var request = new GetPrices { identifier = "AAPL" };
+			var request = new GetPrices { identifier = "AAPL", StartDate_IaYoS = new DateTime(1999, 12, 31) };
+			Assert.True(request.start_date == "1999-12-31");
 			var response = ApiClient.GetPrices(request);
 		}
 
