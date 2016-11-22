@@ -75,7 +75,7 @@ namespace iayos.intrinioapi.servicemodel.dto
 		public bool? delisted_security { get; set; }
 
 		/// <summary>
-		/// the last recorded date (“YYYY-MM-DD”) of an CRSP adjustment made to prior prices due to a stock split or dividend event.
+		/// the last recorded date (“yyyy-MM-dd”) of an CRSP adjustment made to prior prices due to a stock split or dividend event.
 		/// </summary>
 		public DateTime? last_crsp_adj_date { get; set; }
 	}

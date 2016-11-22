@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using iayos.intrinioapi.servicemodel.flag;
 using iayos.intrinioapi.servicemodel.message.Messages;
@@ -244,11 +245,17 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanSearchHistoricalData()
 		{
-			var request = new SearchHistoricalData { };
+			var request = new SearchHistoricalData
+			{
+				EndDate_IaYoS = new DateTime(2015, 1, 1),
+				StartDate_IaYoS = new DateTime(1995, 12, 1)
+			};
 			request.identifier = "AAPL";
 			request.item = DataPointTag.accruedexpenses;
 			//request.type = HistoricalDataType.QTR;
 			var requestUrl = request.ToGetUrl();
+			Assert.True(request.start_date == "1995-12-01");
+			Assert.True(request.end_date == "2015-01-01");
 			var response = ApiClient.SearchHistoricalData(request);
 			Assert.True(response != null);
 			Assert.True(response.identifier == request.identifier);
@@ -260,7 +267,14 @@ namespace iayos.intrinioapi.Api.Test
 		[Fact]
 		public void CanGetPrices()
 		{
-			var request = new GetPrices { identifier = "AAPL" };
+			var request = new GetPrices
+			{
+				identifier = "AAPL",
+				StartDate_IaYoS = new DateTime(1999, 12, 31),
+				page_size = 260 * 30,
+				sort_order = Direction.asc
+			};
+			Assert.True(request.start_date == "1999-12-31");
 			var response = ApiClient.GetPrices(request);
 		}
 

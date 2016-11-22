@@ -50,10 +50,10 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 		/// <summary>
 		/// (optional, otherwise, must specify a fiscal year and fiscal period) - the first fundamental will be 
-		/// the latest as of this specified date: YYYY-MM-DD
+		/// the latest as of this specified date: yyyy-MM-dd
 		/// </summary>
 		/// <seealso cref="Date_IaYoS"/>
-		public string date => Date_IaYoS != null ? Date_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		public string date => Date_IaYoS != null ? Date_IaYoS.GetValueOrDefault().ToString("yyyy-MM-dd") : null;
 
 		/// <summary>
 		/// Conveniently set date using actual date object
@@ -120,10 +120,10 @@ namespace iayos.intrinioapi.servicemodel.message.Messages
 
 		/// <summary>
 		/// (optional, otherwise, must specify a fiscal year and fiscal period) - the first fundamental will be 
-		/// the latest as of this specified date: YYYY-MM-DD
+		/// the latest as of this specified date: yyyy-MM-dd
 		/// </summary>
 		/// <seealso cref="Date_IaYoS"/>
-		public string date => Date_IaYoS != null ? Date_IaYoS.GetValueOrDefault().ToString("YYYY-MM-DD") : null;
+		public string date => Date_IaYoS != null ? Date_IaYoS.GetValueOrDefault().ToString("yyyy-MM-dd") : null;
 
 		/// <summary>
 		/// Conveniently set date using actual date object
